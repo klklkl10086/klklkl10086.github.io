@@ -6,7 +6,7 @@
   <link href="https://comeupklklkl.gitee.io/jluloser.github.io/atom.xml" rel="self"/>
   
   <link href="https://comeupklklkl.gitee.io/jluloser.github.io/"/>
-  <updated>2023-09-26T13:53:02.884Z</updated>
+  <updated>2023-09-26T14:31:43.785Z</updated>
   <id>https://comeupklklkl.gitee.io/jluloser.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux安装教程</title>
+    <link href="https://comeupklklkl.gitee.io/jluloser.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>https://comeupklklkl.gitee.io/jluloser.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
+    <published>2023-09-26T14:30:07.000Z</published>
+    <updated>2023-09-26T14:31:43.785Z</updated>
+    
+    
+    
+    
+    <category term="教程" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Linux" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode题目</title>
@@ -80,16 +97,16 @@
   </entry>
   
   <entry>
-    <title>计算机学习之路</title>
+    <title>学习随记</title>
     <link href="https://comeupklklkl.gitee.io/jluloser.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     <id>https://comeupklklkl.gitee.io/jluloser.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</id>
     <published>2023-07-28T07:43:29.000Z</published>
-    <updated>2023-09-26T13:53:52.223Z</updated>
+    <updated>2023-09-26T14:28:31.673Z</updated>
     
     <content type="html"><![CDATA[<h2 id="大一上学期">大一上学期</h2><p>c语言</p><p>蓝桥杯省三</p><h2 id="大一下学期">大一下学期</h2><p>c++面向对象程序设计</p><p>初识CTF REVERSE</p><h2 id="大一暑假">大一暑假</h2><p>CTF REVERSE</p><p>数据结构</p><p>matlab</p><p>python</p><p>hexo搭建博客</p><p>微积分</p><p>暑假过得稀碎，啥也不是，好像学了又好像没学。</p><h2 id="大二上学期">大二上学期</h2><p>课程： 计算机组成原理  数据结构 离散2  微积分3  c++设计</p><p>参加数学建模比赛，真的很难绷，选c题做的稀烂。</p><p>加了百度菁英班，算法题全是数论相关，欧拉函数真的很迷，做完全都忘记了。</p><p>计组原理和数据结构全是硬菜，前者与数电紧密相联，并且内容很多，后者则是需要实践与学习相结合 。离散数学也不好过 ，概念很多，逻辑关系很强，老师讲课也很赶（虽然不是老师的错）——2023.9.26</p>]]></content>
     
     
-    <summary type="html">一些心路历程的简单记录</summary>
+    <summary type="html">一些关于学习的简单记录</summary>
     
     
     
