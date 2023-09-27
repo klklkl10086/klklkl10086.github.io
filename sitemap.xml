@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/index.html</loc>
+    
+    <lastmod>2023-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/index.html</loc>
+    
+    <lastmod>2023-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/about/index.html</loc>
+    
+    <lastmod>2023-09-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/Gallery/index.html</loc>
     
     <lastmod>2023-09-27</lastmod>
@@ -55,33 +82,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/index.html</loc>
-    
-    <lastmod>2023-09-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/about/index.html</loc>
-    
-    <lastmod>2023-07-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/index.html</loc>
-    
-    <lastmod>2023-07-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io</loc>
@@ -92,13 +92,6 @@
 
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Linux/</loc>
-    <lastmod>2023-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Python/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -106,7 +99,7 @@
   </url>
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Linux/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -114,6 +107,13 @@
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -129,13 +129,6 @@
 
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2023-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/PYTHON/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -143,7 +136,7 @@
   </url>
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E5%88%B7%E9%A2%98/</loc>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -151,6 +144,13 @@
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/record/</loc>
+    <lastmod>2023-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E5%88%B7%E9%A2%98/</loc>
     <lastmod>2023-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
