@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/C/</loc>
-    <lastmod>2023-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Python/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -154,6 +147,13 @@
   </url>
   
   <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/C/</loc>
+    <lastmod>2023-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -168,13 +168,6 @@
   </url>
   
 
-  
-  <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/book/</loc>
-    <lastmod>2023-12-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/PYTHON/</loc>
@@ -199,6 +192,13 @@
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/record/</loc>
+    <lastmod>2023-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/book/</loc>
     <lastmod>2023-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
