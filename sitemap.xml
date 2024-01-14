@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/about/index.html</loc>
+    
+    <lastmod>2024-01-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     
     <lastmod>2024-01-14</lastmod>
@@ -74,25 +83,7 @@
   </url>
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/about/index.html</loc>
-    
-    <lastmod>2023-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/index.html</loc>
-    
-    <lastmod>2023-09-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/index.html</loc>
     
     <lastmod>2023-09-27</lastmod>
     
@@ -119,13 +110,6 @@
 
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Linux/</loc>
-    <lastmod>2024-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/C/</loc>
     <lastmod>2024-01-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,6 +118,13 @@
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Python/</loc>
+    <lastmod>2024-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/tags/Linux/</loc>
     <lastmod>2024-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -170,13 +161,6 @@
 
   
   <url>
-    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/CLASS/</loc>
-    <lastmod>2024-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/book/</loc>
     <lastmod>2024-01-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -185,6 +169,13 @@
   
   <url>
     <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/Python/</loc>
+    <lastmod>2024-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://comeupklklkl.gitee.io/jluloser.github.io/categories/CLASS/</loc>
     <lastmod>2024-01-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
