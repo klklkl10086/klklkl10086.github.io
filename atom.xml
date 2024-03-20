@@ -6,7 +6,7 @@
   <link href="https://comeupklklkl.gitee.io/jluloser.github.io/atom.xml" rel="self"/>
   
   <link href="https://comeupklklkl.gitee.io/jluloser.github.io/"/>
-  <updated>2024-03-19T13:43:52.786Z</updated>
+  <updated>2024-03-20T11:50:02.186Z</updated>
   <id>https://comeupklklkl.gitee.io/jluloser.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>stl之手撕sort函数</title>
+    <link href="https://comeupklklkl.gitee.io/jluloser.github.io/2024/03/20/stl-sort/"/>
+    <id>https://comeupklklkl.gitee.io/jluloser.github.io/2024/03/20/stl-sort/</id>
+    <published>2024-03-20T11:45:01.000Z</published>
+    <updated>2024-03-20T11:50:02.186Z</updated>
+    
+    <content type="html"><![CDATA[<p>​写在前面的话：大二下学期时，有一门课叫数据结构实践，在最后一次上机的时候，老师限时让我们做一道oj题，题目是关于stl中sort函数的实现问题，很不幸，我一个点都没过得了0分。因此，在课后想再试试，故有此篇文章。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;​	写在前面的话：大二下学期时，有一门课叫数据结构实践，在最后一次上机的时候，老师限时让我们做一道oj题，题目是关于stl中sort函数的实现问题，很不幸，我一个点都没过得了0分。因此，在课后想再试试，故有此篇文章。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="c++" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/categories/c/"/>
+    
+    
+    <category term="stl" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/tags/stl/"/>
+    
+  </entry>
   
   <entry>
     <title>蓝桥杯</title>
@@ -123,7 +148,7 @@
     <link href="https://comeupklklkl.gitee.io/jluloser.github.io/2023/10/29/Learning-from-Effictive-C/"/>
     <id>https://comeupklklkl.gitee.io/jluloser.github.io/2023/10/29/Learning-from-Effictive-C/</id>
     <published>2023-10-29T13:49:13.000Z</published>
-    <updated>2024-03-18T09:13:19.499Z</updated>
+    <updated>2024-03-20T11:50:41.262Z</updated>
     
     <content type="html"><![CDATA[<h1 id="effective-c-读书笔记">《Effective C++》读书笔记</h1><h2 id="00-导读">00.导读</h2><h3 id="1-理解下列术语">1.理解下列术语</h3><h4 id="declaration-声明式">declaration（声明式）</h4><p>告诉编译器某个东西的名称和type，但<strong>略去细节</strong>。</p><h4 id="definition-定义式">definition（定义式）</h4><p>提供编译器一些声明式所遗漏的细节。</p><ul><li><p>对 对象而言，定义式是编译器为此对象<strong>拨内存</strong>的地点。</p></li><li><p>对于function或function template而言定义式提供了<strong>代码本体</strong>。</p></li><li><p>对class和class template而言，定义式<strong>列出他们的成员</strong></p></li></ul><h4 id="initialization-u-初始化-u">Initialization（<u>初始化</u>）</h4><p>给对象赋<strong>初值</strong>的过程</p><p>对于<strong>用户自定义类型</strong>的对象而言，初始化由构造函数执行</p><p><strong>default构造函数</strong>（缺省构造函数）：可被调用但不带任何实参者，要不没有参数要不每个参数都有缺省值。</p><p><strong>copy构造函数</strong>（拷贝构造函数）：用来“<em><em>以同型对象</em><u>初始化</u><em>自我对象</em></em>”</p><p><strong>copy assignment</strong>（拷贝复制）操作符：用来“<strong>从另一个同型对象中<u><em>拷贝</em></u>其值到自我对象</strong>”</p><p>例子：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Widget</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Widget</span>();                                     <span class="comment">//default构造函数</span></span><br><span class="line">    <span class="built_in">Widget</span>(<span class="type">const</span> Widget&amp; rhs);                    <span class="comment">//copy构造函数</span></span><br><span class="line">    Widget&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Widget&amp; rhs);         <span class="comment">//copy assignment操作符</span></span><br><span class="line">&#125;;</span><br><span class="line">Widget w1;                                   <span class="comment">//调用default构造函数</span></span><br><span class="line"><span class="function">Widget <span class="title">w2</span><span class="params">(w1)</span></span>;                               <span class="comment">//调用copy构造函数</span></span><br><span class="line">w1=w2;                                       <span class="comment">//调用copy assignment操作符</span></span><br><span class="line"><span class="comment">/////////////当看到 = 时要小心，有可能是copy assignment操作符，也有可能是copy构造函数</span></span><br><span class="line">Widget w3 = w2;                              <span class="comment">//copy构造函数</span></span><br></pre></td></tr></table></figure><p><strong>copy构造函数与passed by value</strong></p><p>copy构造函数定义了一个对象如何 passed by value（以值传递）</p><p>例如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">hasAcceptableQuality</span><span class="params">(Widget w)</span></span>;</span><br><span class="line">.</span><br><span class="line">    .</span><br><span class="line">    .</span><br><span class="line">Widget aWidget;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">hasAcceptableQuality</span>(aWidget)) .....<span class="comment">//值传递，调用了copy构造函数将awidget的值复制到Widget内</span></span><br></pre></td></tr></table></figure><h2 id="01-让自己习惯c">01.让自己习惯C++</h2><h3 id="条款01-视c-为一个语言联邦">条款01: 视C++为一个语言联邦</h3><p>即我们可以将c++看成一个由<strong>四种次语言组成的语言联邦</strong>，四种次语言分别是</p><ul><li>C</li><li>Object-Oriented C++</li><li>Template C++</li><li>STL</li></ul><p>每个次语言都有自己的规约，C++高效编程守则视状况而变化，取决于你用C++的哪一个部分</p><p>例如：<br><img src="image-20231029225351042.png" alt="image-20231029225351042"></p><h2 id="条款02：尽量以const-enum-inline替换-define">条款02：尽量以const，enum，inline替换 #define</h2>]]></content>
     
@@ -132,10 +157,10 @@
     
     
     
-    <category term="专业书籍" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/categories/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/"/>
+    <category term="c++" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/categories/c/"/>
     
     
-    <category term="C++" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/tags/C/"/>
+    <category term="专业书籍" scheme="https://comeupklklkl.gitee.io/jluloser.github.io/tags/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
