@@ -3,11 +3,11 @@
   <title>klklkl&#39;s blogs</title>
   
   <subtitle>学习笔记和一些思考</subtitle>
-  <link href="https://klklkl10086.github.io/atom.xml" rel="self"/>
+  <link href="https://github.com/klklkl10086/klklkl10086.github.io/atom.xml" rel="self"/>
   
-  <link href="https://klklkl10086.github.io/"/>
+  <link href="https://github.com/klklkl10086/klklkl10086.github.io/"/>
   <updated>2024-05-22T13:52:55.567Z</updated>
-  <id>https://klklkl10086.github.io/</id>
+  <id>https://github.com/klklkl10086/klklkl10086.github.io/</id>
   
   <author>
     <name>klklkl</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Database</title>
-    <link href="https://klklkl10086.github.io/2024/05/07/Database/"/>
-    <id>https://klklkl10086.github.io/2024/05/07/Database/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/05/07/Database/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/05/07/Database/</id>
     <published>2024-05-07T11:03:11.000Z</published>
     <updated>2024-05-22T13:52:55.567Z</updated>
     
@@ -36,14 +36,14 @@
     
     
     
-    <category term="sql" scheme="https://klklkl10086.github.io/tags/sql/"/>
+    <category term="sql" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/sql/"/>
     
   </entry>
   
   <entry>
     <title>约数定理</title>
-    <link href="https://klklkl10086.github.io/2024/04/05/%E7%BA%A6%E6%95%B0%E5%AE%9A%E7%90%86/"/>
-    <id>https://klklkl10086.github.io/2024/04/05/%E7%BA%A6%E6%95%B0%E5%AE%9A%E7%90%86/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/04/05/%E7%BA%A6%E6%95%B0%E5%AE%9A%E7%90%86/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/04/05/%E7%BA%A6%E6%95%B0%E5%AE%9A%E7%90%86/</id>
     <published>2024-04-05T09:45:40.000Z</published>
     <updated>2024-04-05T09:45:40.349Z</updated>
     
@@ -55,8 +55,8 @@
   
   <entry>
     <title>线性筛详解</title>
-    <link href="https://klklkl10086.github.io/2024/04/05/%E7%BA%BF%E6%80%A7%E7%AD%9B%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://klklkl10086.github.io/2024/04/05/%E7%BA%BF%E6%80%A7%E7%AD%9B%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/04/05/%E7%BA%BF%E6%80%A7%E7%AD%9B%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/04/05/%E7%BA%BF%E6%80%A7%E7%AD%9B%E8%AF%A6%E8%A7%A3/</id>
     <published>2024-04-05T09:26:22.000Z</published>
     <updated>2024-04-05T09:26:59.307Z</updated>
     
@@ -68,8 +68,8 @@
   
   <entry>
     <title>stl之手撕sort函数</title>
-    <link href="https://klklkl10086.github.io/2024/03/20/stl-sort/"/>
-    <id>https://klklkl10086.github.io/2024/03/20/stl-sort/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/03/20/stl-sort/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/03/20/stl-sort/</id>
     <published>2024-03-20T11:45:01.000Z</published>
     <updated>2024-03-20T13:25:00.161Z</updated>
     
@@ -84,17 +84,17 @@
     
     
     
-    <category term="c++" scheme="https://klklkl10086.github.io/categories/c/"/>
+    <category term="c++" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/c/"/>
     
     
-    <category term="STL" scheme="https://klklkl10086.github.io/tags/STL/"/>
+    <category term="STL" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/STL/"/>
     
   </entry>
   
   <entry>
     <title>蓝桥杯</title>
-    <link href="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
-    <id>https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/</id>
     <published>2024-02-22T02:50:11.000Z</published>
     <updated>2024-04-12T14:13:26.814Z</updated>
     
@@ -105,34 +105,34 @@
     
     
     
-    <category term="算法" scheme="https://klklkl10086.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="蓝桥杯" scheme="https://klklkl10086.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+    <category term="蓝桥杯" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
   </entry>
   
   <entry>
     <title>Pandas</title>
-    <link href="https://klklkl10086.github.io/2024/02/04/pandas/"/>
-    <id>https://klklkl10086.github.io/2024/02/04/pandas/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/02/04/pandas/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/02/04/pandas/</id>
     <published>2024-02-04T14:31:41.000Z</published>
     <updated>2024-03-18T09:14:40.964Z</updated>
     
     
     
     
-    <category term="Python" scheme="https://klklkl10086.github.io/categories/Python/"/>
+    <category term="Python" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/Python/"/>
     
     
-    <category term="Pandas" scheme="https://klklkl10086.github.io/tags/Pandas/"/>
+    <category term="Pandas" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/Pandas/"/>
     
   </entry>
   
   <entry>
     <title>Python</title>
-    <link href="https://klklkl10086.github.io/2024/01/14/Python/"/>
-    <id>https://klklkl10086.github.io/2024/01/14/Python/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2024/01/14/Python/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2024/01/14/Python/</id>
     <published>2024-01-14T07:15:19.000Z</published>
     <updated>2024-03-18T09:14:52.828Z</updated>
     
@@ -143,17 +143,17 @@
     
     
     
-    <category term="Python" scheme="https://klklkl10086.github.io/categories/Python/"/>
+    <category term="Python" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/Python/"/>
     
     
-    <category term="Python" scheme="https://klklkl10086.github.io/tags/Python/"/>
+    <category term="Python" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>微积分A3</title>
-    <link href="https://klklkl10086.github.io/2023/11/20/%E5%BE%AE%E7%A7%AF%E5%88%86A3/"/>
-    <id>https://klklkl10086.github.io/2023/11/20/%E5%BE%AE%E7%A7%AF%E5%88%86A3/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/11/20/%E5%BE%AE%E7%A7%AF%E5%88%86A3/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/11/20/%E5%BE%AE%E7%A7%AF%E5%88%86A3/</id>
     <published>2023-11-20T12:01:38.000Z</published>
     <updated>2024-03-18T09:15:19.573Z</updated>
     
@@ -169,34 +169,34 @@
     
     
     
-    <category term="class record" scheme="https://klklkl10086.github.io/categories/class-record/"/>
+    <category term="class record" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/class-record/"/>
     
     
-    <category term="微积分" scheme="https://klklkl10086.github.io/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/"/>
+    <category term="微积分" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/"/>
     
   </entry>
   
   <entry>
     <title>learning library windows.h</title>
-    <link href="https://klklkl10086.github.io/2023/11/14/learning-library-windows-h/"/>
-    <id>https://klklkl10086.github.io/2023/11/14/learning-library-windows-h/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/11/14/learning-library-windows-h/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/11/14/learning-library-windows-h/</id>
     <published>2023-11-14T11:56:18.000Z</published>
     <updated>2024-03-18T09:13:41.126Z</updated>
     
     
     
     
-    <category term="windows" scheme="https://klklkl10086.github.io/categories/windows/"/>
+    <category term="windows" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/windows/"/>
     
     
-    <category term="windows" scheme="https://klklkl10086.github.io/tags/windows/"/>
+    <category term="windows" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/windows/"/>
     
   </entry>
   
   <entry>
     <title>Learning from Effective C++</title>
-    <link href="https://klklkl10086.github.io/2023/10/29/Learning-from-Effictive-C/"/>
-    <id>https://klklkl10086.github.io/2023/10/29/Learning-from-Effictive-C/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/10/29/Learning-from-Effictive-C/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/10/29/Learning-from-Effictive-C/</id>
     <published>2023-10-29T13:49:13.000Z</published>
     <updated>2024-03-20T11:50:41.262Z</updated>
     
@@ -207,17 +207,17 @@
     
     
     
-    <category term="c++" scheme="https://klklkl10086.github.io/categories/c/"/>
+    <category term="c++" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/c/"/>
     
     
-    <category term="专业书籍" scheme="https://klklkl10086.github.io/tags/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/"/>
+    <category term="专业书籍" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
   <entry>
     <title>数据结构</title>
-    <link href="https://klklkl10086.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>https://klklkl10086.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
     <published>2023-10-29T10:47:25.000Z</published>
     <updated>2024-04-10T11:51:21.830Z</updated>
     
@@ -228,17 +228,17 @@
     
     
     
-    <category term="class record" scheme="https://klklkl10086.github.io/categories/class-record/"/>
+    <category term="class record" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/class-record/"/>
     
     
-    <category term="数据结构" scheme="https://klklkl10086.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Linux课程复习笔记</title>
-    <link href="https://klklkl10086.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-    <id>https://klklkl10086.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/09/26/Linux%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
     <published>2023-09-26T14:30:07.000Z</published>
     <updated>2024-03-18T09:14:07.598Z</updated>
     
@@ -255,17 +255,17 @@
     
     
     
-    <category term="class record" scheme="https://klklkl10086.github.io/categories/class-record/"/>
+    <category term="class record" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/class-record/"/>
     
     
-    <category term="Linux" scheme="https://klklkl10086.github.io/tags/Linux/"/>
+    <category term="Linux" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>学习生活随记</title>
-    <link href="https://klklkl10086.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
-    <id>https://klklkl10086.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</id>
+    <link href="https://github.com/klklkl10086/klklkl10086.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+    <id>https://github.com/klklkl10086/klklkl10086.github.io/2023/07/28/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/</id>
     <published>2023-07-28T07:43:29.000Z</published>
     <updated>2024-03-18T09:15:50.156Z</updated>
     
@@ -276,10 +276,10 @@
     
     
     
-    <category term="life" scheme="https://klklkl10086.github.io/categories/life/"/>
+    <category term="life" scheme="https://github.com/klklkl10086/klklkl10086.github.io/categories/life/"/>
     
     
-    <category term="随记" scheme="https://klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/"/>
+    <category term="随记" scheme="https://github.com/klklkl10086/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/"/>
     
   </entry>
   
