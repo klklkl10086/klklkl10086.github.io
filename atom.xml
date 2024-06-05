@@ -6,7 +6,7 @@
   <link href="https://klklkl10086.github.io/klklkl10086.github.io/atom.xml" rel="self"/>
   
   <link href="https://klklkl10086.github.io/klklkl10086.github.io/"/>
-  <updated>2024-06-05T02:23:40.515Z</updated>
+  <updated>2024-06-05T03:33:35.691Z</updated>
   <id>https://klklkl10086.github.io/klklkl10086.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「吉林大学软件学院」操作系统实验</title>
+    <link href="https://klklkl10086.github.io/klklkl10086.github.io/2024/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/"/>
+    <id>https://klklkl10086.github.io/klklkl10086.github.io/2024/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C/</id>
+    <published>2024-06-05T02:38:09.000Z</published>
+    <updated>2024-06-05T03:33:35.691Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>实验环境： centos 7</strong></p><h1 id="实验一-：进程与线程-linux-进程与线程通讯">实验一 ：进程与线程——Linux   进程与线程通讯</h1><h2 id="实验内容">实验内容</h2><blockquote><p>•以Linux系统进程和线程机制为背景，掌握fork()和clone()系统调用的形式和功能，以及与其相适应的高级通讯方式。由fork派生的子进程之间通过pipe通讯，由clone创建的线程之间通过共享内存通讯，对于后者需要考虑互斥问题。</p><p>•以生产者/消费者问题为例，通过实验理解fork()和clone()两个系统调用的区别。程序要求能够创建4个进程或线程，其中包括两个生产者和两个消费者，生产者和消费者之间能够传递数据。</p></blockquote><h2 id="前置知识">前置知识</h2><h3 id="fork">fork()</h3><p><strong>函数定义</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="type">pid_t</span> <span class="title function_">fork</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"><span class="comment">//创建进程成功：在父进程中返回子进程的PID，在子进程中返回0</span></span><br><span class="line"><span class="comment">//创建失败返回-1</span></span><br></pre></td></tr></table></figure><p>作用：通过系统调用创建一个与原来进程几乎完全相同的进程，也就是两个进程可以做完全相同的事情。</p><ul><li><p>一个进程调用fork函数之后，系统会先给新的进程分配资源，如存储数据、代码空间，然后将原来进程的所有值都<strong>复制</strong>给新的进程中，相当于克隆了一个自己。</p></li><li><p>子进程是父进程的几乎完全拷贝，包括代码段、数据段、堆和栈等。</p></li><li><p>虽然子进程和父进程的地址空间相同，但它们是独立的；修改子进程的内存不会影响父进程，反之亦然。</p></li><li><p>使用 <code>fork</code> 创建子进程之后，父进程和子进程会并发运行</p></li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="type">int</span> tag=<span class="number">1</span>;</span><br><span class="line"> <span class="type">pid_t</span> pid;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">&quot;tag is %d now\n&quot;</span>,tag);</span><br><span class="line"> pid=fork();</span><br><span class="line"> <span class="keyword">if</span>(pid==<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;there is error!\n&quot;</span>);</span><br><span class="line"> <span class="keyword">else</span> <span class="keyword">if</span>(pid==<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;i am father\n&quot;</span>);</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;我是父亲,my pid is %d，我将修改tag，由%d变为%d\n&quot;</span>,getpid(),tag,tag+<span class="number">1</span>);</span><br><span class="line">     tag++;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;father:%d\n&quot;</span>,tag);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;i am son\n&quot;</span>);</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;我是儿子，my pid is%d,my father&#x27;s pid is %d,我将修改tag，由%d变为%d\n&quot;</span>,getpid(),getppid(),tag,tag<span class="number">-10</span>);</span><br><span class="line">     tag-=<span class="number">10</span>;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;son:%d\n&quot;</span>,tag);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line"><span class="comment">//tag is 1 now</span></span><br><span class="line"><span class="comment">//i am son</span></span><br><span class="line"><span class="comment">//我是儿子，my pid is56935,my father&#x27;s pid is 2467,我将修改tag，由1变为-9</span></span><br><span class="line"><span class="comment">//son:-9</span></span><br><span class="line"><span class="comment">//i am father</span></span><br><span class="line"><span class="comment">//我是父亲,my pid is 56936，我将修改tag，由1变为2</span></span><br><span class="line"><span class="comment">//father:2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>由上述输出可以见得：</p><ul><li><strong>父进程和子进程虽然共用地址空间，但是互相不影响</strong></li><li><strong>子进程会从fork处开始运行</strong></li></ul><h3 id="clone">clone()</h3><h3 id="pipe">pipe()</h3><h3 id="sem-wait-sempost">sem_wait()   sempost()</h3><h3 id="pthread-mutex-lock-pthread-mutex-unlock">pthread_mutex_lock()  pthread_Mutex_unlock()</h3><h3 id="生产者消费者问题">生产者消费者问题</h3><h2 id="代码">代码</h2><h2 id="结果">结果</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;实验环境： centos 7&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;实验一-：进程与线程-linux-进程与线程通讯&quot;&gt;实验一 ：进程与线程——Linux   进程与线程通讯&lt;/h1&gt;
+&lt;h2 id=&quot;实验内容&quot;&gt;实验内容&lt;/h2&gt;
+&lt;blockquot</summary>
+      
+    
+    
+    
+    <category term="class record" scheme="https://klklkl10086.github.io/klklkl10086.github.io/categories/class-record/"/>
+    
+    
+    <category term="操作系统" scheme="https://klklkl10086.github.io/klklkl10086.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>Database</title>
