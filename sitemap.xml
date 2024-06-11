@@ -187,13 +187,6 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/windows/</loc>
-    <lastmod>2024-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/STL/</loc>
     <lastmod>2024-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -201,14 +194,21 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/</loc>
     <lastmod>2024-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E5%BE%AE%E7%A7%AF%E5%88%86/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/windows/</loc>
+    <lastmod>2024-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/</loc>
     <lastmod>2024-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -273,6 +273,13 @@
   </url>
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/class-record/</loc>
+    <lastmod>2024-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/windows/</loc>
     <lastmod>2024-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -281,13 +288,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/life/</loc>
-    <lastmod>2024-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/class-record/</loc>
     <lastmod>2024-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
