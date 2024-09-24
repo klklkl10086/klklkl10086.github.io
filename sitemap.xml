@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/03/20/stl-sort/</loc>
+    
+    <lastmod>2024-09-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/09/02/%E5%89%8D%E7%AB%AF-html5-css/</loc>
     
     <lastmod>2024-09-24</lastmod>
@@ -194,6 +203,20 @@
   </url>
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/STL/</loc>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/sort/</loc>
+    <lastmod>2024-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/</loc>
     <lastmod>2024-09-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -236,14 +259,14 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Python/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Linux/</loc>
     <lastmod>2024-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Linux/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Python/</loc>
     <lastmod>2024-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
