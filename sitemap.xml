@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/10/02/cf/</loc>
+    
+    <lastmod>2024-10-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/07/11/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2024-10-02</lastmod>
@@ -198,13 +207,6 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/java/</loc>
-    <lastmod>2024-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/STL/</loc>
     <lastmod>2024-10-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -213,6 +215,34 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/sort/</loc>
+    <lastmod>2024-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%A2%98%E8%A7%A3/</loc>
+    <lastmod>2024-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/codeforces/</loc>
+    <lastmod>2024-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
+    <lastmod>2024-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/java/</loc>
     <lastmod>2024-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -333,6 +363,13 @@
   </url>
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/java/</loc>
     <lastmod>2024-10-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -362,13 +399,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/Machine-Learning/</loc>
-    <lastmod>2024-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2024-10-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
