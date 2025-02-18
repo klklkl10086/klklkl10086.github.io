@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/2025/01/22/CS144-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    
-    <lastmod>2025-02-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/</loc>
     
     <lastmod>2025-01-26</lastmod>
@@ -65,15 +56,6 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</loc>
-    
-    <lastmod>2024-12-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/</loc>
     
     <lastmod>2024-12-07</lastmod>
@@ -93,15 +75,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/about/index.html</loc>
-    
-    <lastmod>2024-11-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/2024/10/30/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%AE%80%E7%AD%94%E9%A2%98/</loc>
     
     <lastmod>2024-11-25</lastmod>
     
@@ -227,14 +200,7 @@
 
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/CSS144/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Python/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -242,20 +208,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/SQL/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Linux/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Python/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -283,7 +235,21 @@
   </url>
   
   <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Linux/</loc>
+    <lastmod>2025-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/java/</loc>
+    <lastmod>2025-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -318,13 +284,6 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E9%9A%8F%E8%AE%B0/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -332,7 +291,7 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -340,13 +299,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/Machine-Learning/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -374,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -383,7 +335,7 @@
 
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/Python/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -391,13 +343,6 @@
   
   <url>
     <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/class/</loc>
-    <lastmod>2025-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/Python/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -418,14 +363,14 @@
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/life/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/life/</loc>
+    <loc>https://klklkl10086.github.io/klklkl10086.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2025-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
