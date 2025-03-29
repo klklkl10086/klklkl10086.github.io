@@ -6,7 +6,7 @@
   <link href="https://klklkl10086.github.io/klklkl10086.github.io/atom.xml" rel="self"/>
   
   <link href="https://klklkl10086.github.io/klklkl10086.github.io/"/>
-  <updated>2025-03-29T03:42:49.947Z</updated>
+  <updated>2025-03-29T09:08:54.531Z</updated>
   <id>https://klklkl10086.github.io/klklkl10086.github.io/</id>
   
   <author>
@@ -21,17 +21,19 @@
     <link href="https://klklkl10086.github.io/klklkl10086.github.io/2025/03/29/%E8%80%83%E7%A0%94%E8%AE%B0%E5%BD%95/"/>
     <id>https://klklkl10086.github.io/klklkl10086.github.io/2025/03/29/%E8%80%83%E7%A0%94%E8%AE%B0%E5%BD%95/</id>
     <published>2025-03-29T03:36:47.000Z</published>
-    <updated>2025-03-29T03:42:49.947Z</updated>
+    <updated>2025-03-29T09:08:54.531Z</updated>
     
-    <content type="html"><![CDATA[<p>由于英语每天都在背单词，这一项不记录 ## 第二周 3.3 - 3.9 ### 计划 - [x] 基础三十讲第九章 - [x] 1000题第九章 - [x] 数据结构4.1 ~ 5.3</p><table style="width:8%;"><colgroup><col style="width: 8%" /></colgroup><tbody><tr class="odd"><td>## 第三周 3.10 - 3.16</td></tr><tr class="even"><td>### 计划： <strong>数学:</strong></td></tr><tr class="odd"><td>- [x] 基础三十讲第10章 - [x] 基础三十讲第11章 - [x] 基础三十讲第12章 - [x] 1000题第10章 - [x] 1000题第11章 - [x] 1000题第12章 <strong>数据结构：</strong> - [x] 5.4 ~ 6.3</td></tr></tbody></table><h2 id="第四周-3.17---3.23">第四周 3.17 - 3.23</h2><h3 id="计划">计划</h3><p><strong>数学：</strong> - [x] 重看前三章基础三十讲（包括课后题） - [x] 前两章1000题 - [ ] 学习第13章多元函数微分学（太多了，只看到了隐函数存在定理） - [ ] 13章课后题 - [ ] 13章1000题 <strong>数据结构:</strong> - [x] 图收尾 - [x] 查找</p><h3 id="星期一">3.17 星期一</h3><p>数学： 重看第一章并完成课后题</p><p>数据结构： 看完图的课程 自学查找第一节第二节</p><h3 id="星期二">3.18 星期二</h3><p>数学: 重看第二章（没看完剩最后一节）</p><h3 id="星期三">3.19 星期三</h3><p>数学： 看完第二章+第二章课后题 第三章+第三章课后题</p><p>数据结构： 看完查找前两节的课 自学第三节除红黑树以外的内容（学不完太多了）</p><h3 id="星期四">3.20 星期四</h3><p>数学： 第一章1000题</p><p>数据结构： 图的第三节剩余的红黑树（so hard）</p><h3 id="星期五">3.21 星期五</h3><p>休息 整理了记不太住的单词 然后就没干啥了 ### 3.22 星期六 数学： 第二章一千题 自学第十三讲</p><p>数据结构: 查找收尾</p><h3 id="星期日">3.23 星期日</h3><p>数学： 听课十三讲听到了隐函数存在定理</p><p>数据结构： 复习总结查找</p><h2 id="第五周-3.24---3.30">第五周 3.24 - 3.30</h2><h3 id="计划-1">计划：</h3><p>数学： - [x] 第13章多元函数微分学 - [x] 13章课后题 - [x] 13章1000题 - [x] 1000题第三章 - [x] 1000题第四章 - [x] 复习第四章 - [x] 复习第五章 - [ ] 十四章一半？ 数据结构 - [x] 排序</p><h3 id="星期一-1">3.24 星期一</h3><p>数学： 听完了13章，课后题就剩两道题 数据结构： 完成8.1 8.2</p><h3 id="星期二-1">3.25 星期二</h3><p>数学： 做完了13章的课后题 1000题做了一页不到，太难算了</p><h3 id="星期三-1">3.26 星期三</h3><p>数学： 做完了1000题改错听课 数据结构： 学完了交换排序</p><h3 id="星期四-1">3.27 星期四</h3><p>数学： 复习第四章 第三章1000题 数据结构： 选择排序 归并基数计数排序</p><h3 id="星期五-1">3.28 星期五</h3><p>数学: 复习第五章 第四章1000题 数据结构: 排序收尾</p><h3 id="星期六">3.29 星期六</h3><p>数学： 总结一下错题 学十四章</p><p>数据结构： 总结复习排序</p><h3 id="星期日-1">3.30 星期日</h3><p>数学： 十四章 总结回看这周学习的内容</p><p>数据结构： 总结整本书</p>]]></content>
+    <content type="html"><![CDATA[<p>由于英语每天都在背单词，这一项不记录</p><hr /><h2 id="第二周-3.3---3.9">第二周 3.3 - 3.9</h2><h3 id="计划">计划</h3><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />基础三十讲第九章</li><li><input type="checkbox" disabled="" checked="" />1000题第九章</li><li><input type="checkbox" disabled="" checked="" />数据结构4.1 ~ 5.3</li></ul><h2 id="第三周-3.10---3.16">第三周 3.10 - 3.16</h2><h3 id="计划-1">计划：</h3><p><strong>数学:</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />基础三十讲第10章</li><li><input type="checkbox" disabled="" checked="" />基础三十讲第11章</li><li><input type="checkbox" disabled="" checked="" />基础三十讲第12章</li><li><input type="checkbox" disabled="" checked="" />1000题第10章</li><li><input type="checkbox" disabled="" checked="" />1000题第11章</li><li><input type="checkbox" disabled="" checked="" />1000题第12章</li></ul><p><strong>数据结构：</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />5.4 ~ 6.3</li></ul><h2 id="第四周-3.17---3.23">第四周 3.17 - 3.23</h2><h3 id="计划-2">计划</h3><p><strong>数学：</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />重看前三章基础三十讲（包括课后题）</li><li><input type="checkbox" disabled="" checked="" />前两章1000题</li><li><input type="checkbox" disabled="" />学习第13章多元函数微分学（太多了，只看到了隐函数存在定理）</li><li><input type="checkbox" disabled="" />13章课后题</li><li><input type="checkbox" disabled="" />13章1000题</li></ul><p><strong>数据结构:</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />图收尾</li><li><input type="checkbox" disabled="" checked="" />查找</li></ul><h3 id="星期一">3.17 星期一</h3><p>数学：</p><p>重看第一章并完成课后题</p><p>数据结构：</p><ol type="1"><li>看完图的课程</li><li>自学查找第一节第二节</li></ol><h3 id="星期二">3.18 星期二</h3><p>数学:</p><p>重看第二章（没看完剩最后一节）</p><h3 id="星期三">3.19 星期三</h3><p>数学：</p><ol type="1"><li>看完第二章+第二章课后题</li><li>第三章+第三章课后题</li></ol><p>数据结构：</p><ol type="1"><li>看完查找前两节的课</li><li>自学第三节除红黑树以外的内容（学不完太多了）</li></ol><h3 id="星期四">3.20 星期四</h3><p>数学： 第一章1000题</p><p>数据结构：</p><p>图的第三节剩余的红黑树（so hard）</p><h3 id="星期五">3.21 星期五</h3><p>休息</p><p>整理了记不太住的单词</p><p>然后就没干啥了</p><h3 id="星期六">3.22 星期六</h3><p>数学：</p><ol type="1"><li>第二章一千题</li><li>自学第十三讲</li></ol><p>数据结构:</p><p>查找收尾</p><h3 id="星期日">3.23 星期日</h3><p>数学：</p><p>听课十三讲听到了隐函数存在定理</p><p>数据结构：</p><p>复习总结查找</p><h2 id="第五周-3.24---3.30">第五周 3.24 - 3.30</h2><h3 id="计划-3">计划：</h3><p><strong>数学：</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />第13章多元函数微分学</li><li><input type="checkbox" disabled="" checked="" />13章课后题</li><li><input type="checkbox" disabled="" checked="" />13章1000题</li><li><input type="checkbox" disabled="" checked="" />1000题第三章</li><li><input type="checkbox" disabled="" checked="" />1000题第四章</li><li><input type="checkbox" disabled="" checked="" />复习第四章</li><li><input type="checkbox" disabled="" checked="" />复习第五章</li><li><input type="checkbox" disabled="" />十四章一半？</li></ul><p><strong>数据结构:</strong></p><ul class="task-list"><li><input type="checkbox" disabled="" checked="" />排序</li></ul><h3 id="星期一-1">3.24 星期一</h3><p>数学：</p><p>听完了13章，课后题就剩两道题</p><p>数据结构：</p><p>完成8.1 8.2</p><h3 id="星期二-1">3.25 星期二</h3><p>数学：</p><ol type="1"><li>做完了13章的课后题</li><li>1000题做了一页不到，太难算了</li></ol><h3 id="星期三-1">3.26 星期三</h3><p>数学：</p><p>做完了1000题改错听课</p><p>数据结构：</p><p>学完了交换排序</p><h3 id="星期四-1">3.27 星期四</h3><p>数学：</p><ol type="1"><li>复习第四章</li><li>第三章1000题</li></ol><p>数据结构：</p><ol type="1"><li>选择排序</li><li>归并基数计数排序</li></ol><h3 id="星期五-1">3.28 星期五</h3><p>数学:</p><ol type="1"><li>复习第五章</li><li>第四章1000题</li></ol><p>数据结构:</p><p>排序收尾</p><h3 id="星期六-1">3.29 星期六</h3><p>数学：</p><p>总结一下错题</p><p>学十四章</p><p>数据结构：</p><p>总结复习排序</p><h3 id="星期日-1">3.30 星期日</h3><p>数学：</p><ol type="1"><li>十四章</li><li>总结回看这周学习的内容</li></ol><p>数据结构： 总结整本书</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;由于英语每天都在背单词，这一项不记录 ## 第二周 3.3 - 3.9 ### 计划 - [x] 基础三十讲第九章 - [x] 1000题第九章 - [x] 数据结构4.1 ~ 5.3&lt;/p&gt;
-&lt;table style=&quot;width:8%;&quot;&gt;
-&lt;colgroup&gt;
-</summary>
+    <summary type="html">&lt;p&gt;由于英语每天都在背单词，这一项不记录&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;第二周-3.3---3.9&quot;&gt;第二周 3.3 - 3.9&lt;/h2&gt;
+&lt;h3 id=&quot;计划&quot;&gt;计划&lt;/h3&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+&lt;li&gt;&lt;input type=&quot;</summary>
       
     
     
