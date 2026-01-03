@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>《机器学习B》课程复习笔记 | klklkl's blogs</title><meta name="author" content="klklkl"><meta name="copyright" content="klklkl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写在前面的话  考试的题型为单项选择，简答，解答和论述四种类型。 我们是第一届考试，一无所知，我随便写写，各位随便看看 推荐看一下b站上吴恩达老师的机器学习  绪论 人工智能&amp;机器学习&amp;深度学习 人工智能是一个让机器具有智能的一个目标;机器学习是实现这一目标的有效方式;深度学习属于机器学习的子集,通过深度神经网络完成机器学习的任务。  image-2024112">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>《机器学习B》课程复习笔记 | klklkl's blogs</title><meta name="author" content="klklkl"><meta name="copyright" content="klklkl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写在前面的话  考试的题型为单项选择，简答，解答和论述四种类型。 我们是第一届考试，一无所知，我随便写写，各位随便看看 推荐看一下b站上吴恩达老师的机器学习  绪论 人工智能&amp;机器学习&amp;深度学习 人工智能是一个让机器具有智能的一个目标;机器学习是实现这一目标的有效方式;深度学习属于机器学习的子集,通过深度神经网络完成机器学习的任务。  机器学习算法分类  监督学习：回归、分类 无监">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《机器学习B》课程复习笔记">
 <meta property="og:url" content="https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/index.html">
 <meta property="og:site_name" content="klklkl&#39;s blogs">
-<meta property="og:description" content="写在前面的话  考试的题型为单项选择，简答，解答和论述四种类型。 我们是第一届考试，一无所知，我随便写写，各位随便看看 推荐看一下b站上吴恩达老师的机器学习  绪论 人工智能&amp;机器学习&amp;深度学习 人工智能是一个让机器具有智能的一个目标;机器学习是实现这一目标的有效方式;深度学习属于机器学习的子集,通过深度神经网络完成机器学习的任务。  image-2024112">
+<meta property="og:description" content="写在前面的话  考试的题型为单项选择，简答，解答和论述四种类型。 我们是第一届考试，一无所知，我随便写写，各位随便看看 推荐看一下b站上吴恩达老师的机器学习  绪论 人工智能&amp;机器学习&amp;深度学习 人工智能是一个让机器具有智能的一个目标;机器学习是实现这一目标的有效方式;深度学习属于机器学习的子集,通过深度神经网络完成机器学习的任务。  机器学习算法分类  监督学习：回归、分类 无监">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg">
 <meta property="article:published_time" content="2024-11-28T06:48:29.000Z">
@@ -170,11 +170,9 @@
 <p>推荐看一下b站上吴恩达老师的机器学习</p>
 </blockquote>
 <h1 id="绪论">绪论</h1>
-<h2 id="人工智能机器学习深度学习">人工智能&amp;机器学习&amp;深度学习</h2>
+<h2 id="人工智能-机器学习-深度学习">人工智能&amp;机器学习&amp;深度学习</h2>
 <p>人工智能是一个让机器具有智能的一个目标;机器学习是实现这一目标的有效方式;深度学习属于机器学习的子集,通过深度神经网络完成机器学习的任务。</p>
-<figure>
-<img src="image-20241128145931457.png" alt="image-20241128145931457" /><figcaption aria-hidden="true">image-20241128145931457</figcaption>
-</figure>
+<p><img src="image-20241128145931457.png" alt="image-20241128145931457"></p>
 <h2 id="机器学习算法分类">机器学习算法分类</h2>
 <ul>
 <li>监督学习：回归、分类</li>
@@ -183,57 +181,48 @@
 <li>自监督学习</li>
 <li>强化学习</li>
 </ul>
-<figure>
-<img src="image-20241128150117881.png" alt="image-20241128150117881" /><figcaption aria-hidden="true">image-20241128150117881</figcaption>
-</figure>
+<p><img src="image-20241128150117881.png" alt="image-20241128150117881"></p>
 <h3 id="有监督学习">有监督学习</h3>
 <blockquote>
 <p>有监督学习(supervised learning):从给定的<strong>有标注</strong>的训练数据集中学习出一个函数(模型参数),当新的数据到来时可以根据这个函数<strong>预测结果</strong>。常见任务包括<strong>分类</strong>与回归。</p>
 </blockquote>
-<figure>
-<img src="image-20241128150554465.png" alt="image-20241128150554465" /><figcaption aria-hidden="true">image-20241128150554465</figcaption>
-</figure>
+<p><img src="image-20241128150554465.png" alt="image-20241128150554465"></p>
 <h3 id="半监督学习">半监督学习</h3>
 <blockquote>
 <p>结合（少量的）标注训练数据和（大量的）未标注数据来进行数据的学习</p>
 </blockquote>
-<figure>
-<img src="image-20241128150723128.png" alt="image-20241128150723128" /><figcaption aria-hidden="true">image-20241128150723128</figcaption>
-</figure>
+<p><img src="image-20241128150723128.png" alt="image-20241128150723128"></p>
 <h3 id="无监督学习">无监督学习</h3>
 <blockquote>
 <p><strong>没有标注的训练数据集</strong>，需要根据样本间的统计规律对样本集进行分析，常见任务：聚类</p>
 </blockquote>
-<figure>
-<img src="image-20241128150844919.png" alt="image-20241128150844919" /><figcaption aria-hidden="true">image-20241128150844919</figcaption>
-</figure>
+<p><img src="image-20241128150844919.png" alt="image-20241128150844919"></p>
 <h3 id="自监督学习">自监督学习</h3>
 <blockquote>
 <p>自监督学习是无监督学习的一种方式，它的主要目的是在非人工标注的数据中通过自己监督自己来学习到有用的信息。</p>
 </blockquote>
-<figure>
-<img src="image-20241128151328652.png" alt="image-20241128151328652" /><figcaption aria-hidden="true">image-20241128151328652</figcaption>
-</figure>
+<p><img src="image-20241128151328652.png" alt="image-20241128151328652"></p>
 <h3 id="强化学习">强化学习</h3>
 <blockquote>
 <p>一种计算性的学习方法，agent在与复杂和不确定的环境交互的时，试图使其获得的奖励总量最大化。</p>
 </blockquote>
-<figure>
-<img src="image-20241128150946486.png" alt="image-20241128150946486" /><figcaption aria-hidden="true">image-20241128150946486</figcaption>
-</figure>
+<p><img src="image-20241128150946486.png" alt="image-20241128150946486"></p>
 <p><strong>强化学习与有监督学习</strong></p>
 <p>有监督通过指导学习，强化学习通过判别学习</p>
 <h1 id="线性回归">线性回归</h1>
 <h2 id="代价函数">代价函数</h2>
-<p>如何求解模型<span class="math inline">\(h_\theta(x)=\theta_0+\theta_1x_1+...+\theta_nx_n\)</span> 的参数<span class="math inline">\(\theta\)</span>？</p>
-<p>我们可以利用代价函数<span class="math inline">\(J(\theta) = \sum_{i=1}^m |h_\theta(x^{(i)})-y^{(i)}|\)</span>，使代价函数取得最小值来确定<span class="math inline">\(\theta\)</span>的取值，<span class="math inline">\(J(\theta)\)</span>叫做<strong>绝对误差</strong></p>
-<p>那么问题变为：求解 <span class="math inline">\(\theta\)</span>使得代价函数取得最小值</p>
-<p>为了方便计算，代价函数（损失函数）采用误差平方和的形式: <span class="math display">\[
-\arg \min_{\theta} \sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2
-\]</span> 在使用梯度下降法计算时，为了方便计算，损失函数写成如下形式：</p>
-<p><span class="math display">\[
-J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2
-\]</span> 称为<strong>平方和误差</strong></p>
+<p>如何求解模型$h_\theta(x)=\theta_0+\theta_1x_1+…+\theta_nx_n$   的参数$\theta$？</p>
+<p>我们可以利用代价函数$J(\theta) = \sum_{i=1}^m  |h_\theta(x^{(i)})-y^{(i)}|$，使代价函数取得最小值来确定$\theta$的取值，$J(\theta)$叫做<strong>绝对误差</strong></p>
+<p>那么问题变为：求解 $\theta$使得代价函数取得最小值</p>
+<p>为了方便计算，代价函数（损失函数）采用误差平方和的形式:<br>
+$$<br>
+\arg \min_{\theta} \sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2<br>
+$$<br>
+在使用梯度下降法计算时，为了方便计算，损失函数写成如下形式：</p>
+<p>$$<br>
+J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2<br>
+$$<br>
+称为<strong>平方和误差</strong></p>
 <h2 id="线性模型特点">线性模型特点</h2>
 <ul>
 <li>形式简单、易于建模</li>
@@ -243,109 +232,118 @@ J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2
 </ul>
 <p>系数反映了每个特征对结果的影响强弱</p>
 <h2 id="特征规范化">特征规范化</h2>
-<p>各个特征变量的范围要保持相近，如果差距较大，那么代价函数的等高线图会很扁，梯度下降法需要更多的迭代，因此要将特征的尺度缩放到-1和1之间 $ x_1=(x_1- mean(x_1))/std(x_1) $</p>
+<p>各个特征变量的范围要保持相近，如果差距较大，那么代价函数的等高线图会很扁，梯度下降法需要更多的迭代，因此要将特征的尺度缩放到-1和1之间  $ x_1=(x_1- mean(x_1))/std(x_1) $</p>
 <h2 id="最小二乘法求解">最小二乘法求解</h2>
 <blockquote>
-<p>最小二乘法（<strong>Least Squares Method</strong>）是一种常用的数学优化方法，用于找到函数模型的最佳拟合参数，使得预测值与实际数据之间的误差平方和最小。最小二乘法的目标是最小化误差平方和（Sum of Squared Errors, SSE）,在线性回归里误差平法和是上述提到的损失函数： <span class="math display">\[
-J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2
-\]</span></p>
+<p>最小二乘法（<strong>Least Squares Method</strong>）是一种常用的数学优化方法，用于找到函数模型的最佳拟合参数，使得预测值与实际数据之间的误差平方和最小。最小二乘法的目标是最小化误差平方和（Sum of Squared Errors, SSE）,在线性回归里误差平法和是上述提到的损失函数：<br>
+$$<br>
+J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2<br>
+$$</p>
 </blockquote>
 <h3 id="求解过程">求解过程</h3>
-<p>我们先将<span class="math inline">\(J(\theta)\)</span>写成矩阵运算的形式,步骤如下： <span class="math display">\[
-h_\theta(x^{(i)})=\theta_0+\theta_1x_1^{(i)}+...+\theta_nx_n^{(i)} =\theta^{T}x^{(i)}=(x^{(i)})^T\theta
-\]</span> <span class="math inline">\(X\)</span>是<span class="math inline">\(m\times(n+1)\)</span>矩阵，<span class="math inline">\(m\)</span>个样本，<span class="math inline">\(n\)</span>个特征 (上标表示样本，下标表示特征)（其实是由样本矩阵增广而来） <span class="math display">\[
-X=
- \left[
-\matrix{
-  (x^{(1)})^T \\
-  (x^{(2)})^T \\
-  \vdots      \\
-  (x^{(m)})^T 
-}
-\right]
-=
-\left[
-\matrix{
-  1 &amp;x_1^{(1)}&amp;x_2^{(1)}&amp;\cdots&amp;x_n^{(1)} \\
-  1 &amp;x_1^{(2)}&amp;x_2^{(2)}&amp;\cdots&amp;x_n^{(2)}\\
-  1 &amp;x_1^{(3)}&amp;x_2^{(3)}&amp;\cdots&amp;x_n^{(3)}      \\
-  \vdots &amp; \vdots&amp; \vdots&amp; \cdots&amp; \vdots\\
-  1 &amp;x_1^{(m)}&amp;x_2^{(m)}&amp;\cdots&amp;x_n^{(m)} 
-}
-\right]
-\]</span> <span class="math inline">\(\theta\)</span>是<span class="math inline">\((n+1)\times1\)</span>矩阵: <span class="math display">\[
-\theta=
-\left[
-\matrix{
-  \theta_0 \\
-  \theta_1 \\
-  \vdots      \\
-  \theta_n 
-}
-\right]
-\]</span></p>
-<p><span class="math inline">\(Y\)</span>是<span class="math inline">\(m\)</span>长向量:<span class="math inline">\(m\)</span>个样本</p>
-<p><span class="math display">\[
-Y=
-\left[
-\matrix{
-  y^{(1)} \\
-  y^{(2)} \\
-  \vdots      \\
-  y^{(m)} 
-}
-\right]
-\]</span></p>
-<p>那么： <span class="math display">\[
-J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)
-\]</span></p>
-<p>最小化<span class="math inline">\(J(\theta)\)</span>:让<span class="math inline">\(J(\theta)\)</span>关于<span class="math inline">\(\theta\)</span>的偏导数(过程略)为0： <span class="math display">\[
-\nabla_{\theta} J(\theta)=\nabla_{\theta}\frac{1}{2}(X^T\theta-Y)^T(X^T\theta-Y) 
-=X^TX\theta-X^TY\\
-\text {令}\ X^TX\theta-X^TY=0
-\text{则}\ X^TX\theta=X^TY \\
-\theta = (X^TX)^{-1}X^TY \\
-\]</span> <strong>前提：<span class="math inline">\(X^TX\)</span>可逆</strong></p>
+<h1 id="我们先将-J-theta-写成矩阵运算的形式-步骤如下：-h-theta-x-i-theta-0-theta-1x-1-i-…-theta-nx-n-i-theta-T-x-i-x-i-T-theta-X-是-m-times-n-1-矩阵，-m-个样本，-n-个特征-上标表示样本，下标表示特征-（其实是由样本矩阵增广而来）-X-left-matrix-x-1-T-x-2-T-vdots-x-m-T-right">我们先将$J(\theta)$写成矩阵运算的形式,步骤如下：<br>
+$$<br>
+h_\theta(x^{(i)})=\theta_0+\theta_1x_1^{(i)}+…+\theta_nx_n^{(i)} =\theta^{T}x^{(i)}=(x^{(i)})^T\theta<br>
+$$<br>
+$X$是$m\times(n+1)$矩阵，$m$个样本，$n$个特征  (上标表示样本，下标表示特征)（其实是由样本矩阵增广而来）<br>
+$$<br>
+X=<br>
+\left[<br>
+\matrix{<br>
+(x^{(1)})^T \<br>
+(x^{(2)})^T \<br>
+\vdots      \<br>
+(x^{(m)})^T<br>
+}<br>
+\right]</h1>
+<p>\left[<br>
+\matrix{<br>
+1 &amp;x_1^{(1)}&amp;x_2^{(1)}&amp;\cdots&amp;x_n^{(1)} \<br>
+1 &amp;x_1^{(2)}&amp;x_2^{(2)}&amp;\cdots&amp;x_n^{(2)}\<br>
+1 &amp;x_1^{(3)}&amp;x_2^{(3)}&amp;\cdots&amp;x_n^{(3)}      \<br>
+\vdots &amp; \vdots&amp; \vdots&amp; \cdots&amp; \vdots\<br>
+1 &amp;x_1^{(m)}&amp;x_2^{(m)}&amp;\cdots&amp;x_n^{(m)}<br>
+}<br>
+\right]<br>
+$$<br>
+$\theta$是$(n+1)\times1$矩阵:<br>
+$$<br>
+\theta=<br>
+\left[<br>
+\matrix{<br>
+\theta_0 \<br>
+\theta_1 \<br>
+\vdots      \<br>
+\theta_n<br>
+}<br>
+\right]<br>
+$$</p>
+<p>$Y$是$m$长向量:$m$个样本</p>
+<p>$$<br>
+Y=<br>
+\left[<br>
+\matrix{<br>
+y^{(1)} \<br>
+y^{(2)} \<br>
+\vdots      \<br>
+y^{(m)}<br>
+}<br>
+\right]<br>
+$$</p>
+<p>那么：<br>
+$$<br>
+J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2=\frac{1}{2}(X\theta-Y)^T(X\theta-Y)<br>
+$$</p>
+<p>最小化$J(\theta)$:让$J(\theta)$关于$\theta$的偏导数(过程略)为0：<br>
+$$<br>
+\nabla_{\theta} J(\theta)=\nabla_{\theta}\frac{1}{2}(X^T\theta-Y)^T(X^T\theta-Y)<br>
+=X^TX\theta-X^TY\<br>
+\text {令}\ X^TX\theta-X^TY=0<br>
+\text{则}\ X^TX\theta=X^TY \<br>
+\theta = (X^TX)^{-1}X^TY \<br>
+$$<br>
+<strong>前提：$X^TX$可逆</strong></p>
 <h2 id="梯度下降法">梯度下降法</h2>
-<p>最小优化问题<span class="math inline">\(\min J(\theta)\)</span> ： $_j:=_j - J() $</p>
-<p>最大优化问题<span class="math inline">\(\max J(\theta)\)</span> ： $_j:=_j + J() $</p>
-<p><span class="math inline">\(\alpha\)</span>称为学习率</p>
+<p>最小优化问题$\min J(\theta)$  ： $\theta _j:=\theta _j - \alpha \frac{1}{\theta_j}J(\theta) $</p>
+<p>最大优化问题$\max J(\theta)$ ： $\theta _j:=\theta _j + \alpha \frac{1}{\theta_j}J(\theta) $</p>
+<p>$\alpha$称为学习率</p>
 <blockquote>
 <p>梯度方向是函数在该点变化最快的方向</p>
 </blockquote>
-<figure>
-<img src="image-20241128160349200.png" alt="image-20241128160349200" /><figcaption aria-hidden="true">image-20241128160349200</figcaption>
-</figure>
-<figure>
-<img src="image-20241128160430132.png" alt="image-20241128160430132" /><figcaption aria-hidden="true">image-20241128160430132</figcaption>
-</figure>
-<h3 id="线性回归应用梯度下降法"><strong>线性回归应用梯度下降法</strong>：</h3>
-<p><span class="math display">\[
-\min J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2
-\]</span></p>
-<p>逐个更新全部的<span class="math inline">\(\theta\)</span>： <span class="math display">\[
-\theta _j:=\theta _j - \alpha \frac{1}{\theta_j}J(\theta)
-\]</span> 假定我们只有一个训练样本，那么： <span class="math display">\[
-J(\theta) = \frac{1}{2} (h_\theta(x)-y)^2  \\
-\theta _j:=\theta _j - \alpha (h_\theta(x)-y)x_j\text{其中$0&lt;=j&lt;=$n}\
-\]</span> 这就是：<strong>LMS学习规则</strong></p>
+<p><img src="image-20241128160349200.png" alt="image-20241128160349200"></p>
+<p><img src="image-20241128160430132.png" alt="image-20241128160430132"></p>
+<h3 id="线性回归应用梯度下降法："><strong>线性回归应用梯度下降法</strong>：</h3>
+<p>$$<br>
+\min J(\theta) = \frac{1}{2}\sum_{i=1}^m  (h_\theta(x^{(i)})-y^{(i)})^2<br>
+$$</p>
+<p>逐个更新全部的$\theta$：<br>
+$$<br>
+\theta _j:=\theta <em>j - \alpha \frac{1}{\theta_j}J(\theta)<br>
+$$<br>
+假定我们只有一个训练样本，那么：<br>
+$$<br>
+J(\theta) = \frac{1}{2} (h</em>\theta(x)-y)^2  \<br>
+\theta _j:=\theta <em>j - \alpha (h</em>\theta(x)-y)x_j\text{其中$0&lt;=j&lt;=$n}<br>
+$$<br>
+这就是：<strong>LMS学习规则</strong></p>
 <blockquote>
 <p>LMS学习规则的性质：</p>
-<p>参数更新量的模长正比于回归误差，即<span class="math inline">\(|h_\theta(x)-y|\)</span></p>
+<p>参数更新量的模长正比于回归误差，即$|h_\theta(x)-y|$</p>
 </blockquote>
 <p>让我们推广到多个样本就，就会有两种策略：</p>
 <ul>
-<li><strong>Batch gradient descent (BGD)：</strong>对于参数<span class="math inline">\(\theta_j\)</span>扫描计算全部的样本再进行更新</li>
+<li>**Batch gradient descent (BGD)：**对于参数$\theta_j$扫描计算全部的样本再进行更新</li>
 </ul>
-<p><span class="math display">\[
-\theta _j:=\theta _j + \alpha \sum_{i=1}^m (y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}  \text{for every  j}\
-\]</span></p>
+<p>$$<br>
+\theta <em>j:=\theta <em>j + \alpha \sum</em>{i=1}^m (y^{(i)}-h</em>\theta(x^{(i)}))x_j^{(i)}  \text{for every  j}<br>
+$$</p>
 <ul>
-<li><strong>Stochastic gradient descent (SGD):</strong>对于参数<span class="math inline">\(\theta_j\)</span>遇到一个样本就进行更新</li>
+<li>**Stochastic gradient descent (SGD):**对于参数$\theta_j$遇到一个样本就进行更新</li>
 </ul>
-<p>​ <span class="math inline">\(\text{for i=1 to m}\ \)</span> <span class="math display">\[
-\theta _j:=\theta _j + \alpha  (y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}  \text{(for every  j)}\
-\]</span></p>
+<p>​		$\text{for i=1 to m}\ $<br>
+$$<br>
+\theta _j:=\theta <em>j + \alpha  (y^{(i)}-h</em>\theta(x^{(i)}))x_j^{(i)}  \text{(for every  j)}<br>
+$$</p>
 <p><strong>BGD与SGD对比:</strong></p>
 <ul>
 <li>BGD 扫描整个训练集后再更新参数</li>
@@ -357,29 +355,19 @@ J(\theta) = \frac{1}{2} (h_\theta(x)-y)^2  \\
 <blockquote>
 <p>mini-batch梯度下降：如果不是每拿到一个样本即更改梯度，而是若干个样本的平均梯度作为更新方向 ，则是 mini-batch梯度下降算法</p>
 </blockquote>
-<figure>
-<img src="image-20241201204122806.png" alt="image-20241201204122806" /><figcaption aria-hidden="true">image-20241201204122806</figcaption>
-</figure>
-<figure>
-<img src="image-20241128160453854-1733055692996-1.png" alt="image-20241128160453854" /><figcaption aria-hidden="true">image-20241128160453854</figcaption>
-</figure>
+<p><img src="image-20241201204122806.png" alt="image-20241201204122806"></p>
+<p><img src="image-20241128160453854-1733055692996-1.png" alt="image-20241128160453854"></p>
 <h3 id="梯度下降法其他讨论">梯度下降法其他讨论</h3>
-<p>梯度下降法不能保证一定能获得全局极小值，<del>一方面是因为不一定存在全局极小值，另一方面是容易陷入局部极小值，</del>这就引申出了不同的策略解决这个问题</p>
-<figure>
-<img src="image-20241128161811054.png" alt="image-20241128161811054" /><figcaption aria-hidden="true">image-20241128161811054</figcaption>
-</figure>
+<p>梯度下降法不能保证一定能获得全局极小值，~~一方面是因为不一定存在全局极小值，另一方面是容易陷入局部极小值，~~这就引申出了不同的策略解决这个问题</p>
+<p><img src="image-20241128161811054.png" alt="image-20241128161811054"></p>
 <p>我们先看线性回归如何保证<strong>存在</strong>全局极小值：</p>
-<figure>
-<img src="image-20241201204446987.png" alt="image-20241201204446987" /><figcaption aria-hidden="true">image-20241201204446987</figcaption>
-</figure>
+<p><img src="image-20241201204446987.png" alt="image-20241201204446987"></p>
 <h3 id="学习率与梯度下降">学习率与梯度下降</h3>
 <p>介绍一下学习率对梯度下降法的影响：</p>
 <blockquote>
 <p>学习率：向代价函数下降程度最大的方向迈出一小步的步长</p>
 </blockquote>
-<figure>
-<img src="image-20241128162339801.png" alt="image-20241128162339801" /><figcaption aria-hidden="true">image-20241128162339801</figcaption>
-</figure>
+<p><img src="image-20241128162339801.png" alt="image-20241128162339801"></p>
 <p>学习率的选择：</p>
 <ul>
 <li>学习率α过小，达到收敛所需的迭代次数高；</li>
@@ -388,51 +376,29 @@ J(\theta) = \frac{1}{2} (h_\theta(x)-y)^2  \\
 <p>应对措施：</p>
 <ul>
 <li>尝试不同的学习率</li>
-<li>使用不同的动态学习率算法 Adagrad 、 RMSProp</li>
+<li>使用不同的动态学习率算法  Adagrad 、 RMSProp</li>
 </ul>
-<figure>
-<img src="image-20241128162417331.png" alt="image-20241128162417331" /><figcaption aria-hidden="true">image-20241128162417331</figcaption>
-</figure>
-<h3 id="梯度下降法与正规方程法的-比较"><strong>梯度下降法与正规方程法的 比较：</strong></h3>
-<figure>
-<img src="image-20241128162423368.png" alt="image-20241128162423368" /><figcaption aria-hidden="true">image-20241128162423368</figcaption>
-</figure>
+<p><img src="image-20241128162417331.png" alt="image-20241128162417331"></p>
+<h3 id="梯度下降法与正规方程法的-比较："><strong>梯度下降法与正规方程法的 比较：</strong></h3>
+<p><img src="image-20241128162423368.png" alt="image-20241128162423368"></p>
 <h2 id="线性回归的概率解释">线性回归的概率解释</h2>
-<p>对于给定的<span class="math inline">\(y^{(i)}\)</span>总能找到 使得等式成立</p>
-<figure>
-<img src="image-20241201210220640.png" alt="image-20241201210220640" /><figcaption aria-hidden="true">image-20241201210220640</figcaption>
-</figure>
-<figure>
-<img src="image-20241128171920340.png" alt="image-20241128171920340" /><figcaption aria-hidden="true">image-20241128171920340</figcaption>
-</figure>
+<p>对于给定的$y^{(i)}$总能找到 使得等式成立</p>
+<p><img src="image-20241201210220640.png" alt="image-20241201210220640"></p>
+<p><img src="image-20241128171920340.png" alt="image-20241128171920340"></p>
 <h2 id="局部加权线性回归">局部加权线性回归</h2>
 <blockquote>
 <p><strong>局部加权线性回归</strong>（Locally Weighted Linear Regression, <strong>LWLR</strong>）是一种非参数化的回归方法，它通过赋予每个样本不同的权重来拟合一组局部的线性模型，从而在全局非线性回归问题中体现局部线性关系。它的主要特点是对每个<strong>预测点</strong>进行局部拟合，而不是使用全局模型。</p>
 </blockquote>
 <p>局部加权线性回归的主要思想是，在<strong>拟合点 x 附近</strong>的样本对模型的贡献更大，而远离 x的样本贡献较小。因此，每个样本点会被赋予一个权重，权重由与预测点 <em>x</em> 的距离决定。</p>
-<figure>
-<img src="image-20241128173057104.png" alt="image-20241128173057104" /><figcaption aria-hidden="true">image-20241128173057104</figcaption>
-</figure>
-<figure>
-<img src="image-20241128173113405.png" alt="image-20241128173113405" /><figcaption aria-hidden="true">image-20241128173113405</figcaption>
-</figure>
-<figure>
-<img src="image-20241128173145162.png" alt="image-20241128173145162" /><figcaption aria-hidden="true">image-20241128173145162</figcaption>
-</figure>
+<p><img src="image-20241128173057104.png" alt="image-20241128173057104"></p>
+<p><img src="image-20241128173113405.png" alt="image-20241128173113405"></p>
+<p><img src="image-20241128173145162.png" alt="image-20241128173145162"></p>
 <h2 id="非线性模型的多元回归">非线性模型的多元回归</h2>
 <p>实际的数据可能不适用线性预测模型</p>
-<figure>
-<img src="image-20241128173241279.png" alt="image-20241128173241279" /><figcaption aria-hidden="true">image-20241128173241279</figcaption>
-</figure>
-<figure>
-<img src="image-20241128173256827.png" alt="image-20241128173256827" /><figcaption aria-hidden="true">image-20241128173256827</figcaption>
-</figure>
-<figure>
-<img src="image-20241128173313588.png" alt="image-20241128173313588" /><figcaption aria-hidden="true">image-20241128173313588</figcaption>
-</figure>
-<figure>
-<img src="image-20241128173346424.png" alt="image-20241128173346424" /><figcaption aria-hidden="true">image-20241128173346424</figcaption>
-</figure>
+<p><img src="image-20241128173241279.png" alt="image-20241128173241279"></p>
+<p><img src="image-20241128173256827.png" alt="image-20241128173256827"></p>
+<p><img src="image-20241128173313588.png" alt="image-20241128173313588"></p>
+<p><img src="image-20241128173346424.png" alt="image-20241128173346424"></p>
 <h2 id="其他讨论">其他讨论</h2>
 <h3 id="样本离群点">样本离群点</h3>
 <h3 id="欠拟合与过拟合">欠拟合与过拟合</h3>
@@ -440,14 +406,12 @@ J(\theta) = \frac{1}{2} (h_\theta(x)-y)^2  \\
 <blockquote>
 <p><strong>正则化</strong>（Regularization）是机器学习中一种防止模型过拟合的技术，它通过对模型参数施加约束或惩罚，降低模型复杂度，从而提高其对新数据的泛化能力。</p>
 </blockquote>
-<p>线性正则化的方法有 岭回归 LASSO回归</p>
-<figure>
-<img src="image-20241128173750015.png" alt="image-20241128173750015" /><figcaption aria-hidden="true">image-20241128173750015</figcaption>
-</figure>
+<p>线性正则化的方法有 岭回归  LASSO回归</p>
+<p><img src="image-20241128173750015.png" alt="image-20241128173750015"></p>
 <p><strong>处理方式——特征选择</strong></p>
 <h1 id="逻辑回归">逻辑回归</h1>
 <blockquote>
-<p>逻辑回归 = 线性回归 + sigmoid函数</p>
+<p>逻辑回归 =  线性回归 + sigmoid函数</p>
 <p>逻辑回归是用来解决分类问题的</p>
 </blockquote>
 <p>若 y={1，2，3，…,M}，则称此问题为 M分类问题</p>
@@ -457,49 +421,54 @@ J(\theta) = \frac{1}{2} (h_\theta(x)-y)^2  \\
 <li>生活中常见的分类应用： 人脸识别 ，指纹识别 ，手写体数字识别 ， 垃圾邮件检测</li>
 </ul>
 <p>用回归来解决分类问题，即做出一条线将样本分成两堆，这条线称为决策边界</p>
-<figure>
-<img src="image-20241129152909107.png" alt="image-20241129152909107" /><figcaption aria-hidden="true">image-20241129152909107</figcaption>
-</figure>
-<p>回归模型的输出是实数，可能为负值，也可能远远大于1。但在分类问题中，我们通常需要预测某事件的概率，而概率的范围是 <span class="math inline">\([0,1]\)</span>。因此，需要一个函数来对回归的结果进行变换。</p>
-<h2 id="函数一单位阶跃函数"><strong>函数一：单位阶跃函数</strong></h2>
-<figure>
-<img src="image-20241129153141743.png" alt="image-20241129153141743" /><figcaption aria-hidden="true">image-20241129153141743</figcaption>
-</figure>
+<p><img src="image-20241129152909107.png" alt="image-20241129152909107"></p>
+<p>回归模型的输出是实数，可能为负值，也可能远远大于1。但在分类问题中，我们通常需要预测某事件的概率，而概率的范围是 $[0,1]$。因此，需要一个函数来对回归的结果进行变换。</p>
+<h2 id="函数一：单位阶跃函数"><strong>函数一：单位阶跃函数</strong></h2>
+<p><img src="image-20241129153141743.png" alt="image-20241129153141743"></p>
 <p>由于阶跃函数的不连续的特性，因此计算困难，确定模型参数也困难</p>
 <h2 id="硬分类与软分类">硬分类与软分类</h2>
-<figure>
-<img src="image-20241129154335752.png" alt="image-20241129154335752" /><figcaption aria-hidden="true">image-20241129154335752</figcaption>
-</figure>
-<h2 id="函数二sigmoid-函数logistic函数"><strong>函数二：Sigmoid 函数（Logistic函数）</strong></h2>
-<figure>
-<img src="image-20241129153707146.png" alt="image-20241129153707146" /><figcaption aria-hidden="true">image-20241129153707146</figcaption>
-</figure>
-<p>即： <span class="math display">\[
-g(z)= \frac{1}{1+e^{-z}}\\
-z=\theta^{T}x=\theta_0+\sum_{j=1}^n\theta_jx_j
-\]</span> 我们将回归得到的输出带入Sigmoid函数的输入中 <span class="math display">\[
-h_\theta(x)=g(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}
-\]</span> 通过上述操作，我们将线性回归输出值<span class="math inline">\(y\)</span>的取值范围从<span class="math inline">\(R\)</span>映射到区间<span class="math inline">\([0,1]\)</span>中，并且<span class="math inline">\(h_\theta(x)\)</span>的值代表概率，这就是软分类</p>
-<p>那么我们以<strong>二分类</strong>为例： <span class="math display">\[
-P(y=1|x;\theta)=h_\theta(x)\\
-P(y=0|x;\theta)=1-h_\theta(x)\\
-\]</span> 上述两式可以合并为： <span class="math display">\[
-P(y|x;\theta) = (h_\theta(x))^y(1-h_\theta(x))^{1-y}
-\]</span> 如果采用Sigmoid函数那么上式可以写为： <span class="math display">\[
-P(y=1|x;\theta)=h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}\\
-P(y=0|x;\theta)=1-h_\theta(x) = \frac{e^{-\theta^Tx}}{1+e^{-\theta^Tx}}\\
-\]</span></p>
-<h2 id="odds几率-几率比">Odds(几率 几率比)</h2>
-<p>在统计和概率理论中，一个事件或者一个陈述的发生比是该事件<strong>发生</strong>和<strong>不发生</strong>的比率，又称几率、几率 比，公式为： <span class="math display">\[
-\frac{p}{1-p}
-\]</span></p>
-<p>其中，<span class="math inline">\(p\)</span>是该事件或陈述的概率</p>
+<p><img src="image-20241129154335752.png" alt="image-20241129154335752"></p>
+<h2 id="函数二：Sigmoid-函数（Logistic函数）"><strong>函数二：Sigmoid 函数（Logistic函数）</strong></h2>
+<p><img src="image-20241129153707146.png" alt="image-20241129153707146"></p>
+<p>即：<br>
+$$<br>
+g(z)= \frac{1}{1+e^{-z}}\<br>
+z=\theta^{T}x=\theta_0+\sum_{j=1}^n\theta_jx_j<br>
+$$<br>
+我们将回归得到的输出带入Sigmoid函数的输入中<br>
+$$<br>
+h_\theta(x)=g(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}<br>
+$$<br>
+通过上述操作，我们将线性回归输出值$y$的取值范围从$R$映射到区间$[0,1]$中，并且$h_\theta(x)$的值代表概率，这就是软分类</p>
+<p>那么我们以<strong>二分类</strong>为例：<br>
+$$<br>
+P(y=1|x;\theta)=h_\theta(x)\<br>
+P(y=0|x;\theta)=1-h_\theta(x)\<br>
+$$<br>
+上述两式可以合并为：<br>
+$$<br>
+P(y|x;\theta) = (h_\theta(x))^y(1-h_\theta(x))^{1-y}<br>
+$$<br>
+如果采用Sigmoid函数那么上式可以写为：<br>
+$$<br>
+P(y=1|x;\theta)=h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}\<br>
+P(y=0|x;\theta)=1-h_\theta(x) = \frac{e^{-\theta^Tx}}{1+e^{-\theta^Tx}}\<br>
+$$</p>
+<h2 id="Odds-几率-几率比">Odds(几率 几率比)</h2>
+<p>在统计和概率理论中，一个事件或者一个陈述的发生比是该事件<strong>发生</strong>和<strong>不发生</strong>的比率，又称几率、几率 比，公式为：<br>
+$$<br>
+\frac{p}{1-p}<br>
+$$</p>
+<p>其中，$p$是该事件或陈述的概率</p>
 <p>几率比其实是一种相对概率。 一般来说，日常不太使用几率比来描述概率。</p>
-<p>在二分类问题中，正样本的几率比就是： <span class="math display">\[
-\frac{P(y=1|x;\theta)}{1-P(y=1|x;\theta)}=\frac{1}{e^{-\theta^Tx}}
-\]</span> 取对数就得到： <span class="math display">\[
-\ln\frac{P(y=1|x;\theta)}{1-P(y=1|x;\theta)}=\ln\frac{1}{e^{-\theta^Tx}}=\theta^Tx
-\]</span></p>
+<p>在二分类问题中，正样本的几率比就是：<br>
+$$<br>
+\frac{P(y=1|x;\theta)}{1-P(y=1|x;\theta)}=\frac{1}{e^{-\theta^Tx}}<br>
+$$<br>
+取对数就得到：<br>
+$$<br>
+\ln\frac{P(y=1|x;\theta)}{1-P(y=1|x;\theta)}=\ln\frac{1}{e^{-\theta^Tx}}=\theta^Tx<br>
+$$</p>
 <h2 id="似然函数">似然函数</h2>
 <blockquote>
 <p><strong>似然函数（Likelihood Function）</strong> 是统计学中用来衡量模型参数对观测数据的解释能力的函数。在逻辑回归中，我们通过最大化似然函数来找到最优的模型参数。</p>
@@ -511,44 +480,39 @@ P(y=0|x;\theta)=1-h_\theta(x) = \frac{e^{-\theta^Tx}}{1+e^{-\theta^Tx}}\\
 <li>似然则用来描述<strong>已知随机变量输出结果</strong>时，未知参数的可能取值。</li>
 </ul>
 </blockquote>
-<p>例如，对于“一枚正反对称的硬币上抛十次”这种事件，我们可以问硬币落地时十次都是正面向上的“概率”是多少；而对于“一枚硬币上抛十次 ”，我们则可以问，这枚硬币正反面对称的“似然”程度是多少。 区别似然和概率的直接方法为，“XXX的概率"中XXX只能是事件，也就是 ，事件(发生)的概率是多少；而“XXX的似然"中的XXX只能是参数，比如说 ，参数等于某个值时的似然是多少。</p>
+<p>例如，对于“一枚正反对称的硬币上抛十次”这种事件，我们可以问硬币落地时十次都是正面向上的“概率”是多少；而对于“一枚硬币上抛十次 ”，我们则可以问，这枚硬币正反面对称的“似然”程度是多少。 区别似然和概率的直接方法为，“XXX的概率&quot;中XXX只能是事件，也就是 ，事件(发生)的概率是多少；而“XXX的似然&quot;中的XXX只能是参数，比如说 ，参数等于某个值时的似然是多少。</p>
 <h3 id="似然与概率的联系">似然与概率的联系</h3>
-<p><strong>似然函数的定义</strong>：关于参数<span class="math inline">\(\theta\)</span>的似然函数（在数值上）等于给定参数<span class="math inline">\(\theta\)</span>后变量 data 的<strong>概率</strong>（两者的相等并不是说两个函数是同一个，只是数值上的相等）： <span class="math display">\[
-L(\theta|data)=P(data|\theta)=\prod_{i=1}^{N}P(x_i|\theta)\\
-data = (x_1,x_2,\cdots,x_n)
-\]</span> 似然函数的<strong>主要用法在于比较它相对取值</strong>，虽然这个数值本身不具备任何含义。例如，考虑一组样本，当其输出固定时，这组样本的某个未知参数往往会倾向于等于某个特定值，而不是随便的其他数，此时，似然函数是<strong>最大化</strong>的。 似然函数乘以一个正的常数之后仍然是似然函数，其取值并不需要满足归一化条件,即 <span class="math display">\[
-\sum_{x}\alpha \cdot L(\theta|x)\neq1,\alpha&gt; 0
-\]</span></p>
+<p><strong>似然函数的定义</strong>：关于参数$\theta$的似然函数（在数值上）等于给定参数$\theta$后变量 data 的<strong>概率</strong>（两者的相等并不是说两个函数是同一个，只是数值上的相等）：<br>
+$$<br>
+L(\theta|data)=P(data|\theta)=\prod_{i=1}^{N}P(x_i|\theta)\<br>
+data = (x_1,x_2,\cdots,x_n)<br>
+$$<br>
+似然函数的<strong>主要用法在于比较它相对取值</strong>，虽然这个数值本身不具备任何含义。例如，考虑一组样本，当其输出固定时，这组样本的某个未知参数往往会倾向于等于某个特定值，而不是随便的其他数，此时，似然函数是<strong>最大化</strong>的。 似然函数乘以一个正的常数之后仍然是似然函数，其取值并不需要满足归一化条件,即<br>
+$$<br>
+\sum_{x}\alpha \cdot L(\theta|x)\neq1,\alpha&gt; 0<br>
+$$</p>
 <h2 id="最大似然估计">最大似然估计</h2>
-<p>最大似然估计是似然函数最初也是最自然的应用。似然函数取得最大值表示相应的参数能够使得统计模型<strong><em>最为</em></strong>合理。从这样一个想法出发，最大似然估计的做法是：首先选取似然函数（一般是概率密度函数或概率质量函数）， 整理之后求最大值。实际应用中一般会取似然函数的对数作为求最大值的函数，这样求出的最大值和直接求最大值得到的结果是相同的。<strong>似然函数的最大值不一定唯一，也不一定存在。</strong></p>
+<p>最大似然估计是似然函数最初也是最自然的应用。似然函数取得最大值表示相应的参数能够使得统计模型<em><strong>最为</strong></em>合理。从这样一个想法出发，最大似然估计的做法是：首先选取似然函数（一般是概率密度函数或概率质量函数）， 整理之后求最大值。实际应用中一般会取似然函数的对数作为求最大值的函数，这样求出的最大值和直接求最大值得到的结果是相同的。<strong>似然函数的最大值不一定唯一，也不一定存在。</strong></p>
 <h3 id="应用到逻辑回归">应用到逻辑回归</h3>
-<p>假设有<span class="math inline">\(m\)</span>个互相独立的训练样本 <span class="math display">\[
-&amp;\max_\theta L(\theta)=p(\vec{y}|X;\theta)\\
-&amp;=\prod_{i=1}^{m}p(y^{(i)}|x^{(i)};\theta)\\
-&amp;=\prod_{i=1}^{m}(h_\theta(x^{(i)}))^{y^{(i)}}(1-h_\theta(x^{(i)}))^{1-y^{(i)}}\\
-\]</span> 上式即为<strong>最大化似然目标函数</strong></p>
+<p>假设有$m$个互相独立的训练样本<br>
+$$<br>
+&amp;\max_\theta L(\theta)=p(\vec{y}|X;\theta)\<br>
+&amp;=\prod_{i=1}^{m}p(y^{(i)}|x^{(i)};\theta)\<br>
+&amp;=\prod_{i=1}^{m}(h_\theta(x^{(i)}))^{y^{(i)}}(1-h_\theta(x^{(i)}))^{1-y^{(i)}}\<br>
+$$<br>
+上式即为<strong>最大化似然目标函数</strong></p>
 <p>一般取对数进行计算：</p>
-<figure>
-<img src="image-20241129164228551.png" alt="image-20241129164228551" /><figcaption aria-hidden="true">image-20241129164228551</figcaption>
-</figure>
+<p><img src="image-20241129164228551.png" alt="image-20241129164228551"></p>
 <p>上式为<strong>最大化对数似然目标函数</strong></p>
 <h2 id="最大化对数似然目标函数求解方法">最大化对数似然目标函数求解方法</h2>
 <h3 id="梯度下降">梯度下降</h3>
-<figure>
-<img src="image-20241129164616273.png" alt="image-20241129164616273" /><figcaption aria-hidden="true">image-20241129164616273</figcaption>
-</figure>
+<p><img src="image-20241129164616273.png" alt="image-20241129164616273"></p>
 <p>由于是最大化，所以符号会有变化</p>
-<figure>
-<img src="image-20241129164640605.png" alt="image-20241129164640605" /><figcaption aria-hidden="true">image-20241129164640605</figcaption>
-</figure>
-<figure>
-<img src="image-20241129164725872.png" alt="image-20241129164725872" /><figcaption aria-hidden="true">image-20241129164725872</figcaption>
-</figure>
+<p><img src="image-20241129164640605.png" alt="image-20241129164640605"></p>
+<p><img src="image-20241129164725872.png" alt="image-20241129164725872"></p>
 <h3 id="牛顿法求解对数似然函数的极大值点">牛顿法求解对数似然函数的极大值点</h3>
-<p>牛顿法可以求解<span class="math inline">\(f(x)=0\)</span>的问题，应用到极大值点问题，即可变成：</p>
-<figure>
-<img src="image-20241201211626106.png" alt="image-20241201211626106" /><figcaption aria-hidden="true">image-20241201211626106</figcaption>
-</figure>
+<p>牛顿法可以求解$f(x)=0$的问题，应用到极大值点问题，即可变成：</p>
+<p><img src="image-20241201211626106.png" alt="image-20241201211626106"></p>
 <h2 id="多分类问题">多分类问题</h2>
 <p>解决方法：</p>
 <p><strong>One-vs-Rest:</strong></p>
@@ -564,40 +528,18 @@ data = (x_1,x_2,\cdots,x_n)
 </ul>
 <p><strong>softmax回归</strong></p>
 <p>虽然前两种方法是将多分类问题转化为二分类问题，但对于多分类问题，也可以直接使用 Softmax 回归进行建模</p>
-<figure>
-<img src="image-20241129165056014.png" alt="image-20241129165056014" /><figcaption aria-hidden="true">image-20241129165056014</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165109560.png" alt="image-20241129165109560" /><figcaption aria-hidden="true">image-20241129165109560</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165141451.png" alt="image-20241129165141451" /><figcaption aria-hidden="true">image-20241129165141451</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165203853.png" alt="image-20241129165203853" /><figcaption aria-hidden="true">image-20241129165203853</figcaption>
-</figure>
+<p><img src="image-20241129165056014.png" alt="image-20241129165056014"></p>
+<p><img src="image-20241129165109560.png" alt="image-20241129165109560"></p>
+<p><img src="image-20241129165141451.png" alt="image-20241129165141451"></p>
+<p><img src="image-20241129165203853.png" alt="image-20241129165203853"></p>
 <h2 id="模型评估方法和性能评价指标">模型评估方法和性能评价指标</h2>
-<figure>
-<img src="image-20241129165806886.png" alt="image-20241129165806886" /><figcaption aria-hidden="true">image-20241129165806886</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165819078.png" alt="image-20241129165819078" /><figcaption aria-hidden="true">image-20241129165819078</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165837020.png" alt="image-20241129165837020" /><figcaption aria-hidden="true">image-20241129165837020</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165848482.png" alt="image-20241129165848482" /><figcaption aria-hidden="true">image-20241129165848482</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165900781.png" alt="image-20241129165900781" /><figcaption aria-hidden="true">image-20241129165900781</figcaption>
-</figure>
-<figure>
-<img src="image-20241129165914171.png" alt="image-20241129165914171" /><figcaption aria-hidden="true">image-20241129165914171</figcaption>
-</figure>
-<figure>
-<img src="image-20241129170004816.png" alt="image-20241129170004816" /><figcaption aria-hidden="true">image-20241129170004816</figcaption>
-</figure>
+<p><img src="image-20241129165806886.png" alt="image-20241129165806886"></p>
+<p><img src="image-20241129165819078.png" alt="image-20241129165819078"></p>
+<p><img src="image-20241129165837020.png" alt="image-20241129165837020"></p>
+<p><img src="image-20241129165848482.png" alt="image-20241129165848482"></p>
+<p><img src="image-20241129165900781.png" alt="image-20241129165900781"></p>
+<p><img src="image-20241129165914171.png" alt="image-20241129165914171"></p>
+<p><img src="image-20241129170004816.png" alt="image-20241129170004816"></p>
 <h1 id="人工神经网络">人工神经网络</h1>
 <p><strong>定义</strong></p>
 <p>美国神经网络学者Nielsen的定义：</p>
@@ -607,208 +549,185 @@ data = (x_1,x_2,\cdots,x_n)
 <li>每个处理单元有一个单一的输出联接， 输出信号通过必要的数学模型给出。</li>
 </ul>
 <p><strong>特点</strong></p>
-<ol type="1">
-<li><p>并行结构和并行处理</p></li>
-<li><p>知识的分布存储</p></li>
+<ol>
+<li>
+<p>并行结构和并行处理</p>
+</li>
+<li>
+<p>知识的分布存储</p>
+</li>
 </ol>
 <ul>
-<li><p>在神经网络中，知识不是存储在特定的存储单元，而是 分布在整个系统中，要存储多个知识就需要很多连接。</p></li>
-<li><p>要获得存储的知识则采用“联想”的办法，这类似于人类和动物的记忆。</p></li>
-<li><p>联想记忆的两个主要特点： ✓存储大量复杂数据的能力 ✓自适应的特征抽取能力 ✓快速的推理能力</p></li>
+<li>
+<p>在神经网络中，知识不是存储在特定的存储单元，而是 分布在整个系统中，要存储多个知识就需要很多连接。</p>
+</li>
+<li>
+<p>要获得存储的知识则采用“联想”的办法，这类似于人类和动物的记忆。</p>
+</li>
+<li>
+<p>联想记忆的两个主要特点： ✓存储大量复杂数据的能力 ✓自适应的特征抽取能力 ✓快速的推理能力</p>
+</li>
 </ul>
-<ol start="3" type="1">
-<li><p>自适应性</p></li>
-<li><p>容错性</p></li>
+<ol start="3">
+<li>
+<p>自适应性</p>
+</li>
+<li>
+<p>容错性</p>
+</li>
 </ol>
 <h2 id="人工神经元的形式化模型">人工神经元的形式化模型</h2>
-<h3 id="m-p模型">M-P模型</h3>
-<figure>
-<img src="image-20241130161802262.png" alt="image-20241130161802262" /><figcaption aria-hidden="true">image-20241130161802262</figcaption>
-</figure>
-<figure>
-<img src="image-20241130162236910.png" alt="image-20241130162236910" /><figcaption aria-hidden="true">image-20241130162236910</figcaption>
-</figure>
-<figure>
-<img src="image-20241130162455999.png" alt="image-20241130162455999" /><figcaption aria-hidden="true">image-20241130162455999</figcaption>
-</figure>
+<h3 id="M-P模型">M-P模型</h3>
+<p><img src="image-20241130161802262.png" alt="image-20241130161802262"></p>
+<p><img src="image-20241130162236910.png" alt="image-20241130162236910"></p>
+<p><img src="image-20241130162455999.png" alt="image-20241130162455999"></p>
 <h3 id="线性加权模型">线性加权模型</h3>
-<figure>
-<img src="image-20241130162518405.png" alt="image-20241130162518405" /><figcaption aria-hidden="true">image-20241130162518405</figcaption>
-</figure>
+<p><img src="image-20241130162518405.png" alt="image-20241130162518405"></p>
 <h3 id="阶跃阈值模型">阶跃阈值模型</h3>
-<figure>
-<img src="image-20241130162555969.png" alt="image-20241130162555969" /><figcaption aria-hidden="true">image-20241130162555969</figcaption>
-</figure>
+<p><img src="image-20241130162555969.png" alt="image-20241130162555969"></p>
 <h3 id="逻辑阈值模型">逻辑阈值模型</h3>
-<figure>
-<img src="image-20241130162614559.png" alt="image-20241130162614559" /><figcaption aria-hidden="true">image-20241130162614559</figcaption>
-</figure>
+<p><img src="image-20241130162614559.png" alt="image-20241130162614559"></p>
 <h3 id="广义神经元模型">广义神经元模型</h3>
-<figure>
-<img src="image-20241130162645843.png" alt="image-20241130162645843" /><figcaption aria-hidden="true">image-20241130162645843</figcaption>
-</figure>
+<p><img src="image-20241130162645843.png" alt="image-20241130162645843"></p>
 <h3 id="神经元状态转移函数的类型">神经元状态转移函数的类型</h3>
-<figure>
-<img src="image-20241130162719465.png" alt="image-20241130162719465" /><figcaption aria-hidden="true">image-20241130162719465</figcaption>
-</figure>
+<p><img src="image-20241130162719465.png" alt="image-20241130162719465"></p>
 <h2 id="感知器模型和学习规则">感知器模型和学习规则</h2>
 <h3 id="定义">定义</h3>
 <blockquote>
 <p>感知器是解决 <strong>线性可分问题</strong> 的一种算法基础，它是现代神经网络的重要前身。</p>
 </blockquote>
-<figure>
-<img src="image-20241130163759630.png" alt="image-20241130163759630" /><figcaption aria-hidden="true">image-20241130163759630</figcaption>
-</figure>
+<p><img src="image-20241130163759630.png" alt="image-20241130163759630"></p>
 <p><strong>线性可分</strong>：在二维空间上，如果两类点可以被一条直线（高维空间叫超平面）完全分开叫做线性可分。</p>
 <p><strong>损失函数</strong></p>
-<figure>
-<img src="image-20241130164007296.png" alt="image-20241130164007296" /><figcaption aria-hidden="true">image-20241130164007296</figcaption>
-</figure>
-<figure>
-<img src="image-20241130164055326.png" alt="image-20241130164055326" /><figcaption aria-hidden="true">image-20241130164055326</figcaption>
-</figure>
-<figure>
-<img src="image-20241130164132408.png" alt="image-20241130164132408" /><figcaption aria-hidden="true">image-20241130164132408</figcaption>
-</figure>
+<p><img src="image-20241130164007296.png" alt="image-20241130164007296"></p>
+<p><img src="image-20241130164055326.png" alt="image-20241130164055326"></p>
+<p><img src="image-20241130164132408.png" alt="image-20241130164132408"></p>
 <h3 id="感知器的收敛性">感知器的收敛性</h3>
 <blockquote>
 <h3 id="收敛性的核心内容"><strong>收敛性的核心内容</strong></h3>
-<ol type="1">
+<ol>
 <li><strong>适用条件</strong>
 <ul>
 <li>数据必须是 <strong>线性可分的</strong>。也就是说，存在一个超平面可以将所有正类和负类样本完全分开。</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>收敛性保证</strong>
 <ul>
 <li>如果数据线性可分，感知机算法一定会在有限次迭代后找到一个权重向量 <em>w</em>，使得所有训练样本的分类正确。</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>收敛时间</strong>
 <ul>
 <li>收敛所需的迭代次数取决于数据的分布，例如样本之间的距离和数据的分离度。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
 </blockquote>
 <h3 id="表征能力">表征能力</h3>
-<figure>
-<img src="image-20241130165330709.png" alt="image-20241130165330709" /><figcaption aria-hidden="true">image-20241130165330709</figcaption>
-</figure>
-<figure>
-<img src="image-20241130165408672.png" alt="image-20241130165408672" /><figcaption aria-hidden="true">image-20241130165408672</figcaption>
-</figure>
-<figure>
-<img src="image-20241130165453587.png" alt="image-20241130165453587" /><figcaption aria-hidden="true">image-20241130165453587</figcaption>
-</figure>
-<h2 id="多层前馈网络与bp学习算法">多层前馈网络与BP学习算法</h2>
+<p><img src="image-20241130165330709.png" alt="image-20241130165330709"></p>
+<p><img src="image-20241130165408672.png" alt="image-20241130165408672"></p>
+<p><img src="image-20241130165453587.png" alt="image-20241130165453587"></p>
+<h2 id="多层前馈网络与BP学习算法">多层前馈网络与BP学习算法</h2>
 <blockquote>
 <p>名称“前馈”源于数据流动的方式：输入数据通过网络从输入层流向输出层，中间没有反馈或循环。</p>
 </blockquote>
 <p>单层前馈神经网络</p>
-<figure>
-<img src="image-20241130165856698.png" alt="image-20241130165856698" /><figcaption aria-hidden="true">image-20241130165856698</figcaption>
-</figure>
-<figure>
-<img src="image-20241130165910704.png" alt="image-20241130165910704" /><figcaption aria-hidden="true">image-20241130165910704</figcaption>
-</figure>
-<h2 id="bp学习算法backpropagation-learning-algorithm">BP学习算法（Backpropagation Learning Algorithm）</h2>
+<p><img src="image-20241130165856698.png" alt="image-20241130165856698"></p>
+<p><img src="image-20241130165910704.png" alt="image-20241130165910704"></p>
+<h2 id="BP学习算法（Backpropagation-Learning-Algorithm）">BP学习算法（Backpropagation Learning Algorithm）</h2>
 <blockquote>
 <p><strong>BP（反向传播）学习算法</strong>是神经网络训练中的核心算法之一，广泛应用于前馈神经网络（尤其是多层感知器）。其主要作用是通过计算<strong>损失函数相对于网络参数</strong>（权重和偏置）的梯度，并通过<strong>梯度下降法</strong>来优化这些参数，以最小化预测误差。BP算法是深度学习中的一个基础和重要算法。</p>
 </blockquote>
 <p>总体思想：正向传播 + 反向传播(1986年)</p>
-<ol type="1">
+<ol>
 <li>正向传播时，输入信息从输入层开始，经过各层神 经元的处理后产生一个输出。然后，将实际输出和 所需输出进行比较，得到一个误差矢量。</li>
 <li>反向传播过程，从输出层至输入层，利用这个误差矢量对权值进行逐层修正。</li>
 <li>正向传播和反向传播交替迭代进行。</li>
 <li>通过不断迭代优化，使得网络的输出逐渐接近目标 值，从而实现对输入数据的准确识别或预测。</li>
 </ol>
-<figure>
-<img src="image-20241130170202693.png" alt="image-20241130170202693" /><figcaption aria-hidden="true">image-20241130170202693</figcaption>
-</figure>
+<p><img src="image-20241130170202693.png" alt="image-20241130170202693"></p>
 <blockquote>
-<h3 id="反向传播算法的工作原理"><strong>1. 反向传播算法的工作原理</strong></h3>
+<h3 id="1-反向传播算法的工作原理"><strong>1. 反向传播算法的工作原理</strong></h3>
 <p>反向传播算法的核心思想是通过链式法则来计算损失函数关于网络中各个参数（即权重和偏置）的梯度，并利用这些梯度来更新参数。其步骤如下：</p>
-<h4 id="向前传播forward-propagation"><strong>1.1 向前传播（Forward Propagation）</strong></h4>
+<h4 id="1-1-向前传播（Forward-Propagation）"><strong>1.1 向前传播（Forward Propagation）</strong></h4>
 <ul>
 <li>输入数据通过网络的各层进行传播，最终输出预测值。</li>
 <li>每一层的神经元进行加权求和并通过激活函数处理，得到该层的输出。</li>
 </ul>
-<h4 id="计算损失loss-calculation"><strong>1.2 计算损失（Loss Calculation）</strong></h4>
+<h4 id="1-2-计算损失（Loss-Calculation）"><strong>1.2 计算损失（Loss Calculation）</strong></h4>
 <ul>
 <li>使用损失函数计算网络输出与实际目标之间的误差。</li>
 <li>常用的损失函数：
 <ul>
-<li>均方误差（MSE）用于回归问题： <span class="math inline">\({MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\)</span></li>
+<li>均方误差（MSE）用于回归问题： ${MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$</li>
 <li>交叉熵损失（Cross-Entropy Loss）用于分类问题。</li>
-</ul></li>
 </ul>
-<h4 id="反向传播backpropagation"><strong>1.3 反向传播（Backpropagation）</strong></h4>
-<ul>
-<li><p><strong>反向传播的关键：</strong> 通过链式法则计算损失函数相对于各层权重和偏置的梯度。</p>
-<ul>
-<li><p>从输出层开始，计算损失函数相对于输出层的梯度：</p>
-<p><span class="math inline">\(\frac{\partial L}{\partial z^{(L)}} = \hat{y} - y\)</span></p>
-<p>其中，$z^{(L)} <span class="math inline">\(是输出层的加权和，\)</span> <span class="math inline">\(是预测值，\)</span>y<span class="math inline">\(是真实标签，\)</span>L$是损失函数。</p></li>
-<li><p>然后通过链式法则逐层计算前面隐藏层的梯度：</p>
-<p><span class="math inline">\(\frac{\partial L}{\partial z^{(l)}} = \left( \frac{\partial L}{\partial z^{(l+1)}} \right) \cdot W^{(l+1)} \cdot f&#39;(z^{(l)})\)</span></p>
-<p>其中$ f'(z^{(l)}) <span class="math inline">\(是该层激活函数的导数，\)</span>W^{(l+1)}$ 是上一层的权重矩阵。</p></li>
-</ul></li>
+</li>
 </ul>
-<h4 id="参数更新parameter-update"><strong>1.4 参数更新（Parameter Update）</strong></h4>
+<h4 id="1-3-反向传播（Backpropagation）"><strong>1.3 反向传播（Backpropagation）</strong></h4>
 <ul>
-<li><p>通过计算得到的梯度更新网络中的权重和偏置，通常采用梯度下降法： $w^{(l)} = w^{(l)} -  \b^{(l)} = b^{(l)} -  $</p>
-<p>其中，$$是学习率，控制每次更新的步长。</p></li>
+<li>
+<p><strong>反向传播的关键：</strong> 通过链式法则计算损失函数相对于各层权重和偏置的梯度。</p>
+<ul>
+<li>
+<p>从输出层开始，计算损失函数相对于输出层的梯度：</p>
+<p>$\frac{\partial L}{\partial z^{(L)}} = \hat{y} - y$</p>
+<p>其中，$z^{(L)} $是输出层的加权和，$\hat{y} $是预测值，$y$是真实标签，$L$是损失函数。</p>
+</li>
+<li>
+<p>然后通过链式法则逐层计算前面隐藏层的梯度：</p>
+<p>$\frac{\partial L}{\partial z^{(l)}} = \left( \frac{\partial L}{\partial z^{(l+1)}} \right) \cdot W^{(l+1)} \cdot f’(z^{(l)})$</p>
+<p>其中$ f’(z^{(l)}) $是该层激活函数的导数，$W^{(l+1)}$ 是上一层的权重矩阵。</p>
+</li>
 </ul>
-<h4 id="重复迭代"><strong>1.5 重复迭代</strong></h4>
+</li>
+</ul>
+<h4 id="1-4-参数更新（Parameter-Update）"><strong>1.4 参数更新（Parameter Update）</strong></h4>
+<ul>
+<li>
+<p>通过计算得到的梯度更新网络中的权重和偏置，通常采用梯度下降法： $w^{(l)} = w^{(l)} - \eta \frac{\partial L}{\partial w^{(l)}} \b^{(l)} = b^{(l)} - \eta \frac{\partial L}{\partial b^{(l)}} $</p>
+<p>其中，$\eta $是学习率，控制每次更新的步长。</p>
+</li>
+</ul>
+<h4 id="1-5-重复迭代"><strong>1.5 重复迭代</strong></h4>
 <ul>
 <li>通过多次迭代（多个epoch）来不断更新权重和偏置，直到损失函数收敛或达到设定的训练次数。</li>
 </ul>
 </blockquote>
 <h2 id="神经网络训练技巧">神经网络训练技巧</h2>
-<h3 id="批处理bp算法">批处理BP算法</h3>
+<h3 id="批处理BP算法">批处理BP算法</h3>
 <p>1 在每次更新权值之前，计算所有样本的误差</p>
 <ul>
-<li><p>真正的最速梯度下降方法</p></li>
-<li><p>每代更新一次</p></li>
+<li>
+<p>真正的最速梯度下降方法</p>
+</li>
+<li>
+<p>每代更新一次</p>
+</li>
 </ul>
-<p>2 每计算一个样本点的误差就更新权值一 次 - 需将数据每个循环随机打乱</p>
+<p>2 每计算一个样本点的误差就更新权值一 次</p>
+<ul>
+<li>需将数据每个循环随机打乱</li>
+</ul>
 <h3 id="动态学习率">动态学习率</h3>
-<figure>
-<img src="image-20241130181849936.png" alt="image-20241130181849936" /><figcaption aria-hidden="true">image-20241130181849936</figcaption>
-</figure>
-<figure>
-<img src="image-20241130182003489.png" alt="image-20241130182003489" /><figcaption aria-hidden="true">image-20241130182003489</figcaption>
-</figure>
-<figure>
-<img src="image-20241130182040923.png" alt="image-20241130182040923" /><figcaption aria-hidden="true">image-20241130182040923</figcaption>
-</figure>
+<p><img src="image-20241130181849936.png" alt="image-20241130181849936"></p>
+<p><img src="image-20241130182003489.png" alt="image-20241130182003489"></p>
+<p><img src="image-20241130182040923.png" alt="image-20241130182040923"></p>
 <h3 id="动量项">动量项</h3>
 <blockquote>
 <p><strong>动量项</strong>是深度学习中的一个优化技术，常用于梯度下降算法中，目的是加速收敛并帮助模型避免陷入局部最小值或鞍点。它的核心思想借鉴了物理学中“动量”的概念，即当前的更新不仅依赖于当前的梯度，还考虑了之前的梯度变化，形成一定的惯性，帮助在优化过程中保持稳定的前进方向。</p>
 </blockquote>
-<figure>
-<img src="image-20241130183106419.png" alt="image-20241130183106419" /><figcaption aria-hidden="true">image-20241130183106419</figcaption>
-</figure>
-<figure>
-<img src="image-20241130183346412.png" alt="image-20241130183346412" /><figcaption aria-hidden="true">image-20241130183346412</figcaption>
-</figure>
-<figure>
-<img src="image-20241130183735346.png" alt="image-20241130183735346" /><figcaption aria-hidden="true">image-20241130183735346</figcaption>
-</figure>
-<figure>
-<img src="image-20241130183748289.png" alt="image-20241130183748289" /><figcaption aria-hidden="true">image-20241130183748289</figcaption>
-</figure>
-<figure>
-<img src="image-20241130183802231.png" alt="image-20241130183802231" /><figcaption aria-hidden="true">image-20241130183802231</figcaption>
-</figure>
-<h3 id="dropout">Dropout</h3>
+<p><img src="image-20241130183106419.png" alt="image-20241130183106419"></p>
+<p><img src="image-20241130183346412.png" alt="image-20241130183346412"></p>
+<p><img src="image-20241130183735346.png" alt="image-20241130183735346"></p>
+<p><img src="image-20241130183748289.png" alt="image-20241130183748289"></p>
+<p><img src="image-20241130183802231.png" alt="image-20241130183802231"></p>
+<h3 id="Dropout">Dropout</h3>
 <blockquote>
 <p><strong>Dropout</strong> 是一种在训练神经网络时使用的正则化技术，用于防止过拟合。它通过在每次训练过程中随机地“丢弃”神经网络中的一些神经元，使得网络在每次前向传播时都只使用部分神经元进行计算，从而减少对某些神经元的依赖，增强模型的泛化能力。</p>
 </blockquote>
-<figure>
-<img src="image-20241130183842744.png" alt="image-20241130183842744" /><figcaption aria-hidden="true">image-20241130183842744</figcaption>
-</figure>
-<figure>
-<img src="image-20241130183854917.png" alt="image-20241130183854917" /><figcaption aria-hidden="true">image-20241130183854917</figcaption>
-</figure>
+<p><img src="image-20241130183842744.png" alt="image-20241130183842744"></p>
+<p><img src="image-20241130183854917.png" alt="image-20241130183854917"></p>
 <h1 id="径向基函数与自组织特征映射神经网络">径向基函数与自组织特征映射神经网络</h1>
 <p><strong>神经网络的典型应用：</strong></p>
 <ul>
@@ -828,9 +747,7 @@ data = (x_1,x_2,\cdots,x_n)
 <li>形状：𝜙</li>
 </ul>
 <h3 id="常见的径向基函数">常见的径向基函数</h3>
-<figure>
-<img src="image-20241201101725251.png" alt="image-20241201101725251" /><figcaption aria-hidden="true">image-20241201101725251</figcaption>
-</figure>
+<p><img src="image-20241201101725251.png" alt="image-20241201101725251"></p>
 <h2 id="径向基神经网络">径向基神经网络</h2>
 <blockquote>
 <p>径向基函数网络是一种以<strong>径向基函数作为激活函数</strong>的 人工神经网络。</p>
@@ -841,31 +758,21 @@ data = (x_1,x_2,\cdots,x_n)
 <li>神经元的输入离该中心点越远，神经元的激活程度就越低。隐节点的这一特性常被称为“局部特性”。</li>
 </ul>
 </blockquote>
-<figure>
-<img src="image-20241201102129397.png" alt="image-20241201102129397" /><figcaption aria-hidden="true">image-20241201102129397</figcaption>
-</figure>
-<h3 id="rbf网络与经典神经网络的区别">RBF网络与经典神经网络的区别</h3>
-<p>隐藏层不同：RBF网络隐藏层每个节点执行一个径向基函数操作，产生与输入数据的距离相关的输出。 经典神经网络采用进行加权和非线性变换。</p>
+<p><img src="image-20241201102129397.png" alt="image-20241201102129397"></p>
+<h3 id="RBF网络与经典神经网络的区别">RBF网络与经典神经网络的区别</h3>
+<p>隐藏层不同：RBF网络隐藏层每个节点执行一个径向基函数操作，产生与输入数据的距离相关的输出。  经典神经网络采用进行加权和非线性变换。</p>
 <p>输出层相同：均为线性组合</p>
 <h2 id="完全径向基神经网络">完全径向基神经网络</h2>
 <p><strong>以插值问题为例：</strong></p>
 <blockquote>
 <p>插值问题描述: 考虑N维空间到一维空间的映射.</p>
-<p>设N维空间有𝑃个输入向量<span class="math inline">\(𝒙_𝑝, 𝑝 = 1,2, … , 𝑃\)</span>它们 在输入空间相应的目标值为<span class="math inline">\(𝑑_𝑝, 𝑝 = 1,2, … , 𝑃\)</span> 插值的目的是寻找一个非线性映射函数<span class="math inline">\(F(𝒙)\)</span>,使得满足下述插值条件 <span class="math inline">\(F(𝒙_𝑝) = 𝑑_𝑝, 𝑝 = 1,2, … , P\)</span></p>
+<p>设N维空间有𝑃个输入向量$𝒙_𝑝, 𝑝 = 1,2, … , 𝑃$它们 在输入空间相应的目标值为$𝑑_𝑝, 𝑝 = 1,2, … , 𝑃$ 插值的目的是寻找一个非线性映射函数$F(𝒙)$,使得满足下述插值条件 $F(𝒙_𝑝) = 𝑑_𝑝, 𝑝 = 1,2, … , P$</p>
 </blockquote>
 <p>解决方法：</p>
-<figure>
-<img src="image-20241201103742309.png" alt="image-20241201103742309" /><figcaption aria-hidden="true">image-20241201103742309</figcaption>
-</figure>
-<figure>
-<img src="image-20241201103923823.png" alt="image-20241201103923823" /><figcaption aria-hidden="true">image-20241201103923823</figcaption>
-</figure>
-<figure>
-<img src="image-20241201104037657.png" alt="image-20241201104037657" /><figcaption aria-hidden="true">image-20241201104037657</figcaption>
-</figure>
-<figure>
-<img src="image-20241201104051986.png" alt="image-20241201104051986" /><figcaption aria-hidden="true">image-20241201104051986</figcaption>
-</figure>
+<p><img src="image-20241201103742309.png" alt="image-20241201103742309"></p>
+<p><img src="image-20241201103923823.png" alt="image-20241201103923823"></p>
+<p><img src="image-20241201104037657.png" alt="image-20241201104037657"></p>
+<p><img src="image-20241201104051986.png" alt="image-20241201104051986"></p>
 <p>存在的问题：</p>
 <blockquote>
 <p>完全内插存在的问题(正则化RBF网络):</p>
@@ -881,65 +788,31 @@ data = (x_1,x_2,\cdots,x_n)
 <li>各径向基函数的扩展常数不再统一,由训练确定</li>
 <li>输出函数的线性中包含阈值参数,用于补偿函数在样本集上的平均值与目标之平均值之间的差别</li>
 </ul>
-<figure>
-<img src="image-20241201110658556.png" alt="image-20241201110658556" /><figcaption aria-hidden="true">image-20241201110658556</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111020018.png" alt="image-20241201111020018" /><figcaption aria-hidden="true">image-20241201111020018</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111041983.png" alt="image-20241201111041983" /><figcaption aria-hidden="true">image-20241201111041983</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111140872.png" alt="image-20241201111140872" /><figcaption aria-hidden="true">image-20241201111140872</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111436367.png" alt="image-20241201111436367" /><figcaption aria-hidden="true">image-20241201111436367</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111551755.png" alt="image-20241201111551755" /><figcaption aria-hidden="true">image-20241201111551755</figcaption>
-</figure>
+<p><img src="image-20241201110658556.png" alt="image-20241201110658556"></p>
+<p><img src="image-20241201111020018.png" alt="image-20241201111020018"></p>
+<p><img src="image-20241201111041983.png" alt="image-20241201111041983"></p>
+<p><img src="image-20241201111140872.png" alt="image-20241201111140872"></p>
+<p><img src="image-20241201111436367.png" alt="image-20241201111436367"></p>
+<p><img src="image-20241201111551755.png" alt="image-20241201111551755"></p>
 <h2 id="广义径向基神经网络与多层感知器比较">广义径向基神经网络与多层感知器比较</h2>
-<figure>
-<img src="image-20241201111643075.png" alt="image-20241201111643075" /><figcaption aria-hidden="true">image-20241201111643075</figcaption>
-</figure>
-<figure>
-<img src="image-20241201111751940.png" alt="image-20241201111751940" /><figcaption aria-hidden="true">image-20241201111751940</figcaption>
-</figure>
-<h2 id="rbfn用于分类">RBFN用于分类</h2>
-<figure>
-<img src="image-20241201111913022.png" alt="image-20241201111913022" /><figcaption aria-hidden="true">image-20241201111913022</figcaption>
-</figure>
+<p><img src="image-20241201111643075.png" alt="image-20241201111643075"></p>
+<p><img src="image-20241201111751940.png" alt="image-20241201111751940"></p>
+<h2 id="RBFN用于分类">RBFN用于分类</h2>
+<p><img src="image-20241201111913022.png" alt="image-20241201111913022"></p>
 <h2 id="自组织特征映射神经网络">自组织特征映射神经网络</h2>
 <blockquote>
 <p>SOFM网络的核心思想是<strong>保持输入数据的拓扑结构</strong>，使得相似的数据点在映射空间中尽量接近，而不相似的数据点则远离。</p>
 </blockquote>
 <p>自组织映射(SOM)或自组织特征映射(SOFM)由Kohonen 教授于1981年提出，是一种无监督机器学习技术，用于 生成高维数据集的低维(通常是二维)表示，同时保留数据 的拓扑结构。</p>
 <p>不同于一般神经网络基于损失函数的反向传递来训练 ，它运用竞争学习(competitive learning)策略,依靠神经元 之间互相竞争逐步优化网络。且使用近邻关系函数 (neighborhood function)来维持输入空间的拓扑结构</p>
-<figure>
-<img src="image-20241201112412425.png" alt="image-20241201112412425" /><figcaption aria-hidden="true">image-20241201112412425</figcaption>
-</figure>
-<figure>
-<img src="image-20241201113212181.png" alt="image-20241201113212181" /><figcaption aria-hidden="true">image-20241201113212181</figcaption>
-</figure>
-<figure>
-<img src="image-20241201113336508.png" alt="image-20241201113336508" /><figcaption aria-hidden="true">image-20241201113336508</figcaption>
-</figure>
-<figure>
-<img src="image-20241201113604262.png" alt="image-20241201113604262" /><figcaption aria-hidden="true">image-20241201113604262</figcaption>
-</figure>
-<figure>
-<img src="image-20241201113736330.png" alt="image-20241201113736330" /><figcaption aria-hidden="true">image-20241201113736330</figcaption>
-</figure>
-<figure>
-<img src="image-20241201113806700.png" alt="image-20241201113806700" /><figcaption aria-hidden="true">image-20241201113806700</figcaption>
-</figure>
-<figure>
-<img src="image-20241201114735214.png" alt="image-20241201114735214" /><figcaption aria-hidden="true">image-20241201114735214</figcaption>
-</figure>
-<figure>
-<img src="image-20241201114745081.png" alt="image-20241201114745081" /><figcaption aria-hidden="true">image-20241201114745081</figcaption>
-</figure>
+<p><img src="image-20241201112412425.png" alt="image-20241201112412425"></p>
+<p><img src="image-20241201113212181.png" alt="image-20241201113212181"></p>
+<p><img src="image-20241201113336508.png" alt="image-20241201113336508"></p>
+<p><img src="image-20241201113604262.png" alt="image-20241201113604262"></p>
+<p><img src="image-20241201113736330.png" alt="image-20241201113736330"></p>
+<p><img src="image-20241201113806700.png" alt="image-20241201113806700"></p>
+<p><img src="image-20241201114735214.png" alt="image-20241201114735214"></p>
+<p><img src="image-20241201114745081.png" alt="image-20241201114745081"></p>
 <h1 id="支持向量机">支持向量机</h1>
 <blockquote>
 <p>二类分类模型。它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机。</p>
@@ -948,9 +821,9 @@ data = (x_1,x_2,\cdots,x_n)
 </blockquote>
 <p><strong>分类：</strong></p>
 <ul>
-<li><strong>线性可分支持向量机</strong>(linear support vector machine in linearly separable case )：<strong>硬间隔</strong>最大化(hard margin maximization)；</li>
-<li><strong>线性支持向量机</strong>(linear support vector machine) ：训练数据<strong>近似线性可分</strong>时，通过<strong>软间隔</strong>最大化(soft margin maximization)；</li>
-<li><strong>非线性支持向量机</strong>(non-linear support vector machine) ：当训练数据<strong>线性不可分</strong>时，通过使用<strong>核技巧</strong>(kernel trick)及<strong>软间隔</strong>最大化。</li>
+<li><strong>线性可分支持向量机</strong>(linear support vector  machine in linearly separable case )：<strong>硬间隔</strong>最大化(hard margin maximization)；</li>
+<li><strong>线性支持向量机</strong>(linear support vector machine) ：训练数据<strong>近似线性可分</strong>时，通过<strong>软间隔</strong>最大化(soft  margin maximization)；</li>
+<li><strong>非线性支持向量机</strong>(non-linear support vector  machine) ：当训练数据<strong>线性不可分</strong>时，通过使用<strong>核技巧</strong>(kernel  trick)及<strong>软间隔</strong>最大化。</li>
 </ul>
 <p><strong>核函数</strong></p>
 <blockquote>
@@ -960,191 +833,106 @@ data = (x_1,x_2,\cdots,x_n)
 </blockquote>
 <h2 id="理论基础">理论基础</h2>
 <p>统计学习理论是SVM的理论基础</p>
-<figure>
-<img src="image-20241202193431790.png" alt="image-20241202193431790" /><figcaption aria-hidden="true">image-20241202193431790</figcaption>
-</figure>
-<figure>
-<img src="image-20241202193439517.png" alt="image-20241202193439517" /><figcaption aria-hidden="true">image-20241202193439517</figcaption>
-</figure>
-<figure>
-<img src="image-20241202193447397.png" alt="image-20241202193447397" /><figcaption aria-hidden="true">image-20241202193447397</figcaption>
-</figure>
-<figure>
-<img src="image-20241202193508901.png" alt="image-20241202193508901" /><figcaption aria-hidden="true">image-20241202193508901</figcaption>
-</figure>
+<p><img src="image-20241202193431790.png" alt="image-20241202193431790"></p>
+<p><img src="image-20241202193439517.png" alt="image-20241202193439517"></p>
+<p><img src="image-20241202193447397.png" alt="image-20241202193447397"></p>
+<p><img src="image-20241202193508901.png" alt="image-20241202193508901"></p>
 <h2 id="线性可分支持向量机">线性可分支持向量机</h2>
 <blockquote>
 <p><strong>线性可分</strong>:</p>
-<p>设<span class="math inline">\(D_0\)</span>和<span class="math inline">\(D_1\)</span>是n维欧氏空间中的两个点集,如果存在n维向量<span class="math inline">\(w\)</span>和实数<span class="math inline">\(b\)</span>,使得: 1.所有属于<span class="math inline">\(D_0\)</span>的点<span class="math inline">\(x_i\)</span>都有<span class="math inline">\(wx_i+b&gt;0\)</span></p>
-<p>2.而对于所有属于<span class="math inline">\(D_1\)</span>的点<span class="math inline">\(x_j\)</span>则有<span class="math inline">\(wx_j+b&lt;0\)</span>,则我们称<span class="math inline">\(D_0\)</span>和<span class="math inline">\(D_1\)</span><strong>线性可分</strong></p>
-<p>3.从二维扩展到多维空间中时,将<span class="math inline">\(D_0\)</span>和<span class="math inline">\(D_1\)</span>完全正确地划分开的<span class="math inline">\(wx+b=0\)</span>就成了一个超平面。</p>
+<p>设$D_0$和$D_1$是n维欧氏空间中的两个点集,如果存在n维向量$w$和实数$b$,使得:<br>
+1.所有属于$D_0$的点$x_i$都有$wx_i+b&gt;0$</p>
+<p>2.而对于所有属于$D_1$的点$x_j$则有$wx_j+b&lt;0$,则我们称$D_0$和$D_1$<strong>线性可分</strong></p>
+<p>3.从二维扩展到多维空间中时,将$D_0$和$D_1$完全正确地划分开的$wx+b=0$就成了一个超平面。</p>
 </blockquote>
-<figure>
-<img src="image-20241202194013655.png" alt="image-20241202194013655" /><figcaption aria-hidden="true">image-20241202194013655</figcaption>
-</figure>
-<figure>
-<img src="image-20241202194027453.png" alt="image-20241202194027453" /><figcaption aria-hidden="true">image-20241202194027453</figcaption>
-</figure>
+<p><img src="image-20241202194013655.png" alt="image-20241202194013655"></p>
+<p><img src="image-20241202194027453.png" alt="image-20241202194027453"></p>
 <p>法向量指向的一侧为正类，另一侧为负类</p>
 <p>一般地,当训练数据集<strong>线性可分</strong>时,存在无穷个分离超平面可将两类数据正确分开，<strong>感知机</strong>利用误分类最小的策略,求得分离超平面,不过这时的解有<strong>无穷多个</strong>.线性可分支持向量机利用<strong>间隔最大化</strong>求<strong>最优</strong>分离超平面,这时,解是<strong>唯一</strong>的.</p>
-<figure>
-<img src="image-20241202194547640.png" alt="image-20241202194547640" /><figcaption aria-hidden="true">image-20241202194547640</figcaption>
-</figure>
+<p><img src="image-20241202194547640.png" alt="image-20241202194547640"></p>
 <p>我们希望找到间隔最大化（硬间隔最大化）的超平面，即最大化离分类平面最近的点的距离</p>
-<figure>
-<img src="image-20241202194637387.png" alt="image-20241202194637387" /><figcaption aria-hidden="true">image-20241202194637387</figcaption>
-</figure>
+<p><img src="image-20241202194637387.png" alt="image-20241202194637387"></p>
 <p>已知点到平面的距离公式：</p>
-<figure>
-<img src="image-20241202194704527.png" alt="image-20241202194704527" /><figcaption aria-hidden="true">image-20241202194704527</figcaption>
-</figure>
-<figure>
-<img src="image-20241202194756648.png" alt="image-20241202194756648" /><figcaption aria-hidden="true">image-20241202194756648</figcaption>
-</figure>
-<figure>
-<img src="image-20241202194945722.png" alt="image-20241202194945722" /><figcaption aria-hidden="true">image-20241202194945722</figcaption>
-</figure>
-<figure>
-<img src="image-20241202195058660.png" alt="image-20241202195058660" /><figcaption aria-hidden="true">image-20241202195058660</figcaption>
-</figure>
-<figure>
-<img src="image-20241202200323516.png" alt="image-20241202200323516" /><figcaption aria-hidden="true">image-20241202200323516</figcaption>
-</figure>
-<figure>
-<img src="image-20241202200354735.png" alt="image-20241202200354735" /><figcaption aria-hidden="true">image-20241202200354735</figcaption>
-</figure>
+<p><img src="image-20241202194704527.png" alt="image-20241202194704527"></p>
+<p><img src="image-20241202194756648.png" alt="image-20241202194756648"></p>
+<p><img src="image-20241202194945722.png" alt="image-20241202194945722"></p>
+<p><img src="image-20241202195058660.png" alt="image-20241202195058660"></p>
+<p><img src="image-20241202200323516.png" alt="image-20241202200323516"></p>
+<p><img src="image-20241202200354735.png" alt="image-20241202200354735"></p>
 <h2 id="支持向量机的优化算法">支持向量机的优化算法</h2>
 <p>若数据是<strong>线性可分</strong>的，则上述<strong>凸二次规划问题</strong>的解<strong>存在且唯一</strong>。二次规划问题有很多算法可以求解，也有很多求解器能直接解决二次规划问题。但是<strong>一般我们不直接求解原问题，而是求解其对偶问题，</strong></p>
 <p><strong>原因</strong>有几点：</p>
-<ol type="1">
+<ol>
 <li>对偶问题更简单，更容易求解，效率更高；</li>
 <li>对偶问题将原始问题中的不等式约束转为了对偶问题中的等式约束；</li>
 <li>对偶问题方便核函数的引入，进而可以推广到非线性分类问题</li>
 </ol>
-<figure>
-<img src="image-20241202200558459.png" alt="image-20241202200558459" /><figcaption aria-hidden="true">image-20241202200558459</figcaption>
-</figure>
+<p><img src="image-20241202200558459.png" alt="image-20241202200558459"></p>
 <p><strong>求解线性可分支持向量机的步骤</strong>为：</p>
-<ol type="1">
+<ol>
 <li>利用<strong>拉格朗日乘子法</strong>，构造拉格朗日函数；</li>
 <li>利用<strong>强对偶性</strong>(<strong>KKT条件</strong>)将优化问题进行转化， 并求解；</li>
-<li>利用最优的<span class="math inline">\(𝑤^∗\)</span>和<span class="math inline">\(𝑏^∗\)</span>构建分类器</li>
+<li>利用最优的$𝑤^∗$和$𝑏^∗$构建分类器</li>
 </ol>
-<h3 id="第一步构造拉格朗日函数">第一步：构造拉格朗日函数</h3>
-<figure>
-<img src="image-20241202202739031.png" alt="image-20241202202739031" /><figcaption aria-hidden="true">image-20241202202739031</figcaption>
-</figure>
-<h3 id="第二步利用强对偶性kkt条件将优化问题进行转化">第二步：利用<strong>强对偶性</strong>(<strong>KKT条件</strong>)将优化问题进行转化</h3>
-<figure>
-<img src="image-20241202202750456.png" alt="image-20241202202750456" /><figcaption aria-hidden="true">image-20241202202750456</figcaption>
-</figure>
-<figure>
-<img src="image-20241202202910999.png" alt="image-20241202202910999" /><figcaption aria-hidden="true">image-20241202202910999</figcaption>
-</figure>
-<figure>
-<img src="image-20241202203038318.png" alt="image-20241202203038318" /><figcaption aria-hidden="true">image-20241202203038318</figcaption>
-</figure>
-<figure>
-<img src="image-20241202203111878.png" alt="image-20241202203111878" /><figcaption aria-hidden="true">image-20241202203111878</figcaption>
-</figure>
-<figure>
-<img src="image-20241202203852966.png" alt="image-20241202203852966" /><figcaption aria-hidden="true">image-20241202203852966</figcaption>
-</figure>
-<figure>
-<img src="image-20241202203928894.png" alt="image-20241202203928894" /><figcaption aria-hidden="true">image-20241202203928894</figcaption>
-</figure>
-<figure>
-<img src="image-20241202203940321.png" alt="image-20241202203940321" /><figcaption aria-hidden="true">image-20241202203940321</figcaption>
-</figure>
-<figure>
-<img src="image-20241202204054239.png" alt="image-20241202204054239" /><figcaption aria-hidden="true">image-20241202204054239</figcaption>
-</figure>
+<h3 id="第一步：构造拉格朗日函数">第一步：构造拉格朗日函数</h3>
+<p><img src="image-20241202202739031.png" alt="image-20241202202739031"></p>
+<h3 id="第二步：利用强对偶性-KKT条件-将优化问题进行转化">第二步：利用<strong>强对偶性</strong>(<strong>KKT条件</strong>)将优化问题进行转化</h3>
+<p><img src="image-20241202202750456.png" alt="image-20241202202750456"></p>
+<p><img src="image-20241202202910999.png" alt="image-20241202202910999"></p>
+<p><img src="image-20241202203038318.png" alt="image-20241202203038318"></p>
+<p><img src="image-20241202203111878.png" alt="image-20241202203111878"></p>
+<p><img src="image-20241202203852966.png" alt="image-20241202203852966"></p>
+<p><img src="image-20241202203928894.png" alt="image-20241202203928894"></p>
+<p><img src="image-20241202203940321.png" alt="image-20241202203940321"></p>
+<p><img src="image-20241202204054239.png" alt="image-20241202204054239"></p>
 <p>。。。。。。。</p>
 <h2 id="线性支持向量机">线性支持向量机</h2>
 <blockquote>
 <p>软间隔最大化</p>
 </blockquote>
-<figure>
-<img src="image-20241202204421947.png" alt="image-20241202204421947" /><figcaption aria-hidden="true">image-20241202204421947</figcaption>
-</figure>
-<figure>
-<img src="image-20241202204437736.png" alt="image-20241202204437736" /><figcaption aria-hidden="true">image-20241202204437736</figcaption>
-</figure>
-<figure>
-<img src="image-20241202204534762.png" alt="image-20241202204534762" /><figcaption aria-hidden="true">image-20241202204534762</figcaption>
-</figure>
+<p><img src="image-20241202204421947.png" alt="image-20241202204421947"></p>
+<p><img src="image-20241202204437736.png" alt="image-20241202204437736"></p>
+<p><img src="image-20241202204534762.png" alt="image-20241202204534762"></p>
 <h2 id="非线性支持向量机">非线性支持向量机</h2>
 <blockquote>
 <p>核方法</p>
 </blockquote>
-<figure>
-<img src="image-20241202204737122.png" alt="image-20241202204737122" /><figcaption aria-hidden="true">image-20241202204737122</figcaption>
-</figure>
-<figure>
-<img src="image-20241202204752734.png" alt="image-20241202204752734" /><figcaption aria-hidden="true">image-20241202204752734</figcaption>
-</figure>
-<figure>
-<img src="image-20241202205812682.png" alt="image-20241202205812682" /><figcaption aria-hidden="true">image-20241202205812682</figcaption>
-</figure>
-<figure>
-<img src="image-20241202205832143.png" alt="image-20241202205832143" /><figcaption aria-hidden="true">image-20241202205832143</figcaption>
-</figure>
-<figure>
-<img src="image-20241202205854065.png" alt="image-20241202205854065" /><figcaption aria-hidden="true">image-20241202205854065</figcaption>
-</figure>
-<figure>
-<img src="image-20241202205923768.png" alt="image-20241202205923768" /><figcaption aria-hidden="true">image-20241202205923768</figcaption>
-</figure>
-<figure>
-<img src="image-20241202205953883.png" alt="image-20241202205953883" /><figcaption aria-hidden="true">image-20241202205953883</figcaption>
-</figure>
+<p><img src="image-20241202204737122.png" alt="image-20241202204737122"></p>
+<p><img src="image-20241202204752734.png" alt="image-20241202204752734"></p>
+<p><img src="image-20241202205812682.png" alt="image-20241202205812682"></p>
+<p><img src="image-20241202205832143.png" alt="image-20241202205832143"></p>
+<p><img src="image-20241202205854065.png" alt="image-20241202205854065"></p>
+<p><img src="image-20241202205923768.png" alt="image-20241202205923768"></p>
+<p><img src="image-20241202205953883.png" alt="image-20241202205953883"></p>
 <h2 id="回归问题">回归问题</h2>
-<figure>
-<img src="image-20241202211451547.png" alt="image-20241202211451547" /><figcaption aria-hidden="true">image-20241202211451547</figcaption>
-</figure>
-<figure>
-<img src="image-20241202211534994.png" alt="image-20241202211534994" /><figcaption aria-hidden="true">image-20241202211534994</figcaption>
-</figure>
-<figure>
-<img src="image-20241202211604876.png" alt="image-20241202211604876" /><figcaption aria-hidden="true">image-20241202211604876</figcaption>
-</figure>
-<figure>
-<img src="image-20241202211618142.png" alt="image-20241202211618142" /><figcaption aria-hidden="true">image-20241202211618142</figcaption>
-</figure>
+<p><img src="image-20241202211451547.png" alt="image-20241202211451547"></p>
+<p><img src="image-20241202211534994.png" alt="image-20241202211534994"></p>
+<p><img src="image-20241202211604876.png" alt="image-20241202211604876"></p>
+<p><img src="image-20241202211618142.png" alt="image-20241202211618142"></p>
 <h1 id="聚类">聚类</h1>
 <blockquote>
 <p>聚类（Clustering）是最常见的<strong>无监督学习</strong>算法，它指的是按照某个特定标准（如距离）把一个数据集分割成不同的类或簇，使得<strong>同一个簇内的数据对象的相似性尽可能大</strong>，同时<strong>不在同一个簇中的数据对象的差异性也尽可能地大</strong>。</p>
 </blockquote>
 <p><strong>问题描述</strong></p>
-<figure>
-<img src="image-20241203103045465.png" alt="image-20241203103045465" /><figcaption aria-hidden="true">image-20241203103045465</figcaption>
-</figure>
+<p><img src="image-20241203103045465.png" alt="image-20241203103045465"></p>
 <p><strong>聚类分析要解决的问题:</strong></p>
 <ul>
 <li>定义数据间的距离/相似度度量</li>
 <li>使用相应的算法对数据集进行分割</li>
 <li>度量聚类结果的性能</li>
 </ul>
-<h2 id="数据间的距离相似度度量">数据间的距离/相似度度量</h2>
+<h2 id="数据间的距离-相似度度量">数据间的距离/相似度度量</h2>
 <p>每一条数据都可以理解为多维空间中的一个点可以根据<strong>点和点之间的距离</strong>来评价数据间的相似度。</p>
 <p><strong>常见的指标:</strong></p>
-<figure>
-<img src="image-20241203103522021.png" alt="image-20241203103522021" /><figcaption aria-hidden="true">image-20241203103522021</figcaption>
-</figure>
+<p><img src="image-20241203103522021.png" alt="image-20241203103522021"></p>
 <p><strong>闵可夫斯基距离/欧式距离</strong></p>
-<figure>
-<img src="image-20241203103714043.png" alt="image-20241203103714043" /><figcaption aria-hidden="true">image-20241203103714043</figcaption>
-</figure>
+<p><img src="image-20241203103714043.png" alt="image-20241203103714043"></p>
 <p><strong>余弦相似度与相关系数</strong></p>
-<figure>
-<img src="image-20241203103858203.png" alt="image-20241203103858203" /><figcaption aria-hidden="true">image-20241203103858203</figcaption>
-</figure>
-<p><span class="math inline">\(x_{i,k}\)</span>表示向量<span class="math inline">\(\mathbf{x}_{i}\)</span>在第<span class="math inline">\(k\)</span>维的分量</p>
+<p><img src="image-20241203103858203.png" alt="image-20241203103858203"></p>
+<p>$x_{i,k}$表示向量$\mathbf{x}_{i}$在第$k$维的分量</p>
 <p>余弦相似度(样本相关系数)是用来衡量两个向量在<strong>方向</strong>上的相似度，而不考虑它们的<strong>大小</strong>（模）。</p>
 <p><strong>样本相关系数</strong></p>
-<figure>
-<img src="image-20241203105253955.png" alt="image-20241203105253955" /><figcaption aria-hidden="true">image-20241203105253955</figcaption>
-</figure>
+<p><img src="image-20241203105253955.png" alt="image-20241203105253955"></p>
 <h2 id="类型">类型</h2>
 <p><strong>聚类主要类型</strong> :</p>
 <ul>
@@ -1157,30 +945,24 @@ data = (x_1,x_2,\cdots,x_n)
 </ul>
 <h2 id="基于划分的聚类">基于划分的聚类</h2>
 <p>给定包含N个点的数据集，划分法将构造K个分组，每个分组代表一个聚类，这里每个分组至少包含一个数据点，每个数据点属于且仅属于 一个分组。</p>
-<p>例如:K-means K-medoids</p>
-<figure>
-<img src="image-20241203191043416.png" alt="image-20241203191043416" /><figcaption aria-hidden="true">image-20241203191043416</figcaption>
-</figure>
-<h3 id="k-means算法">K-means算法</h3>
+<p>例如:K-means  K-medoids</p>
+<p><img src="image-20241203191043416.png" alt="image-20241203191043416"></p>
+<h3 id="K-means算法">K-means算法</h3>
 <blockquote>
 <p>K-means聚类，也称为K-平均或K-均值聚类</p>
 <p>K：是最终簇数量（即：K 往往代表类别的个数）， 它是超参数，需要预先设定</p>
 <p>means：在算法计算中会涉及到求均值</p>
 </blockquote>
 <p><strong>[算法流程]</strong></p>
-<ol type="1">
+<ol>
 <li>随机选择 K 个簇中心点（可以选已有的数据作为中心点，也可直接选高维空间中的位置）</li>
 <li>样本被分配到离其最近的中心点</li>
 <li>K 个簇中心点根据所在簇样本，以求平均值的方式重新计算</li>
 <li>开始迭代，重复第2步和第3步直到所有样本的分配不再改变</li>
 </ol>
-<figure>
-<img src="image-20241203191917606.png" alt="image-20241203191917606" /><figcaption aria-hidden="true">image-20241203191917606</figcaption>
-</figure>
+<p><img src="image-20241203191917606.png" alt="image-20241203191917606"></p>
 <p><strong>[损失函数]</strong></p>
-<figure>
-<img src="image-20241203192245882.png" alt="image-20241203192245882" /><figcaption aria-hidden="true">image-20241203192245882</figcaption>
-</figure>
+<p><img src="image-20241203192245882.png" alt="image-20241203192245882"></p>
 <p><strong>[K-means算法 K 的选择-----肘部法]</strong></p>
 <p>目标：找到最合适的点——拐）</p>
 <p>找到一个聚类数目，使得K高于该值之后的<strong>损失变换</strong>会发生<strong>显著递减</strong>,这个 K 值，称为<strong>肘部点</strong>（elbow point），因为它看起来像一个人的肘部。</p>
@@ -1200,9 +982,7 @@ data = (x_1,x_2,\cdots,x_n)
 </ul>
 <p><strong>常常结合其他聚类算法使用</strong></p>
 <p><strong>[改进算法]</strong></p>
-<figure>
-<img src="image-20241203192742427.png" alt="image-20241203192742427" /><figcaption aria-hidden="true">image-20241203192742427</figcaption>
-</figure>
+<p><img src="image-20241203192742427.png" alt="image-20241203192742427"></p>
 <h2 id="基于层次的聚类">基于层次的聚类</h2>
 <p>将给定数据集进行<strong>逐层分解</strong>，直到满足某种条件为止</p>
 <p>具体可分为自底向上和自顶向下两种方案。</p>
@@ -1210,9 +990,7 @@ data = (x_1,x_2,\cdots,x_n)
 <li>凝聚法</li>
 <li>分裂法</li>
 </ul>
-<figure>
-<img src="image-20241203191131821.png" alt="image-20241203191131821" /><figcaption aria-hidden="true">image-20241203191131821</figcaption>
-</figure>
+<p><img src="image-20241203191131821.png" alt="image-20241203191131821"></p>
 <h3 id="层次聚类法">层次聚类法</h3>
 <blockquote>
 <p>层次聚类法 (Hierarchical clustering, 也称系统聚类法)</p>
@@ -1223,60 +1001,56 @@ data = (x_1,x_2,\cdots,x_n)
 <li>分裂方法(divisive hierarchical method) (自上而下)</li>
 </ul>
 </blockquote>
-<figure>
-<img src="image-20241203193040585.png" alt="image-20241203193040585" /><figcaption aria-hidden="true">image-20241203193040585</figcaption>
-</figure>
+<p><img src="image-20241203193040585.png" alt="image-20241203193040585"></p>
 <p><strong>[树状图]</strong></p>
 <blockquote>
 <p>层次聚类的结果常常使用树状图(dendrogram)来表示.</p>
 </blockquote>
-<figure>
-<img src="image-20241203193521578.png" alt="image-20241203193521578" /><figcaption aria-hidden="true">image-20241203193521578</figcaption>
-</figure>
+<p><img src="image-20241203193521578.png" alt="image-20241203193521578"></p>
 <ul>
-<li><p>每个节点表示一个类</p></li>
-<li><p>每个叶子节点表示一个独点(只含一个样本点的类).</p></li>
-<li><p>根节点是包含了所有样本点的类</p></li>
-<li><p>每个中间节点有两个子节点,表示其通过合并这两个子类而来</p></li>
-<li><p>当叶子节点调整到高度0时候,则每个中间节点的高度与其两个子节点间的相异度大小成比例</p></li>
-<li><p>在合适的高度上对树进行切割得到聚类结果,上图的虚线切割成了7类</p></li>
+<li>
+<p>每个节点表示一个类</p>
+</li>
+<li>
+<p>每个叶子节点表示一个独点(只含一个样本点的类).</p>
+</li>
+<li>
+<p>根节点是包含了所有样本点的类</p>
+</li>
+<li>
+<p>每个中间节点有两个子节点,表示其通过合并这两个子类而来</p>
+</li>
+<li>
+<p>当叶子节点调整到高度0时候,则每个中间节点的高度与其两个子节点间的相异度大小成比例</p>
+</li>
+<li>
+<p>在合适的高度上对树进行切割得到聚类结果,上图的虚线切割成了7类</p>
+</li>
 </ul>
 <p><strong>[算法过程]</strong></p>
-<ol type="1">
+<ol>
 <li>输入所有样本点,每个点为一个类</li>
-<li>计算相异度(距离)矩阵(<span class="math inline">\(d_{ij}\)</span>)</li>
+<li>计算相异度(距离)矩阵($d_{ij}$)</li>
 <li>合并最小链接(linkage)的两个类</li>
 <li>计算新的类和其他所有类之间链接大小</li>
 <li>重复3-4,直至所有类合并为一个类或者满足停止条件</li>
 <li>输出树状图,切割树状图得到聚类结果</li>
 </ol>
-<p><strong>聚合聚类方法</strong>较分裂式聚类方法更<strong>常用,</strong>分裂方法由于<strong>难以指定合适分裂方法</strong>而不太常用.</p>
+<p><strong>聚合聚类方法</strong>较分裂式聚类方法更<strong>常用,<strong>分裂方法由于</strong>难以指定合适分裂方法</strong>而不太常用.</p>
 <p><strong>[类间联系程度度量]</strong></p>
 <p><strong>Single linkage单链法</strong></p>
 <blockquote>
 <p>两个簇中最小的两个点之间的距离。</p>
 </blockquote>
-<p>计算公式:<span class="math inline">\(D(I,J)=\min_{i\in I,j \in J} \{d_{ij}\}\)</span></p>
+<p>计算公式:$D(I,J)=\min_{i\in I,j \in J} {d_{ij}}$</p>
 <p>Single linkage 下的类有<strong>串链特点</strong>. 合并两个类时只看它们最近的点而不管其他点,聚出的类呈现<strong>链状.</strong> 因此适合于<strong>条形甚至S 形的类</strong>. 其聚类结果对相异度的单调变换不变.</p>
-<figure>
-<img src="image-20241203194647059.png" alt="image-20241203194647059" /><figcaption aria-hidden="true">image-20241203194647059</figcaption>
-</figure>
-<figure>
-<img src="image-20241203194912061.png" alt="image-20241203194912061" /><figcaption aria-hidden="true">image-20241203194912061</figcaption>
-</figure>
-<figure>
-<img src="image-20241203194938448.png" alt="image-20241203194938448" /><figcaption aria-hidden="true">image-20241203194938448</figcaption>
-</figure>
-<figure>
-<img src="image-20241203195002649.png" alt="image-20241203195002649" /><figcaption aria-hidden="true">image-20241203195002649</figcaption>
-</figure>
-<figure>
-<img src="image-20241203195412199.png" alt="image-20241203195412199" /><figcaption aria-hidden="true">image-20241203195412199</figcaption>
-</figure>
+<p><img src="image-20241203194647059.png" alt="image-20241203194647059"></p>
+<p><img src="image-20241203194912061.png" alt="image-20241203194912061"></p>
+<p><img src="image-20241203194938448.png" alt="image-20241203194938448"></p>
+<p><img src="image-20241203195002649.png" alt="image-20241203195002649"></p>
+<p><img src="image-20241203195412199.png" alt="image-20241203195412199"></p>
 <p><strong>[层次聚类法的特点]</strong></p>
-<figure>
-<img src="image-20241203195510120.png" alt="image-20241203195510120" /><figcaption aria-hidden="true">image-20241203195510120</figcaption>
-</figure>
+<p><img src="image-20241203195510120.png" alt="image-20241203195510120"></p>
 <h2 id="基于密度的聚类">基于密度的聚类</h2>
 <blockquote>
 <p>密度聚类也称为“基于密度的聚类” (density-based clustering)。指导思想是，只要样本点的密度大于某阈值，则将该样本添加到最近的簇中。</p>
@@ -1284,59 +1058,55 @@ data = (x_1,x_2,\cdots,x_n)
 </blockquote>
 <p>不依赖于距离，而是依赖于密度，从而克服基 于距离的算法只能发现“球形”聚簇的缺点。只要一个区域中点的密度大于某个阈值，就把它加到与之相近的聚类中去。</p>
 <p>如: DBScan,基于密度峰值算法</p>
-<figure>
-<img src="image-20241203191231428.png" alt="image-20241203191231428" /><figcaption aria-hidden="true">image-20241203191231428</figcaption>
-</figure>
-<h3 id="dbscan算法">DBSCAN算法</h3>
+<p><img src="image-20241203191231428.png" alt="image-20241203191231428"></p>
+<h3 id="DBSCAN算法">DBSCAN算法</h3>
 <blockquote>
 <p>核心思想：将簇定义为密度相连的点的最大集合，能够把具有高密度的区域划分为簇。</p>
 </blockquote>
-<figure>
-<img src="image-20241203200426746.png" alt="image-20241203200426746" /><figcaption aria-hidden="true">image-20241203200426746</figcaption>
-</figure>
-<figure>
-<img src="image-20241203200456844.png" alt="image-20241203200456844" /><figcaption aria-hidden="true">image-20241203200456844</figcaption>
-</figure>
-<figure>
-<img src="image-20241203200856012.png" alt="image-20241203200856012" /><figcaption aria-hidden="true">image-20241203200856012</figcaption>
-</figure>
+<p><img src="image-20241203200426746.png" alt="image-20241203200426746"></p>
+<p><img src="image-20241203200456844.png" alt="image-20241203200456844"></p>
+<p><img src="image-20241203200856012.png" alt="image-20241203200856012"></p>
 <p>密度直达、密度可达、密度相连的两个点属于同一个 聚类；非密度相连的两个点属于不同的聚类簇，或者 其中存在噪声点。</p>
-<figure>
-<img src="image-20241203201047295.png" alt="image-20241203201047295" /><figcaption aria-hidden="true">image-20241203201047295</figcaption>
-</figure>
+<p><img src="image-20241203201047295.png" alt="image-20241203201047295"></p>
 <p><strong>[算法步骤]</strong></p>
 <p>通过检查数据集中每个对象的ε 邻域来寻找聚类</p>
 <p>具体步骤如下：</p>
-<ol type="1">
-<li>如果一个点p 的<span class="math inline">\(\epsilon\)</span>邻域中大于m个对象，则创建一个p 为核心对象的新簇</li>
+<ol>
+<li>如果一个点p 的$\epsilon$邻域中大于m个对象，则创建一个p 为核心对象的新簇</li>
 <li>依据p 来反复寻找<strong>密度相连</strong>的集合（有可能合并原有已经生成的簇）</li>
 <li>当没有任何新的点可以被添加到簇中的时候，寻找结束。</li>
 </ol>
 <h2 id="基于模型的聚类">基于模型的聚类</h2>
 <p>给每一个聚类<strong>假定一个模型</strong>，然后去寻找能很好的拟合模型的数据集,模型可能是数据点在空间中的<strong>密度分布函数</strong>或者其它。 数据集是由一系列的潜在概率分布生成的。</p>
 <p>如:GMM,SOM,AP</p>
-<figure>
-<img src="image-20241203191355012.png" alt="image-20241203191355012" /><figcaption aria-hidden="true">image-20241203191355012</figcaption>
-</figure>
-<h3 id="吸引子传播算法ap聚类">吸引子传播算法(AP聚类)</h3>
+<p><img src="image-20241203191355012.png" alt="image-20241203191355012"></p>
+<h3 id="吸引子传播算法-AP聚类">吸引子传播算法(AP聚类)</h3>
 <blockquote>
 <p>吸引子传播(Affinity propagation)算法基本思想：通过在不同点之间不断的传递信息（吸引度(responsibility)和归属 度(availability) ），从而最终选出聚类中心，完成聚类。</p>
 </blockquote>
-<figure>
-<img src="image-20241203201429438.png" alt="image-20241203201429438" /><figcaption aria-hidden="true">image-20241203201429438</figcaption>
-</figure>
-<figure>
-<img src="image-20241203201448790.png" alt="image-20241203201448790" /><figcaption aria-hidden="true">image-20241203201448790</figcaption>
-</figure>
+<p><img src="image-20241203201429438.png" alt="image-20241203201429438"></p>
+<p><img src="image-20241203201448790.png" alt="image-20241203201448790"></p>
 <h3 id="基于网格的聚类">基于网格的聚类</h3>
 <p>将数据空间划分成有限个单元的网格结构，所有的处理都是以单个的单元为对象。</p>
 <p>如:STING,CLIQUE</p>
-<figure>
-<img src="image-20241203191435380.png" alt="image-20241203191435380" /><figcaption aria-hidden="true">image-20241203191435380</figcaption>
-</figure>
+<p><img src="image-20241203191435380.png" alt="image-20241203191435380"></p>
 <h1 id="降维">降维</h1>
 <h2 id="主成分分析法">主成分分析法</h2>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io">klklkl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/">https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://klklkl10086.github.io/klklkl10086.github.io" target="_blank">klklkl's blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="《计算机网络》复习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《计算机网络》复习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/02/cf/" title="题解--Codeforces Round 680 [C. Division]"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">题解--Codeforces Round 680 [C. Division]</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">klklkl</div><div class="author-info__description">student</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2488926297@qq.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Nice to meet you!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.1.</span> <span class="toc-text">人工智能&amp;机器学习&amp;深度学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">机器学习算法分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.1.</span> <span class="toc-text">有监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.2.</span> <span class="toc-text">半监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.3.</span> <span class="toc-text">无监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.4.</span> <span class="toc-text">自监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.5.</span> <span class="toc-text">强化学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">2.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%89%B9%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">线性模型特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A7%84%E8%8C%83%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">特征规范化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="toc-number">2.4.</span> <span class="toc-text">最小二乘法求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B"><span class="toc-number">2.4.1.</span> <span class="toc-text">求解过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-number">2.5.</span> <span class="toc-text">梯度下降法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%BA%94%E7%94%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-number">2.5.1.</span> <span class="toc-text">线性回归应用梯度下降法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E5%85%B6%E4%BB%96%E8%AE%A8%E8%AE%BA"><span class="toc-number">2.5.2.</span> <span class="toc-text">梯度下降法其他讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%B8%8E%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">2.5.3.</span> <span class="toc-text">学习率与梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E4%B8%8E%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B%E6%B3%95%E7%9A%84-%E6%AF%94%E8%BE%83"><span class="toc-number">2.5.4.</span> <span class="toc-text">梯度下降法与正规方程法的 比较：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A"><span class="toc-number">2.6.</span> <span class="toc-text">线性回归的概率解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">2.7.</span> <span class="toc-text">局部加权线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92"><span class="toc-number">2.8.</span> <span class="toc-text">非线性模型的多元回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AE%A8%E8%AE%BA"><span class="toc-number">2.9.</span> <span class="toc-text">其他讨论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%A6%BB%E7%BE%A4%E7%82%B9"><span class="toc-number">2.9.1.</span> <span class="toc-text">样本离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">2.9.2.</span> <span class="toc-text">欠拟合与过拟合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">3.</span> <span class="toc-text">逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%80%E5%8D%95%E4%BD%8D%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">函数一：单位阶跃函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E5%88%86%E7%B1%BB%E4%B8%8E%E8%BD%AF%E5%88%86%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">硬分类与软分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BA%8Csigmoid-%E5%87%BD%E6%95%B0logistic%E5%87%BD%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">函数二：Sigmoid 函数（Logistic函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#odds%E5%87%A0%E7%8E%87-%E5%87%A0%E7%8E%87%E6%AF%94"><span class="toc-number">3.4.</span> <span class="toc-text">Odds(几率 几率比)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.</span> <span class="toc-text">似然函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E4%B8%8E%E6%A6%82%E7%8E%87%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.5.1.</span> <span class="toc-text">似然与概率的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E4%B8%8E%E6%A6%82%E7%8E%87%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">3.5.2.</span> <span class="toc-text">似然与概率的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-number">3.6.</span> <span class="toc-text">最大似然估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%88%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">3.6.1.</span> <span class="toc-text">应用到逻辑回归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E5%AF%B9%E6%95%B0%E4%BC%BC%E7%84%B6%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95"><span class="toc-number">3.7.</span> <span class="toc-text">最大化对数似然目标函数求解方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">3.7.1.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AF%B9%E6%95%B0%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E5%A4%A7%E5%80%BC%E7%82%B9"><span class="toc-number">3.7.2.</span> <span class="toc-text">牛顿法求解对数似然函数的极大值点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">3.8.</span> <span class="toc-text">多分类问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95%E5%92%8C%E6%80%A7%E8%83%BD%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">3.9.</span> <span class="toc-text">模型评估方法和性能评价指标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">4.</span> <span class="toc-text">人工神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">人工神经元的形式化模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#m-p%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.1.</span> <span class="toc-text">M-P模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8A%A0%E6%9D%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.2.</span> <span class="toc-text">线性加权模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E8%B7%83%E9%98%88%E5%80%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.3.</span> <span class="toc-text">阶跃阈值模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%98%88%E5%80%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.4.</span> <span class="toc-text">逻辑阈值模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E7%A5%9E%E7%BB%8F%E5%85%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.5.</span> <span class="toc-text">广义神经元模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.1.6.</span> <span class="toc-text">神经元状态转移函数的类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%99"><span class="toc-number">4.2.</span> <span class="toc-text">感知器模型和学习规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">4.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8%E7%9A%84%E6%94%B6%E6%95%9B%E6%80%A7"><span class="toc-number">4.2.2.</span> <span class="toc-text">感知器的收敛性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E7%9A%84%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9"><span class="toc-number">4.2.3.</span> <span class="toc-text">收敛性的核心内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%BE%81%E8%83%BD%E5%8A%9B"><span class="toc-number">4.2.4.</span> <span class="toc-text">表征能力</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C%E4%B8%8Ebp%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.</span> <span class="toc-text">多层前馈网络与BP学习算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bp%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95backpropagation-learning-algorithm"><span class="toc-number">4.4.</span> <span class="toc-text">BP学习算法（Backpropagation Learning Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">4.4.1.</span> <span class="toc-text">1. 反向传播算法的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E5%89%8D%E4%BC%A0%E6%92%ADforward-propagation"><span class="toc-number">4.4.1.1.</span> <span class="toc-text">1.1 向前传播（Forward Propagation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%8D%9F%E5%A4%B1loss-calculation"><span class="toc-number">4.4.1.2.</span> <span class="toc-text">1.2 计算损失（Loss Calculation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%ADbackpropagation"><span class="toc-number">4.4.1.3.</span> <span class="toc-text">1.3 反向传播（Backpropagation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0parameter-update"><span class="toc-number">4.4.1.4.</span> <span class="toc-text">1.4 参数更新（Parameter Update）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E8%BF%AD%E4%BB%A3"><span class="toc-number">4.4.1.5.</span> <span class="toc-text">1.5 重复迭代</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E6%8A%80%E5%B7%A7"><span class="toc-number">4.5.</span> <span class="toc-text">神经网络训练技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86bp%E7%AE%97%E6%B3%95"><span class="toc-number">4.5.1.</span> <span class="toc-text">批处理BP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-number">4.5.2.</span> <span class="toc-text">动态学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E9%87%8F%E9%A1%B9"><span class="toc-number">4.5.3.</span> <span class="toc-text">动量项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dropout"><span class="toc-number">4.5.4.</span> <span class="toc-text">Dropout</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0%E4%B8%8E%E8%87%AA%E7%BB%84%E7%BB%87%E7%89%B9%E5%BE%81%E6%98%A0%E5%B0%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">径向基函数与自组织特征映射神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.</span> <span class="toc-text">径向基函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0"><span class="toc-number">5.1.1.</span> <span class="toc-text">常见的径向基函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.2.</span> <span class="toc-text">径向基神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rbf%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%BB%8F%E5%85%B8%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.2.1.</span> <span class="toc-text">RBF网络与经典神经网络的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.3.</span> <span class="toc-text">完全径向基神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.4.</span> <span class="toc-text">广义径向基神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8%E6%AF%94%E8%BE%83"><span class="toc-number">5.5.</span> <span class="toc-text">广义径向基神经网络与多层感知器比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rbfn%E7%94%A8%E4%BA%8E%E5%88%86%E7%B1%BB"><span class="toc-number">5.6.</span> <span class="toc-text">RBFN用于分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%BB%84%E7%BB%87%E7%89%B9%E5%BE%81%E6%98%A0%E5%B0%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.7.</span> <span class="toc-text">自组织特征映射神经网络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">6.</span> <span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">6.1.</span> <span class="toc-text">理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">6.2.</span> <span class="toc-text">线性可分支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%9A%84%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-number">6.3.</span> <span class="toc-text">支持向量机的优化算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E6%9E%84%E9%80%A0%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%87%BD%E6%95%B0"><span class="toc-number">6.3.1.</span> <span class="toc-text">第一步：构造拉格朗日函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E5%88%A9%E7%94%A8%E5%BC%BA%E5%AF%B9%E5%81%B6%E6%80%A7kkt%E6%9D%A1%E4%BB%B6%E5%B0%86%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E8%BF%9B%E8%A1%8C%E8%BD%AC%E5%8C%96"><span class="toc-number">6.3.2.</span> <span class="toc-text">第二步：利用强对偶性(KKT条件)将优化问题进行转化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">6.4.</span> <span class="toc-text">线性支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">6.5.</span> <span class="toc-text">非线性支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E9%97%AE%E9%A2%98"><span class="toc-number">6.6.</span> <span class="toc-text">回归问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB"><span class="toc-number">7.</span> <span class="toc-text">聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%BA%A6%E9%87%8F"><span class="toc-number">7.1.</span> <span class="toc-text">数据间的距离&#x2F;相似度度量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">7.2.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%88%92%E5%88%86%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">7.3.</span> <span class="toc-text">基于划分的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#k-means%E7%AE%97%E6%B3%95"><span class="toc-number">7.3.1.</span> <span class="toc-text">K-means算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%B1%82%E6%AC%A1%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">7.4.</span> <span class="toc-text">基于层次的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E6%B3%95"><span class="toc-number">7.4.1.</span> <span class="toc-text">层次聚类法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%86%E5%BA%A6%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">7.5.</span> <span class="toc-text">基于密度的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dbscan%E7%AE%97%E6%B3%95"><span class="toc-number">7.5.1.</span> <span class="toc-text">DBSCAN算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">7.6.</span> <span class="toc-text">基于模型的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%B8%E5%BC%95%E5%AD%90%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95ap%E8%81%9A%E7%B1%BB"><span class="toc-number">7.6.1.</span> <span class="toc-text">吸引子传播算法(AP聚类)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BD%91%E6%A0%BC%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">7.6.2.</span> <span class="toc-text">基于网格的聚类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%8D%E7%BB%B4"><span class="toc-number">8.</span> <span class="toc-text">降维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">8.1.</span> <span class="toc-text">主成分分析法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E4%BB%8E0%E5%AE%9E%E7%8E%B0LLM/" title="从0实现Transformer">从0实现Transformer</a><time datetime="2025-12-07T13:07:22.000Z" title="发表于 2025-12-07 21:07:22">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/27/pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/" title="Pytorch深度学习实践">Pytorch深度学习实践</a><time datetime="2025-11-27T14:15:20.000Z" title="发表于 2025-11-27 22:15:20">2025-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/18/cuda%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" title="cuda编程入门">cuda编程入门</a><time datetime="2025-11-18T12:46:44.000Z" title="发表于 2025-11-18 20:46:44">2025-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/01/java%E5%9F%BA%E7%A1%80/" title="javaSE">javaSE</a><time datetime="2025-10-01T14:43:52.000Z" title="发表于 2025-10-01 22:43:52">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="c++11--thread库介绍">c++11--thread库介绍</a><time datetime="2025-10-01T06:51:33.000Z" title="发表于 2025-10-01 14:51:33">2025-10-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/80/v2-908b61a41ec4bebe17a04468dcf5d834_720w.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By klklkl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io">klklkl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/">https://klklkl10086.github.io/klklkl10086.github.io/2024/11/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://klklkl10086.github.io/klklkl10086.github.io" target="_blank">klklkl's blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Machine-Learning/">Machine Learning</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="《计算机网络》复习笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《计算机网络》复习笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/02/cf/" title="题解--Codeforces Round 680 [C. Division]"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">题解--Codeforces Round 680 [C. Division]</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">klklkl</div><div class="author-info__description">student</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2488926297@qq.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Nice to meet you!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.1.</span> <span class="toc-text">人工智能&amp;机器学习&amp;深度学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">机器学习算法分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.1.</span> <span class="toc-text">有监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.2.</span> <span class="toc-text">半监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.3.</span> <span class="toc-text">无监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.4.</span> <span class="toc-text">自监督学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.5.</span> <span class="toc-text">强化学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">2.</span> <span class="toc-text">线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%89%B9%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">线性模型特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E8%A7%84%E8%8C%83%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">特征规范化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="toc-number">2.4.</span> <span class="toc-text">最小二乘法求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B"><span class="toc-number">2.4.1.</span> <span class="toc-text">求解过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E5%85%88%E5%B0%86-J-theta-%E5%86%99%E6%88%90%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E7%9A%84%E5%BD%A2%E5%BC%8F-%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A-h-theta-x-i-theta-0-theta-1x-1-i-%E2%80%A6-theta-nx-n-i-theta-T-x-i-x-i-T-theta-X-%E6%98%AF-m-times-n-1-%E7%9F%A9%E9%98%B5%EF%BC%8C-m-%E4%B8%AA%E6%A0%B7%E6%9C%AC%EF%BC%8C-n-%E4%B8%AA%E7%89%B9%E5%BE%81-%E4%B8%8A%E6%A0%87%E8%A1%A8%E7%A4%BA%E6%A0%B7%E6%9C%AC%EF%BC%8C%E4%B8%8B%E6%A0%87%E8%A1%A8%E7%A4%BA%E7%89%B9%E5%BE%81-%EF%BC%88%E5%85%B6%E5%AE%9E%E6%98%AF%E7%94%B1%E6%A0%B7%E6%9C%AC%E7%9F%A9%E9%98%B5%E5%A2%9E%E5%B9%BF%E8%80%8C%E6%9D%A5%EF%BC%89-X-left-matrix-x-1-T-x-2-T-vdots-x-m-T-right"><span class="toc-number">3.</span> <span class="toc-text">我们先将$J(\theta)$写成矩阵运算的形式,步骤如下：
+$$
+h_\theta(x^{(i)})&#x3D;\theta_0+\theta_1x_1^{(i)}+…+\theta_nx_n^{(i)} &#x3D;\theta^{T}x^{(i)}&#x3D;(x^{(i)})^T\theta
+$$
+$X$是$m\times(n+1)$矩阵，$m$个样本，$n$个特征  (上标表示样本，下标表示特征)（其实是由样本矩阵增广而来）
+$$
+X&#x3D;
+\left[
+\matrix{
+(x^{(1)})^T \
+(x^{(2)})^T \
+\vdots      \
+(x^{(m)})^T
+}
+\right]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">梯度下降法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%BA%94%E7%94%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">线性回归应用梯度下降法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E5%85%B6%E4%BB%96%E8%AE%A8%E8%AE%BA"><span class="toc-number">3.1.2.</span> <span class="toc-text">梯度下降法其他讨论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%B8%8E%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">3.1.3.</span> <span class="toc-text">学习率与梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E4%B8%8E%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B%E6%B3%95%E7%9A%84-%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="toc-number">3.1.4.</span> <span class="toc-text">梯度下降法与正规方程法的 比较：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A"><span class="toc-number">3.2.</span> <span class="toc-text">线性回归的概率解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">3.3.</span> <span class="toc-text">局部加权线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%A4%9A%E5%85%83%E5%9B%9E%E5%BD%92"><span class="toc-number">3.4.</span> <span class="toc-text">非线性模型的多元回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%AE%A8%E8%AE%BA"><span class="toc-number">3.5.</span> <span class="toc-text">其他讨论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E7%A6%BB%E7%BE%A4%E7%82%B9"><span class="toc-number">3.5.1.</span> <span class="toc-text">样本离群点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A0%E6%8B%9F%E5%90%88%E4%B8%8E%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">3.5.2.</span> <span class="toc-text">欠拟合与过拟合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">4.</span> <span class="toc-text">逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%80%EF%BC%9A%E5%8D%95%E4%BD%8D%E9%98%B6%E8%B7%83%E5%87%BD%E6%95%B0"><span class="toc-number">4.1.</span> <span class="toc-text">函数一：单位阶跃函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E5%88%86%E7%B1%BB%E4%B8%8E%E8%BD%AF%E5%88%86%E7%B1%BB"><span class="toc-number">4.2.</span> <span class="toc-text">硬分类与软分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BA%8C%EF%BC%9ASigmoid-%E5%87%BD%E6%95%B0%EF%BC%88Logistic%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">函数二：Sigmoid 函数（Logistic函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Odds-%E5%87%A0%E7%8E%87-%E5%87%A0%E7%8E%87%E6%AF%94"><span class="toc-number">4.4.</span> <span class="toc-text">Odds(几率 几率比)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="toc-number">4.5.</span> <span class="toc-text">似然函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E4%B8%8E%E6%A6%82%E7%8E%87%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.5.1.</span> <span class="toc-text">似然与概率的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%BC%E7%84%B6%E4%B8%8E%E6%A6%82%E7%8E%87%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">4.5.2.</span> <span class="toc-text">似然与概率的联系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="toc-number">4.6.</span> <span class="toc-text">最大似然估计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%88%B0%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-number">4.6.1.</span> <span class="toc-text">应用到逻辑回归</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%8C%96%E5%AF%B9%E6%95%B0%E4%BC%BC%E7%84%B6%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95"><span class="toc-number">4.7.</span> <span class="toc-text">最大化对数似然目标函数求解方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-number">4.7.1.</span> <span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%B3%95%E6%B1%82%E8%A7%A3%E5%AF%B9%E6%95%B0%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0%E7%9A%84%E6%9E%81%E5%A4%A7%E5%80%BC%E7%82%B9"><span class="toc-number">4.7.2.</span> <span class="toc-text">牛顿法求解对数似然函数的极大值点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">4.8.</span> <span class="toc-text">多分类问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95%E5%92%8C%E6%80%A7%E8%83%BD%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">4.9.</span> <span class="toc-text">模型评估方法和性能评价指标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">人工神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.</span> <span class="toc-text">人工神经元的形式化模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#M-P%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.1.</span> <span class="toc-text">M-P模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8A%A0%E6%9D%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.2.</span> <span class="toc-text">线性加权模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E8%B7%83%E9%98%88%E5%80%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.3.</span> <span class="toc-text">阶跃阈值模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%98%88%E5%80%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.4.</span> <span class="toc-text">逻辑阈值模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E7%A5%9E%E7%BB%8F%E5%85%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.1.5.</span> <span class="toc-text">广义神经元模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E5%85%83%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.1.6.</span> <span class="toc-text">神经元状态转移函数的类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%AD%A6%E4%B9%A0%E8%A7%84%E5%88%99"><span class="toc-number">5.2.</span> <span class="toc-text">感知器模型和学习规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">5.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8%E7%9A%84%E6%94%B6%E6%95%9B%E6%80%A7"><span class="toc-number">5.2.2.</span> <span class="toc-text">感知器的收敛性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E7%9A%84%E6%A0%B8%E5%BF%83%E5%86%85%E5%AE%B9"><span class="toc-number">5.2.3.</span> <span class="toc-text">收敛性的核心内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%BE%81%E8%83%BD%E5%8A%9B"><span class="toc-number">5.2.4.</span> <span class="toc-text">表征能力</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%B1%82%E5%89%8D%E9%A6%88%E7%BD%91%E7%BB%9C%E4%B8%8EBP%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95"><span class="toc-number">5.3.</span> <span class="toc-text">多层前馈网络与BP学习算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BP%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%EF%BC%88Backpropagation-Learning-Algorithm%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">BP学习算法（Backpropagation Learning Algorithm）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">5.4.1.</span> <span class="toc-text">1. 反向传播算法的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%90%91%E5%89%8D%E4%BC%A0%E6%92%AD%EF%BC%88Forward-Propagation%EF%BC%89"><span class="toc-number">5.4.1.1.</span> <span class="toc-text">1.1 向前传播（Forward Propagation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E8%AE%A1%E7%AE%97%E6%8D%9F%E5%A4%B1%EF%BC%88Loss-Calculation%EF%BC%89"><span class="toc-number">5.4.1.2.</span> <span class="toc-text">1.2 计算损失（Loss Calculation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%88Backpropagation%EF%BC%89"><span class="toc-number">5.4.1.3.</span> <span class="toc-text">1.3 反向传播（Backpropagation）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0%EF%BC%88Parameter-Update%EF%BC%89"><span class="toc-number">5.4.1.4.</span> <span class="toc-text">1.4 参数更新（Parameter Update）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-%E9%87%8D%E5%A4%8D%E8%BF%AD%E4%BB%A3"><span class="toc-number">5.4.1.5.</span> <span class="toc-text">1.5 重复迭代</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E6%8A%80%E5%B7%A7"><span class="toc-number">5.5.</span> <span class="toc-text">神经网络训练技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86BP%E7%AE%97%E6%B3%95"><span class="toc-number">5.5.1.</span> <span class="toc-text">批处理BP算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-number">5.5.2.</span> <span class="toc-text">动态学习率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E9%87%8F%E9%A1%B9"><span class="toc-number">5.5.3.</span> <span class="toc-text">动量项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dropout"><span class="toc-number">5.5.4.</span> <span class="toc-text">Dropout</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0%E4%B8%8E%E8%87%AA%E7%BB%84%E7%BB%87%E7%89%B9%E5%BE%81%E6%98%A0%E5%B0%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.</span> <span class="toc-text">径向基函数与自组织特征映射神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.</span> <span class="toc-text">径向基函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BE%84%E5%90%91%E5%9F%BA%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.1.</span> <span class="toc-text">常见的径向基函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.2.</span> <span class="toc-text">径向基神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RBF%E7%BD%91%E7%BB%9C%E4%B8%8E%E7%BB%8F%E5%85%B8%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.2.1.</span> <span class="toc-text">RBF网络与经典神经网络的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.3.</span> <span class="toc-text">完全径向基神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.4.</span> <span class="toc-text">广义径向基神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E5%BE%84%E5%90%91%E5%9F%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8%E6%AF%94%E8%BE%83"><span class="toc-number">6.5.</span> <span class="toc-text">广义径向基神经网络与多层感知器比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RBFN%E7%94%A8%E4%BA%8E%E5%88%86%E7%B1%BB"><span class="toc-number">6.6.</span> <span class="toc-text">RBFN用于分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%BB%84%E7%BB%87%E7%89%B9%E5%BE%81%E6%98%A0%E5%B0%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.7.</span> <span class="toc-text">自组织特征映射神经网络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">7.</span> <span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">7.1.</span> <span class="toc-text">理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">7.2.</span> <span class="toc-text">线性可分支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%9A%84%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-number">7.3.</span> <span class="toc-text">支持向量机的优化算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%9E%84%E9%80%A0%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%87%BD%E6%95%B0"><span class="toc-number">7.3.1.</span> <span class="toc-text">第一步：构造拉格朗日函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%88%A9%E7%94%A8%E5%BC%BA%E5%AF%B9%E5%81%B6%E6%80%A7-KKT%E6%9D%A1%E4%BB%B6-%E5%B0%86%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E8%BF%9B%E8%A1%8C%E8%BD%AC%E5%8C%96"><span class="toc-number">7.3.2.</span> <span class="toc-text">第二步：利用强对偶性(KKT条件)将优化问题进行转化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">7.4.</span> <span class="toc-text">线性支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-number">7.5.</span> <span class="toc-text">非线性支持向量机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E9%97%AE%E9%A2%98"><span class="toc-number">7.6.</span> <span class="toc-text">回归问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB-%E7%9B%B8%E4%BC%BC%E5%BA%A6%E5%BA%A6%E9%87%8F"><span class="toc-number">8.1.</span> <span class="toc-text">数据间的距离&#x2F;相似度度量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.2.</span> <span class="toc-text">类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%88%92%E5%88%86%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">8.3.</span> <span class="toc-text">基于划分的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#K-means%E7%AE%97%E6%B3%95"><span class="toc-number">8.3.1.</span> <span class="toc-text">K-means算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%B1%82%E6%AC%A1%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">8.4.</span> <span class="toc-text">基于层次的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB%E6%B3%95"><span class="toc-number">8.4.1.</span> <span class="toc-text">层次聚类法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%86%E5%BA%A6%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">8.5.</span> <span class="toc-text">基于密度的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DBSCAN%E7%AE%97%E6%B3%95"><span class="toc-number">8.5.1.</span> <span class="toc-text">DBSCAN算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">8.6.</span> <span class="toc-text">基于模型的聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%B8%E5%BC%95%E5%AD%90%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95-AP%E8%81%9A%E7%B1%BB"><span class="toc-number">8.6.1.</span> <span class="toc-text">吸引子传播算法(AP聚类)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BD%91%E6%A0%BC%E7%9A%84%E8%81%9A%E7%B1%BB"><span class="toc-number">8.6.2.</span> <span class="toc-text">基于网格的聚类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%8D%E7%BB%B4"><span class="toc-number">9.</span> <span class="toc-text">降维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">9.1.</span> <span class="toc-text">主成分分析法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E4%BB%8E0%E5%AE%9E%E7%8E%B0LLM/" title="从0实现Transformer">从0实现Transformer</a><time datetime="2025-12-07T13:07:22.000Z" title="发表于 2025-12-07 21:07:22">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/27/pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/" title="Pytorch深度学习实践">Pytorch深度学习实践</a><time datetime="2025-11-27T14:15:20.000Z" title="发表于 2025-11-27 22:15:20">2025-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/18/cuda%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" title="cuda编程入门">cuda编程入门</a><time datetime="2025-11-18T12:46:44.000Z" title="发表于 2025-11-18 20:46:44">2025-11-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/01/java%E5%9F%BA%E7%A1%80/" title="javaSE">javaSE</a><time datetime="2025-10-01T14:43:52.000Z" title="发表于 2025-10-01 22:43:52">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="c++11--thread库介绍">c++11--thread库介绍</a><time datetime="2025-10-01T06:51:33.000Z" title="发表于 2025-10-01 14:51:33">2025-10-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/80/v2-908b61a41ec4bebe17a04468dcf5d834_720w.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By klklkl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
