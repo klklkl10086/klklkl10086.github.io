@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译原理复习笔记 | klklkl's blogs</title><meta name="author" content="klklkl"><meta name="copyright" content="klklkl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="大题题型: 词法分析:  DFA化简 NFA-&gt;DFA 正则表达式&lt;---&gt;自动机  编译原理复习笔记  image-20250513134720348  绪论 编译程序也叫编译器，是一种具有翻译功能的程序，其作用是将某种高级语言编写的程序翻译成语义等价的低级语言程序。  image-20250513135934992  解释程序： 其作用是将源程">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译原理复习笔记 | klklkl's blogs</title><meta name="author" content="klklkl"><meta name="copyright" content="klklkl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="大题题型: 词法分析:  DFA化简 NFA-&gt;DFA 正则表达式&lt;—&gt;自动机  编译原理复习笔记  绪论 编译程序也叫编译器，是一种具有翻译功能的程序，其作用是将某种高级语言编写的程序翻译成语义等价的低级语言程序。  解释程序： 其作用是将源程序逐条语句地翻译成目标指令序列，并且是边翻译边执行，当翻译完成时，目标程序的执行也随之完成。可见，解释程序不会生成目标程序。 转换方式：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译原理复习笔记">
 <meta property="og:url" content="https://klklkl10086.github.io/klklkl10086.github.io/2025/05/13/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="klklkl&#39;s blogs">
-<meta property="og:description" content="大题题型: 词法分析:  DFA化简 NFA-&gt;DFA 正则表达式&lt;---&gt;自动机  编译原理复习笔记  image-20250513134720348  绪论 编译程序也叫编译器，是一种具有翻译功能的程序，其作用是将某种高级语言编写的程序翻译成语义等价的低级语言程序。  image-20250513135934992  解释程序： 其作用是将源程">
+<meta property="og:description" content="大题题型: 词法分析:  DFA化简 NFA-&gt;DFA 正则表达式&lt;—&gt;自动机  编译原理复习笔记  绪论 编译程序也叫编译器，是一种具有翻译功能的程序，其作用是将某种高级语言编写的程序翻译成语义等价的低级语言程序。  解释程序： 其作用是将源程序逐条语句地翻译成目标指令序列，并且是边翻译边执行，当翻译完成时，目标程序的执行也随之完成。可见，解释程序不会生成目标程序。 转换方式：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg">
 <meta property="article:published_time" content="2025-05-13T05:45:42.000Z">
@@ -168,89 +168,71 @@
 <ul>
 <li>DFA化简</li>
 <li>NFA-&gt;DFA</li>
-<li>正则表达式&lt;---&gt;自动机</li>
+<li>正则表达式&lt;—&gt;自动机</li>
 </ul>
 <h1 id="编译原理复习笔记">编译原理复习笔记</h1>
-<figure>
-<img src="image-20250513134720348.png" alt="image-20250513134720348" /><figcaption aria-hidden="true">image-20250513134720348</figcaption>
-</figure>
+<p><img src="image-20250513134720348.png" alt="image-20250513134720348"></p>
 <h2 id="绪论">绪论</h2>
 <p><strong>编译程序</strong>也叫编译器，是一种具有翻译功能的程序，其作用是将某种高级语言编写的程序翻译成语义等价的低级语言程序。</p>
-<figure>
-<img src="image-20250513135934992.png" alt="image-20250513135934992" /><figcaption aria-hidden="true">image-20250513135934992</figcaption>
-</figure>
+<p><img src="image-20250513135934992.png" alt="image-20250513135934992"></p>
 <p><strong>解释程序：</strong> 其作用是将源程序<strong>逐条语句地</strong>翻译成<strong>目标指令序列</strong>，并且是<strong>边翻译边执行</strong>，当翻译完成时，目标程序的执行也随之完成。可见，<strong>解释程序不会生成目标程序</strong>。</p>
 <p><strong>转换方式：</strong> 编译程序的开发代价是很昂贵的。 在<u>已有A语言的编译程序的前提下</u>，若想为B语言开发编译程序，可首先考虑能否利用A语言的编译程序。即首先将B语言程序转换成等价的A语言程序，然后再利用A语言的编译程序将其翻译成目标程序。</p>
-<figure>
-<img src="image-20250513140318774.png" alt="image-20250513140318774" /><figcaption aria-hidden="true">image-20250513140318774</figcaption>
-</figure>
+<p><img src="image-20250513140318774.png" alt="image-20250513140318774"></p>
 <p>高级语言的翻译程序称为编译程序(Compiler)或解释程序(Interpreter)，对应的实现方式分别为编译方式或解释方式。偶尔还会采用转换方式。</p>
-<figure>
-<img src="image-20250513140144243.png" alt="image-20250513140144243" /><figcaption aria-hidden="true">image-20250513140144243</figcaption>
-</figure>
+<p><img src="image-20250513140144243.png" alt="image-20250513140144243"></p>
 <h3 id="编译程序的逻辑结构">编译程序的逻辑结构</h3>
-<figure>
-<img src="image-20250513140412414.png" alt="image-20250513140412414" /><figcaption aria-hidden="true">image-20250513140412414</figcaption>
-</figure>
+<p><img src="image-20250513140412414.png" alt="image-20250513140412414"></p>
 <blockquote>
 <p><strong>词法分析</strong>：<strong>识别</strong>由字符组成的<strong>高级语言程序中的单词</strong>，并将其转化成一种内部表示（Token）的形式，同时检查是否存在<strong>词法错误。</strong></p>
 </blockquote>
-<figure>
-<img src="image-20250513140919335.png" alt="image-20250513140919335" /><figcaption aria-hidden="true">image-20250513140919335</figcaption>
-</figure>
+<p><img src="image-20250513140919335.png" alt="image-20250513140919335"></p>
 <blockquote>
 <p><strong>语法分析</strong>：根据语言定义的<strong>语法规则</strong>来检验程序中<strong>是否存在语法错误</strong>。</p>
 </blockquote>
-<figure>
-<img src="image-20250513141041210.png" alt="image-20250513141041210" /><figcaption aria-hidden="true">image-20250513141041210</figcaption>
-</figure>
+<p><img src="image-20250513141041210.png" alt="image-20250513141041210"></p>
 <blockquote>
 <p><strong>语义分析</strong>：检查源程序有无语义错误，为代码生成阶段收集类型信息。</p>
 </blockquote>
-<figure>
-<img src="image-20250513141136272.png" alt="image-20250513141136272" /><figcaption aria-hidden="true">image-20250513141136272</figcaption>
-</figure>
+<p><img src="image-20250513141136272.png" alt="image-20250513141136272"></p>
 <blockquote>
 <p><strong>中间代码生成</strong>： 将<strong>源程序</strong>转换成一种称为中间代码的内部表示形式，<strong>便于优化和移植。</strong></p>
 <p>不是编译程序的必经阶段！<strong>不考虑优化和移植时</strong>，可以不生成中间代码直接生成目标代码</p>
 </blockquote>
-<figure>
-<img src="image-20250513141223712.png" alt="image-20250513141223712" /><figcaption aria-hidden="true">image-20250513141223712</figcaption>
-</figure>
+<p><img src="image-20250513141223712.png" alt="image-20250513141223712"></p>
 <blockquote>
-<p><strong>中间代码优化：变换或改造中间代码，使生成的目标代码更为高效，即节省时间和空间。</strong>和<strong>程序算法的高效无关</strong>，更多的是<strong>针对于程序具体运行时的内部优化</strong>，尤其针对有特殊要求的编译器。</p>
+<p><strong>中间代码优化：变换或改造中间代码，使生成的目标代码更为高效，即节省时间和空间。<strong>和</strong>程序算法的高效无关</strong>，更多的是<strong>针对于程序具体运行时的内部优化</strong>，尤其针对有特殊要求的编译器。</p>
 <p>不是编译程序的必经阶段，当对目标代码的运行效率要求较高时，才考虑进行中间代码的优化，优化要付出代价，优化时要考虑性价比。</p>
 </blockquote>
-<figure>
-<img src="image-20250513141341634.png" alt="image-20250513141341634" /><figcaption aria-hidden="true">image-20250513141341634</figcaption>
-</figure>
+<p><img src="image-20250513141341634.png" alt="image-20250513141341634"></p>
 <blockquote>
-<p><strong>目标代码生成：</strong>将<strong>中间代码变换为特定机器上的机器指令代码</strong>或<strong>汇编指令代码</strong>。</p>
+<p><strong>目标代码生成：<strong>将</strong>中间代码变换为特定机器上的机器指令代码</strong>或<strong>汇编指令代码</strong>。</p>
 </blockquote>
-<figure>
-<img src="image-20250513141417130.png" alt="image-20250513141417130" /><figcaption aria-hidden="true">image-20250513141417130</figcaption>
-</figure>
+<p><img src="image-20250513141417130.png" alt="image-20250513141417130"></p>
 <blockquote>
 <p>此外，编译过程还有两部分工作贯穿始终：</p>
 <p><strong>错误处理</strong>：当编译阶段有错误出现时，由<strong>相应的错误处理模块</strong>给出解决方案，使得编译器能够继续进行下去。</p>
-<p><strong>表格管理：</strong>为了合理的管理（构造、查找、更新……）表格（符号表、类型信息表……），<strong>设立一些专门子程序称为表格管理程序。</strong></p>
+<p>**表格管理：**为了合理的管理（构造、查找、更新……）表格（符号表、类型信息表……），<strong>设立一些专门子程序称为表格管理程序。</strong></p>
 </blockquote>
-<figure>
-<img src="image-20250513141520236.png" alt="image-20250513141520236" /><figcaption aria-hidden="true">image-20250513141520236</figcaption>
-</figure>
+<p><img src="image-20250513141520236.png" alt="image-20250513141520236"></p>
 <h3 id="编译程序的开发">编译程序的开发</h3>
-<ol type="1">
-<li><p>用机器语言编写编译程序</p></li>
-<li><p>自展法</p>
-<figure>
-<img src="image-20250513141722453.png" alt="image-20250513141722453" /><figcaption aria-hidden="true">image-20250513141722453</figcaption>
-</figure></li>
-<li><p>移植法</p>
-<figure>
-<img src="image-20250513141739991.png" alt="image-20250513141739991" /><figcaption aria-hidden="true">image-20250513141739991</figcaption>
-</figure></li>
-<li><p>转换法(预处理法):C++</p></li>
-<li><p>自动生成(工具法):利用Flex, Yacc,LLGen, Bison等工具自动生成词法分析器、语法分析器，从而减少编译程序开发的工作量</p></li>
+<ol>
+<li>
+<p>用机器语言编写编译程序</p>
+</li>
+<li>
+<p>自展法</p>
+<p><img src="image-20250513141722453.png" alt="image-20250513141722453"></p>
+</li>
+<li>
+<p>移植法</p>
+<p><img src="image-20250513141739991.png" alt="image-20250513141739991"></p>
+</li>
+<li>
+<p>转换法(预处理法):C++</p>
+</li>
+<li>
+<p>自动生成(工具法):利用Flex, Yacc,LLGen, Bison等工具自动生成词法分析器、语法分析器，从而减少编译程序开发的工作量</p>
+</li>
 </ol>
 <h4 id="编译程序的分遍">编译程序的分遍</h4>
 <blockquote>
@@ -261,202 +243,149 @@
 <blockquote>
 <p>词法分析程序,是编译程序的一部分，是整个编译过程的第一步工作。</p>
 </blockquote>
-<p><strong>作用: </strong> 分离单词---&gt;生成Token------&gt;检查词法错误</p>
-<ol type="1">
+<p>**作用: ** 分离单词—&gt;生成Token------&gt;检查词法错误</p>
+<ol>
 <li>扫描源程序的字符序列</li>
 <li>按照源语言的<strong>词法规则识别出各类单词</strong></li>
 <li>产生用于<strong>语法分析的Token序列</strong></li>
 <li><strong>词法错误检查</strong></li>
 </ol>
 <p><strong>单词</strong>： 是具有独立含义的最小的语义单位.（抽象的）</p>
-<p><strong>Token</strong>: 单词的具体表示（具体的--数据结构）</p>
+<p><strong>Token</strong>: 单词的具体表示（具体的–数据结构）</p>
 <ul>
 <li>Token中应包含的信息没有统一的规定，可有不同的设计</li>
 <li>通常包含两类信息&lt;单词类别，单词内容&gt; 或者&lt;行号，单词类别，单词内容&gt;</li>
 </ul>
-<figure>
-<img src="image-20250513143223927.png" alt="image-20250513143223927" /><figcaption aria-hidden="true">image-20250513143223927</figcaption>
-</figure>
+<p><img src="image-20250513143223927.png" alt="image-20250513143223927"></p>
 <h3 id="工作过程">工作过程</h3>
 <p>在词法分析之前，编译器要进行编译预处理工作：宏替换，文件包含，条件编译</p>
-<figure>
-<img src="image-20250513143316944.png" alt="image-20250513143316944" /><figcaption aria-hidden="true">image-20250513143316944</figcaption>
-</figure>
+<p><img src="image-20250513143316944.png" alt="image-20250513143316944"></p>
 <h3 id="单词类型">单词类型</h3>
-<figure>
-<img src="image-20250513143344232.png" alt="image-20250513143344232" /><figcaption aria-hidden="true">image-20250513143344232</figcaption>
-</figure>
+<p><img src="image-20250513143344232.png" alt="image-20250513143344232"></p>
 <p><strong>保留字</strong>： 保留字一般是由语言系统自身定义的,通常是由字母组成的字符串。如C语言中的int, if, for, do等等。保留字在语言中具有特定的意义，是<strong>编译程序识别各类语法成分的依据</strong> 。</p>
 <p><strong>标识符</strong>： 用来标识程序中<strong>各个对象的名称</strong>.通常它们<strong>由用户定义</strong>，用来表示<strong>变量名、常量名、数组名、函数名和结构体域名等</strong>。</p>
 <p><strong>常量：</strong> 主要包括整型常量、实型常量、字符常量、字符串常量、布尔类型常量等。</p>
 <p><strong>特殊符号</strong>： 包括运算符、界限符和控制符（格式符）。</p>
-<figure>
-<img src="image-20250513143943479.png" alt="image-20250513143943479" /><figcaption aria-hidden="true">image-20250513143943479</figcaption>
-</figure>
+<p><img src="image-20250513143943479.png" alt="image-20250513143943479"></p>
 <h3 id="单词的描述与识别">单词的描述与识别</h3>
 <ul>
 <li>正则表达式（描述单词）</li>
-<li>自动机 （识别、描述单词）</li>
+<li>自动机  （识别、描述单词）</li>
 </ul>
 <h3 id="正则表达式">正则表达式</h3>
 <h4 id="基本概念">基本概念</h4>
 <ul>
-<li>字母表：字母表是元素的<strong>非空有穷集合</strong>,字母表中的<strong>一个元素</strong>称为该字母表的一个<strong>字母</strong>（letter） ,也可叫做符号（symbol）或者字符(character)。
+<li>
+<p>字母表：字母表是元素的<strong>非空有穷集合</strong>,字母表中的<strong>一个元素</strong>称为该字母表的一个<strong>字母</strong>（letter） ,也可叫做符号（symbol）或者字符(character)。</p>
 <ul>
-<li>字母表有时也称为符号表,通常用∑ 表示。<br />
+<li>字母表有时也称为符号表,通常用∑ 表示。</li>
+<li><img src="image-20250513144608593.png" alt="image-20250513144608593"></li>
+</ul>
 </li>
-<li><img src="image-20250513144608593.png" title="fig:" alt="image-20250513144608593" /></li>
-</ul></li>
-<li>符号串:由<strong>字母表中的符号</strong>组成的任何<strong>有穷序列</strong>称为字母表上的符号串。一般用<span class="math inline">\(\alpha, \beta,...,x,y,z\)</span>表示
+<li>
+<p>符号串:由<strong>字母表中的符号</strong>组成的任何<strong>有穷序列</strong>称为字母表上的符号串。一般用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo separator="true">,</mo><mi>β</mi><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">\alpha,   \beta,...,x,y,z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span></span>表示</p>
 <ul>
-<li><span class="math inline">\(\epsilon\)</span>表示空串。 对任一字母表∑ ，都有<span class="math inline">\(\epsilon\)</span>是∑ 上的符号串<br />
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span>表示空串。 对任一字母表∑ ，都有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span>是∑ 上的符号串</li>
+</ul>
 </li>
-</ul></li>
-<li>符号串连接:设<span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>均是字母表∑ 上的符号串， <span class="math inline">\(\alpha\)</span>和<span class="math inline">\(\beta\)</span>的连接是<strong>把<span class="math inline">\(\beta\)</span>的所有符号顺次地接在<span class="math inline">\(\alpha\)</span>的所有符号之后所得到的符号串</strong>。记为: <span class="math inline">\(\alpha \cdot \beta\)</span>， <span class="math inline">\(\cdot\)</span>可省略，即<span class="math inline">\(\alpha \beta\)</span>。<br />
+<li>
+<p>符号串连接:设<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>均是字母表∑ 上的符号串， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>的连接是<strong>把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>的所有符号顺次地接在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>的所有符号之后所得到的符号串</strong>。记为: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>⋅</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha \cdot \beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.44445em;vertical-align:0em;"></span><span class="mord">⋅</span></span></span></span>可省略，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha \beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span>。</p>
 </li>
-<li><strong>符号串</strong>的方幂:设<span class="math inline">\(\alpha\)</span>是字母表∑ 上的符号串，<strong>把<span class="math inline">\(\alpha\)</span>自身连接n次得到的符号串</strong><span class="math inline">\(\alpha\alpha\alpha \cdots \alpha\)</span> (n个<span class="math inline">\(\alpha\)</span>) ，称作符号串<span class="math inline">\(\alpha\)</span>的n次幂，记作 <span class="math inline">\(\alpha ^{n}\)</span> 。 特别的:<span class="math inline">\(\alpha ^{0} = \epsilon\)</span></li>
-<li>符号串集合:若集合A中的<strong>所有<u>元素</u>都是某字母表∑ 上的符号串</strong>，则称A为该字母表上的<strong>符号串集合</strong>。一般用A,B,C表示。
+<li>
+<p><strong>符号串</strong>的方幂:设<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>是字母表∑ 上的符号串，<strong>把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>自身连接n次得到的符号串</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>α</mi><mi>α</mi><mo>⋯</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha\alpha\alpha \cdots \alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span> (n个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>) ，称作符号串<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>的n次幂，记作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\alpha ^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span></span> 。 特别的:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mn>0</mn></msup><mo>=</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\alpha ^{0} = \epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span></p>
+</li>
+<li>
+<p>符号串集合:若集合A中的<strong>所有<u>元素</u>都是某字母表∑ 上的符号串</strong>，则称A为该字母表上的<strong>符号串集合</strong>。一般用A,B,C表示。</p>
 <ul>
-<li>注意:空集∅不等于空串集<span class="math inline">\(\{\epsilon \}\)</span></li>
-</ul></li>
-<li><strong>符号串集</strong>的乘积: 设A、 B 是两个符号串集合， AB表示A与B的乘积，具体定义为：AB = { xy | ( x∈A ) ∧ ( y∈B )}
+<li>注意:空集∅不等于空串集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{\epsilon \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">ϵ</span><span class="mclose">}</span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p><strong>符号串集</strong>的乘积: 设A、 B 是两个符号串集合， AB表示A与B的乘积，具体定义为：AB = { xy | ( x∈A ) ∧ ( y∈B )}</p>
 <ul>
 <li>AB!=BA</li>
-<li>∅A = A∅ = ∅， 其中∅表示空集<br />
+<li>∅A = A∅ = ∅， 其中∅表示空集</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{\epsilon \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">ϵ</span><span class="mclose">}</span></span></span></span>A = A<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{\epsilon \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">ϵ</span><span class="mclose">}</span></span></span></span> = A</li>
+</ul>
 </li>
-<li><span class="math inline">\(\{\epsilon \}\)</span>A = A<span class="math inline">\(\{\epsilon \}\)</span> = A</li>
-</ul></li>
-<li><strong>符号串</strong>集合的方幂:设A为符号串的集合， 则称<span class="math inline">\(A^{i}\)</span>为符号串集Ａ的方幂。 具体定义如下：
+<li>
+<p><strong>符号串</strong>集合的方幂:设A为符号串的集合， 则称<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">A^{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.824664em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span></span></span></span></span>为符号串集Ａ的方幂。 具体定义如下：</p>
 <ul>
-<li><span class="math inline">\(A^{0}=\{\epsilon\}\)</span><br />
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>0</mn></msup><mo>=</mo><mo stretchy="false">{</mo><mi>ϵ</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A^{0}=\{\epsilon\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">ϵ</span><span class="mclose">}</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>1</mn></msup><mo>=</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">A^{1}=A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>2</mn></msup><mo>=</mo><mi>A</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">A^{2}=AA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">A</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mi>n</mi></msup><mo>=</mo><mi>A</mi><mi>A</mi><mi>A</mi><mi>A</mi><mo>⋯</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">A^{n}=AAAA\cdots A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">A</span><span class="mord mathdefault">A</span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">A</span></span></span></span>(n个)</li>
+</ul>
 </li>
-<li><span class="math inline">\(A^{1}=A\)</span></li>
-<li><span class="math inline">\(A^{2}=AA\)</span></li>
-<li><span class="math inline">\(A^{n}=AAAA\cdots A\)</span>(n个)</li>
-</ul></li>
-<li>符号串集合的正闭包<span class="math inline">\(A^{+}\)</span>:设A是符号串集合，则称<span class="math inline">\(A^{+}\)</span>是符号串集合A的正闭包 $A<sup>{+}=A</sup>1∪A<sup>2∪A</sup>3 …∪A^n… $</li>
-<li>符号串集合的星闭包<span class="math inline">\(A^*\)</span>:设A是符号串集合，则称A*是符号串集合A的星闭包 A*$=A<sup>0∪A</sup>1∪A<sup>2∪A</sup>3 …∪A^n… $
+<li>
+<p>符号串集合的正闭包<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo lspace="0em" rspace="0em">+</mo></msup></mrow><annotation encoding="application/x-tex">A^{+}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span></span></span></span>:设A是符号串集合，则称<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo lspace="0em" rspace="0em">+</mo></msup></mrow><annotation encoding="application/x-tex">A^{+}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">+</span></span></span></span></span></span></span></span></span></span></span></span>是符号串集合A的正闭包 $A^{+}=A^1∪A^2∪A^3 …∪A^n… $</p>
+</li>
+<li>
+<p>符号串集合的星闭包<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">A^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.688696em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span>:设A是符号串集合，则称A*是符号串集合A的星闭包 A*$=A^0∪A^1∪A^2∪A^3 …∪A^n…  $</p>
 <ul>
-<li>A* = <span class="math inline">\(A^0\)</span>∪<span class="math inline">\(A^+\)</span></li>
-</ul></li>
+<li>A* = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mn>0</mn></msup></mrow><annotation encoding="application/x-tex">A^0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span>∪<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>A</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">A^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
 </ul>
 <h4 id="正则表达式的定义">正则表达式的定义</h4>
-<figure>
-<img src="image-20250514101814150.png" alt="image-20250514101814150" /><figcaption aria-hidden="true">image-20250514101814150</figcaption>
-</figure>
+<p><img src="image-20250514101814150.png" alt="image-20250514101814150"></p>
 <ul>
 <li>正则表达式的语义函数:给正则表达式赋予一种语义解释的函数。</li>
 <li>不同的语义解释会使得正则表达式具有不同的语义，其操作结果也会不同。</li>
-<li>在词法分析中，为了用正则表达式描述单词，我们用语义函数为<strong>正则表达式和字符串集合</strong>建立一种映射关系，使得正则表达式的语义被解释成字符串集合。<br />
-</li>
+<li>在词法分析中，为了用正则表达式描述单词，我们用语义函数为<strong>正则表达式和字符串集合</strong>建立一种映射关系，使得正则表达式的语义被解释成字符串集合。</li>
 <li>在词法分析中，正则表达式e根据语义函数解释所得到的<strong>符号串集合</strong>称为正则表达式e的<strong>正则集。</strong></li>
 </ul>
-<figure>
-<img src="image-20250514102612669.png" alt="image-20250514102612669" /><figcaption aria-hidden="true">image-20250514102612669</figcaption>
-</figure>
-<figure>
-<img src="image-20250514102646979.png" alt="image-20250514102646979" /><figcaption aria-hidden="true">image-20250514102646979</figcaption>
-</figure>
-<figure>
-<img src="image-20250514102843482.png" alt="image-20250514102843482" /><figcaption aria-hidden="true">image-20250514102843482</figcaption>
-</figure>
+<p><img src="image-20250514102612669.png" alt="image-20250514102612669"></p>
+<p><img src="image-20250514102646979.png" alt="image-20250514102646979"></p>
+<p><img src="image-20250514102843482.png" alt="image-20250514102843482"></p>
 <h4 id="局限性">局限性</h4>
-<figure>
-<img src="image-20250514103003382.png" alt="image-20250514103003382" /><figcaption aria-hidden="true">image-20250514103003382</figcaption>
-</figure>
+<p><img src="image-20250514103003382.png" alt="image-20250514103003382"></p>
 <h3 id="dfa确定有限自动机">DFA确定有限自动机</h3>
-<figure>
-<img src="image-20250514103305251.png" alt="image-20250514103305251" /><figcaption aria-hidden="true">image-20250514103305251</figcaption>
-</figure>
+<p><img src="image-20250514103305251.png" alt="image-20250514103305251"></p>
 <h4 id="确定性的体现">确定性的体现</h4>
-<ol type="1">
+<ol>
 <li><strong>初始状态唯一</strong></li>
 <li>状态转换函数f是一个<strong>单值函数</strong>，也就是说，对任何状态S和输入符号a，f(S,a)唯一地确定了下一个状态，即<strong>至多确定一个状态</strong></li>
-<li>转换边上不能标<span class="math inline">\(\epsilon\)</span>即<strong>不接受没有任何输入就进行状态转换</strong>的情况</li>
+<li>转换边上不能标<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span>即<strong>不接受没有任何输入就进行状态转换</strong>的情况</li>
 </ol>
-<figure>
-<img src="image-20250514103530831.png" alt="image-20250514103530831" /><figcaption aria-hidden="true">image-20250514103530831</figcaption>
-</figure>
-<h4 id="dfa的表示状态转换矩阵">DFA的表示——状态转换矩阵</h4>
-<figure>
-<img src="image-20250514103601807.png" alt="image-20250514103601807" /><figcaption aria-hidden="true">image-20250514103601807</figcaption>
-</figure>
-<figure>
-<img src="image-20250514103628721.png" alt="image-20250514103628721" /><figcaption aria-hidden="true">image-20250514103628721</figcaption>
-</figure>
-<h4 id="dfa的表示状态转换图">DFA的表示——状态转换图</h4>
+<p><img src="image-20250514103530831.png" alt="image-20250514103530831"></p>
+<h4 id="dfa的表示-状态转换矩阵">DFA的表示——状态转换矩阵</h4>
+<p><img src="image-20250514103601807.png" alt="image-20250514103601807"></p>
+<p><img src="image-20250514103628721.png" alt="image-20250514103628721"></p>
+<h4 id="dfa的表示-状态转换图">DFA的表示——状态转换图</h4>
 <p>用有向图表示自动机</p>
-<figure>
-<img src="image-20250514103728940.png" alt="image-20250514103728940" /><figcaption aria-hidden="true">image-20250514103728940</figcaption>
-</figure>
-<figure>
-<img src="image-20250514103738424.png" alt="image-20250514103738424" /><figcaption aria-hidden="true">image-20250514103738424</figcaption>
-</figure>
-<figure>
-<img src="image-20250514103754671.png" alt="image-20250514103754671" /><figcaption aria-hidden="true">image-20250514103754671</figcaption>
-</figure>
-<figure>
-<img src="image-20250514103840361.png" alt="image-20250514103840361" /><figcaption aria-hidden="true">image-20250514103840361</figcaption>
-</figure>
+<p><img src="image-20250514103728940.png" alt="image-20250514103728940"></p>
+<p><img src="image-20250514103738424.png" alt="image-20250514103738424"></p>
+<p><img src="image-20250514103754671.png" alt="image-20250514103754671"></p>
+<p><img src="image-20250514103840361.png" alt="image-20250514103840361"></p>
 <h4 id="dfa接受的串">DFA接受的串</h4>
-<figure>
-<img src="image-20250514104506827.png" alt="image-20250514104506827" /><figcaption aria-hidden="true">image-20250514104506827</figcaption>
-</figure>
-<figure>
-<img src="image-20250514104617857.png" alt="image-20250514104617857" /><figcaption aria-hidden="true">image-20250514104617857</figcaption>
-</figure>
+<p><img src="image-20250514104506827.png" alt="image-20250514104506827"></p>
+<p><img src="image-20250514104617857.png" alt="image-20250514104617857"></p>
 <h4 id="自动机的实现">自动机的实现</h4>
 <ul>
-<li>直接转换法 ：每个状态对应一个带标号的switch语句，转向边对应goto语句。<br />
-</li>
-<li>状态转换矩阵 ：自动机存储在矩阵中，状态比较多，每次都去查表，跳转</li>
+<li>直接转换法 ：每个状态对应一个带标号的switch语句，转向边对应goto语句。</li>
+<li>状态转换矩阵  ：自动机存储在矩阵中，状态比较多，每次都去查表，跳转</li>
 </ul>
-<figure>
-<img src="image-20250514104714771.png" alt="image-20250514104714771" /><figcaption aria-hidden="true">image-20250514104714771</figcaption>
-</figure>
-<figure>
-<img src="image-20250514104725603.png" alt="image-20250514104725603" /><figcaption aria-hidden="true">image-20250514104725603</figcaption>
-</figure>
-<figure>
-<img src="image-20250514105024072.png" alt="image-20250514105024072" /><figcaption aria-hidden="true">image-20250514105024072</figcaption>
-</figure>
+<p><img src="image-20250514104714771.png" alt="image-20250514104714771"></p>
+<p><img src="image-20250514104725603.png" alt="image-20250514104725603"></p>
+<p><img src="image-20250514105024072.png" alt="image-20250514105024072"></p>
 <h4 id="自动机等价">自动机等价</h4>
-<p>对于两个DFA <span class="math inline">\(M_1\)</span>和<span class="math inline">\(M_2\)</span>，若有L(M1)=L(M2)则称M1和M2等价</p>
-<figure>
-<img src="image-20250514105216221.png" alt="image-20250514105216221" /><figcaption aria-hidden="true">image-20250514105216221</figcaption>
-</figure>
+<p>对于两个DFA <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">M_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">M_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，若有L(M1)=L(M2)则称M1和M2等价</p>
+<p><img src="image-20250514105216221.png" alt="image-20250514105216221"></p>
 <h3 id="nfa">NFA</h3>
-<h4 id="定义与dfa对比">定义(与DFA对比)</h4>
-<figure>
-<img src="image-20250521175528250.png" alt="image-20250521175528250" /><figcaption aria-hidden="true">image-20250521175528250</figcaption>
-</figure>
-<figure>
-<img src="image-20250521175554221.png" alt="image-20250521175554221" /><figcaption aria-hidden="true">image-20250521175554221</figcaption>
-</figure>
+<h4 id="定义-与dfa对比">定义(与DFA对比)</h4>
+<p><img src="image-20250521175528250.png" alt="image-20250521175528250"></p>
+<p><img src="image-20250521175554221.png" alt="image-20250521175554221"></p>
 <h4 id="接受的语言">接受的语言</h4>
-<figure>
-<img src="image-20250521175640750.png" alt="image-20250521175640750" /><figcaption aria-hidden="true">image-20250521175640750</figcaption>
-</figure>
-<figure>
-<img src="image-20250521175649976.png" alt="image-20250521175649976" /><figcaption aria-hidden="true">image-20250521175649976</figcaption>
-</figure>
-<h3 id="自动机等价-1">自动机等价</h3>
-<figure>
-<img src="image-20250521175751125.png" alt="image-20250521175751125" /><figcaption aria-hidden="true">image-20250521175751125</figcaption>
-</figure>
-<h3 id="nfa----dfa">NFA----&gt;DFA</h3>
-<figure>
-<img src="image-20250521175901791.png" alt="image-20250521175901791" /><figcaption aria-hidden="true">image-20250521175901791</figcaption>
-</figure>
-<figure>
-<img src="image-20250521175910531.png" alt="image-20250521175910531" /><figcaption aria-hidden="true">image-20250521175910531</figcaption>
-</figure>
-<figure>
-<img src="image-20250521175916547.png" alt="image-20250521175916547" /><figcaption aria-hidden="true">image-20250521175916547</figcaption>
-</figure>
-<figure>
-<img src="image-20250521175922251.png" alt="image-20250521175922251" /><figcaption aria-hidden="true">image-20250521175922251</figcaption>
-</figure>
+<p><img src="image-20250521175640750.png" alt="image-20250521175640750"></p>
+<p><img src="image-20250521175649976.png" alt="image-20250521175649976"></p>
+<h3 id="自动机等价">自动机等价</h3>
+<p><img src="image-20250521175751125.png" alt="image-20250521175751125"></p>
+<h3 id="nfa-dfa">NFA----&gt;DFA</h3>
+<p><img src="image-20250521175901791.png" alt="image-20250521175901791"></p>
+<p><img src="image-20250521175910531.png" alt="image-20250521175910531"></p>
+<p><img src="image-20250521175916547.png" alt="image-20250521175916547"></p>
+<p><img src="image-20250521175922251.png" alt="image-20250521175922251"></p>
 <h3 id="自动机最小化">自动机最小化</h3>
 <p>基础定义:</p>
 <ul>
@@ -466,100 +395,57 @@
 <li>从开始状态无到S的通路</li>
 <li>或</li>
 <li>S到任意终止状态无通路 则称S为M的无关状态</li>
-</ul></li>
 </ul>
-<figure>
-<img src="image-20250521180128337.png" alt="image-20250521180128337" /><figcaption aria-hidden="true">image-20250521180128337</figcaption>
-</figure>
+</li>
+</ul>
+<p><img src="image-20250521180128337.png" alt="image-20250521180128337"></p>
 <h4 id="最简自动机">最简自动机</h4>
 <p><strong>任意DNF的最简自动机是唯一的</strong></p>
-<figure>
-<img src="image-20250521180210719.png" alt="image-20250521180210719" /><figcaption aria-hidden="true">image-20250521180210719</figcaption>
-</figure>
+<p><img src="image-20250521180210719.png" alt="image-20250521180210719"></p>
 <h4 id="算法">算法</h4>
-<figure>
-<img src="image-20250521180225419.png" alt="image-20250521180225419" /><figcaption aria-hidden="true">image-20250521180225419</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180241566.png" alt="image-20250521180241566" /><figcaption aria-hidden="true">image-20250521180241566</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180253961.png" alt="image-20250521180253961" /><figcaption aria-hidden="true">image-20250521180253961</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180305124.png" alt="image-20250521180305124" /><figcaption aria-hidden="true">image-20250521180305124</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180311900.png" alt="image-20250521180311900" /><figcaption aria-hidden="true">image-20250521180311900</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180349536.png" alt="image-20250521180349536" /><figcaption aria-hidden="true">image-20250521180349536</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180403717.png" alt="image-20250521180403717" /><figcaption aria-hidden="true">image-20250521180403717</figcaption>
-</figure>
-<h3 id="自动机---正则表达式">自动机&lt;---&gt;正则表达式</h3>
-<h4 id="正则表达式-----自动机">正则表达式-----&gt;自动机</h4>
-<figure>
-<img src="image-20250521180609844.png" alt="image-20250521180609844" /><figcaption aria-hidden="true">image-20250521180609844</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180636823.png" alt="image-20250521180636823" /><figcaption aria-hidden="true">image-20250521180636823</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180644939.png" alt="image-20250521180644939" /><figcaption aria-hidden="true">image-20250521180644939</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180701400.png" alt="image-20250521180701400" /><figcaption aria-hidden="true">image-20250521180701400</figcaption>
-</figure>
-<h4 id="自动机-----正则表达式">自动机-----&gt;正则表达式</h4>
-<figure>
-<img src="image-20250521180839869.png" alt="image-20250521180839869" /><figcaption aria-hidden="true">image-20250521180839869</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180917081.png" alt="image-20250521180917081" /><figcaption aria-hidden="true">image-20250521180917081</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180924359.png" alt="image-20250521180924359" /><figcaption aria-hidden="true">image-20250521180924359</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180938740.png" alt="image-20250521180938740" /><figcaption aria-hidden="true">image-20250521180938740</figcaption>
-</figure>
-<figure>
-<img src="image-20250521180956018.png" alt="image-20250521180956018" /><figcaption aria-hidden="true">image-20250521180956018</figcaption>
-</figure>
+<p><img src="image-20250521180225419.png" alt="image-20250521180225419"></p>
+<p><img src="image-20250521180241566.png" alt="image-20250521180241566"></p>
+<p><img src="image-20250521180253961.png" alt="image-20250521180253961"></p>
+<p><img src="image-20250521180305124.png" alt="image-20250521180305124"></p>
+<p><img src="image-20250521180311900.png" alt="image-20250521180311900"></p>
+<p><img src="image-20250521180349536.png" alt="image-20250521180349536"></p>
+<p><img src="image-20250521180403717.png" alt="image-20250521180403717"></p>
+<h3 id="自动机-正则表达式">自动机&lt;—&gt;正则表达式</h3>
+<h4 id="正则表达式-自动机">正则表达式-----&gt;自动机</h4>
+<p><img src="image-20250521180609844.png" alt="image-20250521180609844"></p>
+<p><img src="image-20250521180636823.png" alt="image-20250521180636823"></p>
+<p><img src="image-20250521180644939.png" alt="image-20250521180644939"></p>
+<p><img src="image-20250521180701400.png" alt="image-20250521180701400"></p>
+<h4 id="自动机-正则表达式">自动机-----&gt;正则表达式</h4>
+<p><img src="image-20250521180839869.png" alt="image-20250521180839869"></p>
+<p><img src="image-20250521180917081.png" alt="image-20250521180917081"></p>
+<p><img src="image-20250521180924359.png" alt="image-20250521180924359"></p>
+<p><img src="image-20250521180938740.png" alt="image-20250521180938740"></p>
+<p><img src="image-20250521180956018.png" alt="image-20250521180956018"></p>
 <h3 id="词法分析器">词法分析器</h3>
-<figure>
-<img src="image-20250521182037836.png" alt="image-20250521182037836" /><figcaption aria-hidden="true">image-20250521182037836</figcaption>
-</figure>
+<p><img src="image-20250521182037836.png" alt="image-20250521182037836"></p>
 <h4 id="接口">接口</h4>
 <ul>
 <li>词法分析作为独立的一遍
 <ul>
 <li>词法分析程序的输出放在一个中间文件中， 语法分析程序从该文件读取Token</li>
-<li><img src="image-20250521182114389.png" title="fig:" alt="image-20250521182114389" /></li>
-</ul></li>
+<li><img src="image-20250521182114389.png" alt="image-20250521182114389"></li>
+</ul>
+</li>
 <li>词法分析作为语法分析的子程序
 <ul>
 <li>每当语法分析程序需要单词时，就调用词法分析程序，使之输出一个Token供语法分析使用</li>
-<li><img src="image-20250521182146430.png" title="fig:" alt="image-20250521182146430" /></li>
-</ul></li>
+<li><img src="image-20250521182146430.png" alt="image-20250521182146430"></li>
+</ul>
+</li>
 </ul>
 <h4 id="单词的种别">单词的种别</h4>
-<figure>
-<img src="image-20250521182220669.png" alt="image-20250521182220669" /><figcaption aria-hidden="true">image-20250521182220669</figcaption>
-</figure>
+<p><img src="image-20250521182220669.png" alt="image-20250521182220669"></p>
 <h4 id="token结构">token结构</h4>
-<figure>
-<img src="image-20250521182300601.png" alt="image-20250521182300601" /><figcaption aria-hidden="true">image-20250521182300601</figcaption>
-</figure>
-<figure>
-<img src="image-20250521182333846.png" alt="image-20250521182333846" /><figcaption aria-hidden="true">image-20250521182333846</figcaption>
-</figure>
-<h4 id="工作过程-1">工作过程</h4>
-<figure>
-<img src="image-20250521182401993.png" alt="image-20250521182401993" /><figcaption aria-hidden="true">image-20250521182401993</figcaption>
-</figure>
+<p><img src="image-20250521182300601.png" alt="image-20250521182300601"></p>
+<p><img src="image-20250521182333846.png" alt="image-20250521182333846"></p>
+<h4 id="工作过程">工作过程</h4>
+<p><img src="image-20250521182401993.png" alt="image-20250521182401993"></p>
 <ul>
 <li>单词的DFA描述及实现</li>
 <li>针对不同的单词生成对应的Token</li>
@@ -574,78 +460,40 @@
 <h3 id="文法和语言">文法和语言</h3>
 <p>文法(Grammar)是程序语言的生成系统。用文法可 精确定义一个语言，并依据文法构造出识别该语言的自动机。</p>
 <p>程序语言的词法可用正则文法（正则表达式，有限自动机）描述，语法可用上下文无关文法描述，语义可用上下文有关文法描述。</p>
-<figure>
-<img src="image-20250527212137736.png" alt="image-20250527212137736" /><figcaption aria-hidden="true">image-20250527212137736</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212452797.png" alt="image-20250527212452797" /><figcaption aria-hidden="true">image-20250527212452797</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212559442.png" alt="image-20250527212559442" /><figcaption aria-hidden="true">image-20250527212559442</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212609144.png" alt="image-20250527212609144" /><figcaption aria-hidden="true">image-20250527212609144</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212718231.png" alt="image-20250527212718231" /><figcaption aria-hidden="true">image-20250527212718231</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212743597.png" alt="image-20250527212743597" /><figcaption aria-hidden="true">image-20250527212743597</figcaption>
-</figure>
+<p><img src="image-20250527212137736.png" alt="image-20250527212137736"></p>
+<p><img src="image-20250527212452797.png" alt="image-20250527212452797"></p>
+<p><img src="image-20250527212559442.png" alt="image-20250527212559442"></p>
+<p><img src="image-20250527212609144.png" alt="image-20250527212609144"></p>
+<p><img src="image-20250527212718231.png" alt="image-20250527212718231"></p>
+<p><img src="image-20250527212743597.png" alt="image-20250527212743597"></p>
 <h3 id="文法的分类">文法的分类</h3>
-<figure>
-<img src="image-20250527212841909.png" alt="image-20250527212841909" /><figcaption aria-hidden="true">image-20250527212841909</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212856413.png" alt="image-20250527212856413" /><figcaption aria-hidden="true">image-20250527212856413</figcaption>
-</figure>
-<figure>
-<img src="image-20250527212907785.png" alt="image-20250527212907785" /><figcaption aria-hidden="true">image-20250527212907785</figcaption>
-</figure>
+<p><img src="image-20250527212841909.png" alt="image-20250527212841909"></p>
+<p><img src="image-20250527212856413.png" alt="image-20250527212856413"></p>
+<p><img src="image-20250527212907785.png" alt="image-20250527212907785"></p>
 <blockquote>
 <p>在编译技术中通常用3型文法（正则文法）来 描述高级程序设计语言的词法部分，2型文法（上 下文无关文法）描述的程序设计语言的语法结构， 比如描述算术表达式，描述各种语句等等。</p>
 </blockquote>
 <h3 id="文法的基本概念">文法的基本概念</h3>
-<figure>
-<img src="image-20250527213055544.png" alt="image-20250527213055544" /><figcaption aria-hidden="true">image-20250527213055544</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213103916.png" alt="image-20250527213103916" /><figcaption aria-hidden="true">image-20250527213103916</figcaption>
-</figure>
+<p><img src="image-20250527213055544.png" alt="image-20250527213055544"></p>
+<p><img src="image-20250527213103916.png" alt="image-20250527213103916"></p>
 <ul>
 <li>最右推导又称规范推导，规范推导产生的句型称为规范句型</li>
 <li>规范推导的逆过程称为规范归约（最左归约）</li>
 </ul>
-<figure>
-<img src="image-20250527213130335.png" alt="image-20250527213130335" /><figcaption aria-hidden="true">image-20250527213130335</figcaption>
-</figure>
+<p><img src="image-20250527213130335.png" alt="image-20250527213130335"></p>
 <p><strong>（若文法无二义性）一个句型的简单短语不一定唯一， 但句柄一定唯一</strong></p>
 <h3 id="语法树">语法树</h3>
 <p>语法树以图形化的方式把句子分解成各个组成部分，与符号的先后推导顺序无关，即语法树涵盖 了一个句型的所有可能的推导过程。</p>
-<figure>
-<img src="image-20250527213312164.png" alt="image-20250527213312164" /><figcaption aria-hidden="true">image-20250527213312164</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213333804.png" alt="image-20250527213333804" /><figcaption aria-hidden="true">image-20250527213333804</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213402170.png" alt="image-20250527213402170" /><figcaption aria-hidden="true">image-20250527213402170</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213409253.png" alt="image-20250527213409253" /><figcaption aria-hidden="true">image-20250527213409253</figcaption>
-</figure>
+<p><img src="image-20250527213312164.png" alt="image-20250527213312164"></p>
+<p><img src="image-20250527213333804.png" alt="image-20250527213333804"></p>
+<p><img src="image-20250527213402170.png" alt="image-20250527213402170"></p>
+<p><img src="image-20250527213409253.png" alt="image-20250527213409253"></p>
 <h3 id="二义性文法">二义性文法</h3>
 <p>对一个文法G，如果<strong>至少存在一个句子</strong>，<strong>有两棵 （或两棵以上）不同的语法树</strong>，则称该句子是 二义性的。包含有二义性句子的文法称为二义 性文法，否则，该文法是无二义性的</p>
-<figure>
-<img src="image-20250527213445373.png" alt="image-20250527213445373" /><figcaption aria-hidden="true">image-20250527213445373</figcaption>
-</figure>
+<p><img src="image-20250527213445373.png" alt="image-20250527213445373"></p>
 <h4 id="二义性的判定">二义性的判定</h4>
-<figure>
-<img src="image-20250527213516712.png" alt="image-20250527213516712" /><figcaption aria-hidden="true">image-20250527213516712</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213537722.png" alt="image-20250527213537722" /><figcaption aria-hidden="true">image-20250527213537722</figcaption>
-</figure>
+<p><img src="image-20250527213516712.png" alt="image-20250527213516712"></p>
+<p><img src="image-20250527213537722.png" alt="image-20250527213537722"></p>
 <h3 id="文法的等价变换">文法的等价变换</h3>
 <ul>
 <li>提取左公共前缀</li>
@@ -653,30 +501,16 @@
 <li>消除简介左递归</li>
 </ul>
 <h4 id="提取左公共前缀">提取左公共前缀</h4>
-<figure>
-<img src="image-20250527213700841.png" alt="image-20250527213700841" /><figcaption aria-hidden="true">image-20250527213700841</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213707407.png" alt="image-20250527213707407" /><figcaption aria-hidden="true">image-20250527213707407</figcaption>
-</figure>
+<p><img src="image-20250527213700841.png" alt="image-20250527213700841"></p>
+<p><img src="image-20250527213707407.png" alt="image-20250527213707407"></p>
 <h4 id="消除直接左递归">消除直接左递归</h4>
-<figure>
-<img src="image-20250527213744632.png" alt="image-20250527213744632" /><figcaption aria-hidden="true">image-20250527213744632</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213801300.png" alt="image-20250527213801300" /><figcaption aria-hidden="true">image-20250527213801300</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213811678.png" alt="image-20250527213811678" /><figcaption aria-hidden="true">image-20250527213811678</figcaption>
-</figure>
+<p><img src="image-20250527213744632.png" alt="image-20250527213744632"></p>
+<p><img src="image-20250527213801300.png" alt="image-20250527213801300"></p>
+<p><img src="image-20250527213811678.png" alt="image-20250527213811678"></p>
 <h4 id="消除间接左递归">消除间接左递归</h4>
-<figure>
-<img src="image-20250527213901449.png" alt="image-20250527213901449" /><figcaption aria-hidden="true">image-20250527213901449</figcaption>
-</figure>
-<figure>
-<img src="image-20250527213910531.png" alt="image-20250527213910531" /><figcaption aria-hidden="true">image-20250527213910531</figcaption>
-</figure>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io">klklkl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io/2025/05/13/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://klklkl10086.github.io/klklkl10086.github.io/2025/05/13/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://klklkl10086.github.io/klklkl10086.github.io" target="_blank">klklkl's blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/class/">class</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="c++11--thread库介绍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">c++11--thread库介绍</div></div></a></div><div class="next-post pull-right"><a href="/2024/12/23/%E8%AE%A1%E7%BD%91%E7%AE%80%E7%AD%94%E9%A2%98/" title="计网简答题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网简答题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">klklkl</div><div class="author-info__description">student</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2488926297@qq.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Nice to meet you!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">编译原理复习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.1.</span> <span class="toc-text">编译程序的逻辑结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91"><span class="toc-number">1.1.2.</span> <span class="toc-text">编译程序的开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%88%86%E9%81%8D"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">编译程序的分遍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">词法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">单词类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%8E%E8%AF%86%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">单词的描述与识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">正则表达式的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">局限性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfa%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.5.</span> <span class="toc-text">DFA确定有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">确定性的体现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">DFA的表示——状态转换矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E7%9A%84%E8%A1%A8%E7%A4%BA%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">DFA的表示——状态转换图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E6%8E%A5%E5%8F%97%E7%9A%84%E4%B8%B2"><span class="toc-number">1.2.5.4.</span> <span class="toc-text">DFA接受的串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.5.5.</span> <span class="toc-text">自动机的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7"><span class="toc-number">1.2.5.6.</span> <span class="toc-text">自动机等价</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nfa"><span class="toc-number">1.2.6.</span> <span class="toc-text">NFA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8Edfa%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">定义(与DFA对比)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">接受的语言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7-1"><span class="toc-number">1.2.7.</span> <span class="toc-text">自动机等价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nfa----dfa"><span class="toc-number">1.2.8.</span> <span class="toc-text">NFA----&gt;DFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%9C%80%E5%B0%8F%E5%8C%96"><span class="toc-number">1.2.9.</span> <span class="toc-text">自动机最小化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.9.1.</span> <span class="toc-text">最简自动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.9.2.</span> <span class="toc-text">算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA---%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.10.</span> <span class="toc-text">自动机&lt;---&gt;正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-----%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.10.1.</span> <span class="toc-text">正则表达式-----&gt;自动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA-----%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.10.2.</span> <span class="toc-text">自动机-----&gt;正则表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-number">1.2.11.</span> <span class="toc-text">词法分析器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.11.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%9A%84%E7%A7%8D%E5%88%AB"><span class="toc-number">1.2.11.2.</span> <span class="toc-text">单词的种别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#token%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.11.3.</span> <span class="toc-text">token结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B-1"><span class="toc-number">1.2.11.4.</span> <span class="toc-text">工作过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">语法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">文法和语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.2.</span> <span class="toc-text">文法的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.3.</span> <span class="toc-text">文法的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="toc-number">1.3.4.</span> <span class="toc-text">语法树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%80%A7%E6%96%87%E6%B3%95"><span class="toc-number">1.3.5.</span> <span class="toc-text">二义性文法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%80%A7%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">二义性的判定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E7%AD%89%E4%BB%B7%E5%8F%98%E6%8D%A2"><span class="toc-number">1.3.6.</span> <span class="toc-text">文法的等价变换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%B7%A6%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">提取左公共前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E7%9B%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">消除直接左递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E9%97%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">1.3.6.3.</span> <span class="toc-text">消除间接左递归</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/31/Linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/" title="Linux环境编程">Linux环境编程</a><time datetime="2026-01-31T12:51:35.000Z" title="发表于 2026-01-31 20:51:35">2026-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/31/STL%E6%8B%BE%E9%81%97/" title="STL拾遗">STL拾遗</a><time datetime="2026-01-31T12:50:18.000Z" title="发表于 2026-01-31 20:50:18">2026-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E4%BB%8E0%E5%AE%9E%E7%8E%B0LLM/" title="从0实现Transformer">从0实现Transformer</a><time datetime="2025-12-07T13:07:22.000Z" title="发表于 2025-12-07 21:07:22">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/27/pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/" title="Pytorch深度学习实践">Pytorch深度学习实践</a><time datetime="2025-11-27T14:15:20.000Z" title="发表于 2025-11-27 22:15:20">2025-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/18/cuda%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" title="cuda编程入门">cuda编程入门</a><time datetime="2025-11-18T12:46:44.000Z" title="发表于 2025-11-18 20:46:44">2025-11-18</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/80/v2-908b61a41ec4bebe17a04468dcf5d834_720w.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By klklkl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+<p><img src="image-20250527213901449.png" alt="image-20250527213901449"></p>
+<p><img src="image-20250527213910531.png" alt="image-20250527213910531"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io">klklkl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://klklkl10086.github.io/klklkl10086.github.io/2025/05/13/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://klklkl10086.github.io/klklkl10086.github.io/2025/05/13/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://klklkl10086.github.io/klklkl10086.github.io" target="_blank">klklkl's blogs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/class/">class</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="c++11--thread库介绍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">c++11--thread库介绍</div></div></a></div><div class="next-post pull-right"><a href="/2024/12/23/%E8%AE%A1%E7%BD%91%E7%AE%80%E7%AD%94%E9%A2%98/" title="计网简答题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网简答题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://pic2.zhimg.com/v2-f9b32b95385eedbdb58389bbbce5de39_r.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">klklkl</div><div class="author-info__description">student</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:2488926297@qq.com" target="_blank" title="Email"><i class="fa-regular fa-envelope" style="color: #000000;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Nice to meet you!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">编译原理复习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.1.</span> <span class="toc-text">编译程序的逻辑结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91"><span class="toc-number">1.1.2.</span> <span class="toc-text">编译程序的开发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%88%86%E9%81%8D"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">编译程序的分遍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">词法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">单词类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%8E%E8%AF%86%E5%88%AB"><span class="toc-number">1.2.3.</span> <span class="toc-text">单词的描述与识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">正则表达式的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">局限性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfa%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.5.</span> <span class="toc-text">DFA确定有限自动机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">确定性的体现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E7%9A%84%E8%A1%A8%E7%A4%BA-%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">DFA的表示——状态转换矩阵</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E7%9A%84%E8%A1%A8%E7%A4%BA-%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">DFA的表示——状态转换图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dfa%E6%8E%A5%E5%8F%97%E7%9A%84%E4%B8%B2"><span class="toc-number">1.2.5.4.</span> <span class="toc-text">DFA接受的串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.5.5.</span> <span class="toc-text">自动机的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7"><span class="toc-number">1.2.5.6.</span> <span class="toc-text">自动机等价</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nfa"><span class="toc-number">1.2.6.</span> <span class="toc-text">NFA</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-%E4%B8%8Edfa%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">定义(与DFA对比)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">接受的语言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%AD%89%E4%BB%B7"><span class="toc-number">1.2.7.</span> <span class="toc-text">自动机等价</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nfa-dfa"><span class="toc-number">1.2.8.</span> <span class="toc-text">NFA----&gt;DFA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%9C%80%E5%B0%8F%E5%8C%96"><span class="toc-number">1.2.9.</span> <span class="toc-text">自动机最小化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.9.1.</span> <span class="toc-text">最简自动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.9.2.</span> <span class="toc-text">算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.10.</span> <span class="toc-text">自动机&lt;—&gt;正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E8%87%AA%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.2.10.1.</span> <span class="toc-text">正则表达式-----&gt;自动机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%9C%BA-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.10.2.</span> <span class="toc-text">自动机-----&gt;正则表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8"><span class="toc-number">1.2.11.</span> <span class="toc-text">词法分析器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.11.1.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D%E7%9A%84%E7%A7%8D%E5%88%AB"><span class="toc-number">1.2.11.2.</span> <span class="toc-text">单词的种别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#token%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.11.3.</span> <span class="toc-text">token结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.11.4.</span> <span class="toc-text">工作过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">语法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">文法和语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.2.</span> <span class="toc-text">文法的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.3.</span> <span class="toc-text">文法的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%A0%91"><span class="toc-number">1.3.4.</span> <span class="toc-text">语法树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%80%A7%E6%96%87%E6%B3%95"><span class="toc-number">1.3.5.</span> <span class="toc-text">二义性文法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E4%B9%89%E6%80%A7%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">二义性的判定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%B3%95%E7%9A%84%E7%AD%89%E4%BB%B7%E5%8F%98%E6%8D%A2"><span class="toc-number">1.3.6.</span> <span class="toc-text">文法的等价变换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E5%B7%A6%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80"><span class="toc-number">1.3.6.1.</span> <span class="toc-text">提取左公共前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E7%9B%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">1.3.6.2.</span> <span class="toc-text">消除直接左递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E9%97%B4%E6%8E%A5%E5%B7%A6%E9%80%92%E5%BD%92"><span class="toc-number">1.3.6.3.</span> <span class="toc-text">消除间接左递归</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/31/Linux%E7%8E%AF%E5%A2%83%E7%BC%96%E7%A8%8B/" title="Linux环境编程">Linux环境编程</a><time datetime="2026-01-31T12:51:35.000Z" title="发表于 2026-01-31 20:51:35">2026-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/31/STL%E6%8B%BE%E9%81%97/" title="STL拾遗">STL拾遗</a><time datetime="2026-01-31T12:50:18.000Z" title="发表于 2026-01-31 20:50:18">2026-01-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E4%BB%8E0%E5%AE%9E%E7%8E%B0LLM/" title="从0实现Transformer">从0实现Transformer</a><time datetime="2025-12-07T13:07:22.000Z" title="发表于 2025-12-07 21:07:22">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/27/pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/" title="Pytorch深度学习实践">Pytorch深度学习实践</a><time datetime="2025-11-27T14:15:20.000Z" title="发表于 2025-11-27 22:15:20">2025-11-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/18/cuda%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" title="cuda编程入门">cuda编程入门</a><time datetime="2025-11-18T12:46:44.000Z" title="发表于 2025-11-18 20:46:44">2025-11-18</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/80/v2-908b61a41ec4bebe17a04468dcf5d834_720w.webp')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By klklkl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
