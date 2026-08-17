@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="C++ thread 库与并发基础学习笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="thread库">
+<meta property="og:url" content="https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="klklkl&#39;s blogs">
+<meta property="og:description" content="C++ thread 库与并发基础学习笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-01T14:51:33.000Z">
+<meta property="article:modified_time" content="2026-08-17T10:15:07.398Z">
+<meta property="article:author" content="klklkl">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>thread库</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css?v=1786961732398"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="klklkl's blogs" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2025/10/01/java%E5%9F%BA%E7%A1%80/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/12/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&text=thread库"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&is_video=false&description=thread库"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=thread库&body=Check out this article: https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&name=thread库&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&t=thread库"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">创建线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#join()%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">join()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#detach()%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">detach()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#joinable()%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">joinable()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">互斥量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%87%8F%E6%AD%BB%E9%94%81"><span class="toc-number">6.</span> <span class="toc-text">互斥量死锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lock_guard%E4%B8%8Eunique_lock"><span class="toc-number">7.</span> <span class="toc-text">lock_guard与unique_lock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#std::lock_guard"><span class="toc-number">7.1.</span> <span class="toc-text">std::lock_guard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#std::unique_lock"><span class="toc-number">7.2.</span> <span class="toc-text">std::unique_lock</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#std::call_once与其使用场景"><span class="toc-number">8.</span> <span class="toc-text">std::call_once与其使用场景</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        thread库
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">klklkl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-10-01T14:51:33.000Z" class="dt-published" itemprop="datePublished">2025-10-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/C/">C++</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d841117SH/?p=7&amp;share_source=copy_web&amp;vd_source=777aaa8a415b68222e598d976e64642c">C++11 多线程编程-小白零基础到手撕线程池</a></p>
+</blockquote>
+<h1 id="创建线程" tabindex="-1">创建线程</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;Hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建线程</span></span><br><span class="line">    <span class="function">std::thread <span class="title">thread1</span><span class="params">(printHelloWorld)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这个时候会报错,因为主线程先于子线程结束</p>
+<h1 id="join()函数" tabindex="-1">join()函数</h1>
+<p>强制主线程等待子线程结束后再结束</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;Hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建线程</span></span><br><span class="line">    <span class="function">std::thread <span class="title">thread1</span><span class="params">(printHelloWorld)</span></span>;</span><br><span class="line">    <span class="comment">//2.主程序等待线程执行完毕</span></span><br><span class="line">    thread1.<span class="built_in">join</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="detach()函数" tabindex="-1">detach()函数</h1>
+<p>分离线程,即使主线程先于子线程结束也不会报错,此时子线程在后台运行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;Hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建线程</span></span><br><span class="line">    <span class="function">std::thread <span class="title">thread1</span><span class="params">(printHelloWorld)</span></span>;</span><br><span class="line">    <span class="comment">//2.分离线程,即使主线程先于子线程结束也不会报错</span></span><br><span class="line">    thread1.<span class="built_in">detach</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="joinable()函数" tabindex="-1">joinable()函数</h1>
+<p>判断是否可以调用join()函数或者detach()函数,返回布尔值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printHelloWorld</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout&lt;&lt;<span class="string">&quot;Hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//1.创建线程</span></span><br><span class="line">    <span class="function">std::thread <span class="title">thread1</span><span class="params">(printHelloWorld)</span></span>;</span><br><span class="line">    <span class="comment">//2.判断能否调用join函数</span></span><br><span class="line">    <span class="type">bool</span> isJoin = thread1.<span class="built_in">joinable</span>();</span><br><span class="line">    <span class="keyword">if</span>(isJoin)</span><br><span class="line">    &#123;</span><br><span class="line">        thread1.<span class="built_in">join</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="互斥量" tabindex="-1">互斥量</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="type">int</span> a=<span class="number">0</span>;</span><br><span class="line">std::mutex mtx;<span class="comment">//初始化锁</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mtx.<span class="built_in">lock</span>();<span class="comment">//加锁</span></span><br><span class="line">		a++;</span><br><span class="line">		mtx.<span class="built_in">unlock</span>();<span class="comment">//解锁</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;</span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	std::cout&lt;&lt;a&lt;&lt;std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>线程安全</code>:多线程的程序每一次运行的结构和单线程的结构始终是一样的,那么线程就是安全的</p>
+<h1 id="互斥量死锁" tabindex="-1">互斥量死锁</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line">std::mutex m1,m2;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func_1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		m1.<span class="built_in">lock</span>();</span><br><span class="line">		m2.<span class="built_in">lock</span>();</span><br><span class="line">		m1.<span class="built_in">unlock</span>();</span><br><span class="line">		m2.<span class="built_in">unlock</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func_2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		m2.<span class="built_in">lock</span>();</span><br><span class="line">		m1.<span class="built_in">lock</span>();</span><br><span class="line">		m1.<span class="built_in">unlock</span>();</span><br><span class="line">		m2.<span class="built_in">unlock</span>();</span><br><span class="line">		<span class="built_in">sleep</span>(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func_1)</span></span>;</span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func_2)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	std::cout&lt;&lt;<span class="string">&quot;over&quot;</span>&lt;&lt;std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="lock_guard与unique_lock" tabindex="-1">lock_guard与unique_lock</h1>
+<p><code>Rall</code>原则:</p>
+<ul>
+<li><strong>构造时</strong>：自动获取互斥锁。</li>
+<li><strong>析构时</strong>：自动释放互斥锁。<br>
+这意味着即使代码块中发生异常，锁也能被安全释放，避免了资源泄漏和死锁。</li>
+</ul>
+<blockquote>
+<p>C++11 中的 <code>std::lock_guard</code> 和 <code>std::unique_lock</code>。它们是实现 RAII（资源获取即初始化）来管理互斥锁的两种重要工具，能有效防止死锁并简化代码。</p>
+</blockquote>
+<h2 id="std::lock_guard" tabindex="-1" id="std-lock-guard">std::lock_guard</h2>
+<p><code>std::lock_guard</code> 是一个轻量级的、不可拷贝的 RAII 包装器，功能简单直接。</p>
+<p>特点:</p>
+<ol>
+<li><strong>简单且高效</strong>：开销小，只提供最基本的 RAII 风格锁管理。</li>
+<li><strong>不可手动操作</strong>：一旦创建，就不能主动 <code>lock</code> 或 <code>unlock</code>，其生命周期完全由作用域控制。</li>
+<li><strong>不支持延迟锁定</strong>：构造时必须立即获得锁。</li>
+<li><strong>不可复制和移动</strong>:通过禁用拷贝构造和等于号实现</li>
+</ol>
+<p>适用于在**某个明确的作用域(局部作用域)**内需要持有锁，且在此作用域内不需要手动释放或重新获取锁的简单情况。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line">std::mutex mtx;</span><br><span class="line"><span class="type">int</span> shared_data=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lg</span><span class="params">(mtx)</span></span>;</span><br><span class="line">		<span class="comment">//自动调用构造函数加锁</span></span><br><span class="line">		shared_data++;</span><br><span class="line">		<span class="comment">//自动调用析构函数解锁</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;</span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	std::cout&lt;&lt;shared_data&lt;&lt;std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="std::unique_lock" tabindex="-1" id="std-unique-lock">std::unique_lock</h2>
+<p><code>std::unique_lock</code> 是一个功能更全面、更灵活的 RAII 包装器。它包含了 <code>lock_guard</code> 的所有功能，并提供了额外的控制能力。</p>
+<p><strong>特点:</strong></p>
+<ol>
+<li><strong>灵活性高</strong>：支持延迟锁定、手动解锁、条件变量等复杂场景。</li>
+<li><strong>可手动操作</strong>：可以在生命周期内主动调用 <code>lock()</code> 和 <code>unlock()</code>。</li>
+<li><strong>支持所有权转移</strong>：可以通过 <code>std::move</code> 转移锁的所有权（但不能复制）。</li>
+<li><strong>支持多种锁定策略</strong>：在构造时可以通过参数指定锁定行为。</li>
+</ol>
+<p><strong>锁定策略</strong>:</p>
+<ul>
+<li><code>std::defer_lock</code>：不立即加锁，稍后手动加锁。</li>
+<li><code>std::try_to_lock</code>：尝试获取锁，但不阻塞。</li>
+<li><code>std::try_lock_for</code>: 阻塞并等待一定的时间</li>
+<li><code>std::adopt_lock</code>：假设调用线程已经持有该互斥锁。</li>
+</ul>
+<p>适用于所有需要锁的场景，尤其是在以下复杂情况：</p>
+<ul>
+<li>需要与 <code>std::condition_variable</code> 配合使用。</li>
+<li>需要手动释放锁（例如，在长时间操作的中间阶段）。</li>
+<li>需要尝试获取锁或延迟获取锁。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line">std::timed_mutex mtx;</span><br><span class="line"><span class="type">int</span> shared_data=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		std::unique_lock&lt;std::timed_mutex&gt;<span class="built_in">lg</span>(mtx,std::defer_lock);<span class="comment">//延迟加锁</span></span><br><span class="line">		lg.<span class="built_in">try_lock_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">5</span>));</span><br><span class="line">		<span class="comment">//阻塞并等待5秒,若5秒后加锁失败会直接返回</span></span><br><span class="line">		shared_data++;</span><br><span class="line">		<span class="comment">//自动调用析构函数解锁</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;</span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	std::cout&lt;&lt;shared_data&lt;&lt;std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line">std::timed_mutex mtx;</span><br><span class="line"><span class="type">int</span> shared_data=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		std::unique_lock&lt;std::timed_mutex&gt;<span class="built_in">lg</span>(mtx,std::defer_lock);<span class="comment">//延迟加锁</span></span><br><span class="line">		<span class="keyword">if</span>(lg.<span class="built_in">try_lock_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">2</span>)))</span><br><span class="line">		<span class="comment">//如果获取不到就阻塞并等待2秒,若2秒后加锁失败直接返回</span></span><br><span class="line">		&#123;</span><br><span class="line">			std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">4</span>));</span><br><span class="line">			shared_data++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//自动调用析构函数解锁</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;</span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	std::cout&lt;&lt;shared_data&lt;&lt;std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="std::call_once与其使用场景" tabindex="-1">std::call_once与其使用场景</h1>
+<blockquote>
+<p>单例设计模式:用于确保某个类只能创建一个实例,如日志类</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span>&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="built_in">Log</span>()&#123;&#125;<span class="comment">//默认构造函数</span></span><br><span class="line">		<span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止拷贝构造</span></span><br><span class="line">		Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止赋值</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="type">static</span> Log&amp; <span class="title">GetInstance</span><span class="params">()</span></span>&#123;<span class="comment">//static 方法：可以通过类名直接调用，无需实例</span></span><br><span class="line">			<span class="comment">//局部静态变量：在第一次调用时创建，程序结束时销毁</span></span><br><span class="line">            <span class="type">static</span> Log log;<span class="comment">//懒汉模式</span></span><br><span class="line">			<span class="keyword">return</span> log;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="type">void</span> <span class="title">PrintLog</span><span class="params">(std::string msg)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			std::cout&lt;&lt;msg&lt;&lt;std::endl;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span>&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="built_in">Log</span>()&#123;&#125;<span class="comment">//默认构造函数</span></span><br><span class="line">		<span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止拷贝构造</span></span><br><span class="line">		Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止赋值</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="type">static</span> Log&amp; <span class="title">GetInstance</span><span class="params">()</span></span>&#123;<span class="comment">//static 方法：可以通过类名直接调用，无需实例</span></span><br><span class="line">			<span class="comment">//局部静态变量：在第一次调用时创建，程序结束时销毁</span></span><br><span class="line">            <span class="type">static</span> Log* log=<span class="literal">nullptr</span>;<span class="comment">//饿汉模式</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(!log) log = <span class="keyword">new</span> Log;</span><br><span class="line">			<span class="keyword">return</span> *log;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="type">void</span> <span class="title">PrintLog</span><span class="params">(std::string msg)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			std::cout&lt;&lt;msg&lt;&lt;std::endl;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>多线程情况下会出现以下情况:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span>&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="built_in">Log</span>()&#123;&#125;<span class="comment">//默认构造函数</span></span><br><span class="line">		<span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止拷贝构造</span></span><br><span class="line">		Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止赋值</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="type">static</span> Log&amp; <span class="title">GetInstance</span><span class="params">()</span></span>&#123;<span class="comment">//static 方法：可以通过类名直接调用，无需实例</span></span><br><span class="line">			<span class="type">static</span> Log* log=<span class="literal">nullptr</span>;<span class="comment">//饿汉模式</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(!log) log = <span class="keyword">new</span> Log;</span><br><span class="line">			<span class="keyword">return</span> *log;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="type">void</span> <span class="title">PrintLog</span><span class="params">(std::string msg)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			std::cout&lt;&lt;__TIME__&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;msg&lt;&lt;std::endl;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Log::<span class="built_in">GetInstance</span>().<span class="built_in">PrintLog</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;<span class="comment">//t1  t2的并行会导致创建两个单例</span></span><br><span class="line">	<span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">	t1.<span class="built_in">join</span>();</span><br><span class="line">	t2.<span class="built_in">join</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了保证单例,使用<code>std::call_once</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> Callable, <span class="keyword">class</span>... Args&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">call_once</span><span class="params">(std::once_flag&amp; flag, Callable&amp;&amp; func, Args&amp;&amp;... args)</span></span>;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>线程安全</strong>：保证在多线程环境下，函数只被执行一次</li>
+<li><strong>高效</strong>：内部使用原子操作和锁，性能较好</li>
+<li><strong>异常安全</strong>：如果函数抛出异常，不算执行完成，其他线程会重试</li>
+<li>只能在线程中使用</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span>&#123;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="type">static</span> Log* log;  <span class="comment">// 静态成员声明</span></span><br><span class="line">    <span class="type">static</span> std::once_flag once;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="built_in">Log</span>()&#123;&#125;<span class="comment">//默认构造函数</span></span><br><span class="line">		<span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止拷贝构造</span></span><br><span class="line">		Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log) = <span class="keyword">delete</span>;<span class="comment">//禁止赋值</span></span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="type">static</span> Log&amp; <span class="title">GetInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 使用 call_once 确保只初始化一次</span></span><br><span class="line">        std::<span class="built_in">call_once</span>(once, init);</span><br><span class="line">        <span class="keyword">return</span> *log;</span><br><span class="line">    &#125;</span><br><span class="line">		<span class="function"><span class="type">void</span> <span class="title">PrintLog</span><span class="params">(std::string msg)</span></span></span><br><span class="line"><span class="function">		</span>&#123;</span><br><span class="line">			std::cout&lt;&lt;__TIME__&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;msg&lt;&lt;std::endl;</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            log = <span class="keyword">new</span> Log;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 静态成员定义</span></span><br><span class="line">Log* Log::log = <span class="literal">nullptr</span>;</span><br><span class="line">std::once_flag Log::once;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Log::<span class="built_in">GetInstance</span>().<span class="built_in">PrintLog</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(func)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">(func)</span></span>;</span><br><span class="line">    t1.<span class="built_in">join</span>();</span><br><span class="line">    t2.<span class="built_in">join</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/Gallery/">照片</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">创建线程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#join()%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">join()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#detach()%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">detach()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#joinable()%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">joinable()函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">互斥量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E9%87%8F%E6%AD%BB%E9%94%81"><span class="toc-number">6.</span> <span class="toc-text">互斥量死锁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lock_guard%E4%B8%8Eunique_lock"><span class="toc-number">7.</span> <span class="toc-text">lock_guard与unique_lock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#std::lock_guard"><span class="toc-number">7.1.</span> <span class="toc-text">std::lock_guard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#std::unique_lock"><span class="toc-number">7.2.</span> <span class="toc-text">std::unique_lock</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#std::call_once与其使用场景"><span class="toc-number">8.</span> <span class="toc-text">std::call_once与其使用场景</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&text=thread库"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&is_video=false&description=thread库"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=thread库&body=Check out this article: https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&title=thread库"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&name=thread库&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2025/10/01/cpp11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/&t=thread库"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    klklkl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- hexo injector body_end start --><script src="/js/code-fold.js?v=1786961732398"></script><!-- hexo injector body_end end --></body>
+</html>

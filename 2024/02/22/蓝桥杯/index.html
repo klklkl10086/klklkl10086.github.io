@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="蓝桥杯竞赛学习与题目整理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯">
+<meta property="og:url" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/index.html">
+<meta property="og:site_name" content="klklkl&#39;s blogs">
+<meta property="og:description" content="蓝桥杯竞赛学习与题目整理。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240412192522712.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240314212814712.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240314213050728.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240307215445608.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240307215206733.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240412195444573.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240412201207067.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240412201220057.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240314210202079.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240324104634741.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240324105942645.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240324110501255.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240324194807646.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240324195124747.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20241001204959516.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240315092802200.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240315093548155.png">
+<meta property="article:published_time" content="2024-02-22T10:50:11.000Z">
+<meta property="article:modified_time" content="2026-08-17T10:15:07.829Z">
+<meta property="article:author" content="klklkl">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20240412192522712.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>蓝桥杯</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css?v=1786961732398"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="klklkl's blogs" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2024/05/07/Database/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/01/14/Python/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&text=蓝桥杯"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&is_video=false&description=蓝桥杯"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=蓝桥杯&body=Check out this article: https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&name=蓝桥杯&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&t=蓝桥杯"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基础概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">输入技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8"><span class="toc-number">3.</span> <span class="toc-text">递归与递推</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text">二分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86"><span class="toc-number">4.1.</span> <span class="toc-text">整数二分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.</span> <span class="toc-text">前缀和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.1.</span> <span class="toc-text">一维前缀和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.2.</span> <span class="toc-text">二维前缀和</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E5%88%86"><span class="toc-number">6.</span> <span class="toc-text">差分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="toc-number">6.0.0.3.</span> <span class="toc-text">输入样例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="toc-number">6.0.0.4.</span> <span class="toc-text">输出样例：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="toc-number">6.1.</span> <span class="toc-text">一维差分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="toc-number">6.2.</span> <span class="toc-text">二维差分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86"><span class="toc-number">7.</span> <span class="toc-text">数学知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86"><span class="toc-number">7.0.1.</span> <span class="toc-text">裴蜀定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0"><span class="toc-number">7.0.2.</span> <span class="toc-text">最大公因数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%AD%9B%E8%B4%A8%E6%95%B0"><span class="toc-number">7.0.3.</span> <span class="toc-text">朴素筛质数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE-%E6%A8%A1%E6%8B%9F-%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text">枚举 模拟 排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%B8%8E%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">9.</span> <span class="toc-text">树状数组与线段树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">10.</span> <span class="toc-text">位运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="toc-number">11.</span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">12.</span> <span class="toc-text">高精度计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95"><span class="toc-number">12.1.</span> <span class="toc-text">大数加法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B"><span class="toc-number">12.1.1.</span> <span class="toc-text">课程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">12.1.2.</span> <span class="toc-text">练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%87%8F%E6%B3%95"><span class="toc-number">12.2.</span> <span class="toc-text">大数减法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B-1"><span class="toc-number">12.2.1.</span> <span class="toc-text">课程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95"><span class="toc-number">12.3.</span> <span class="toc-text">大数乘法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88dp%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">动态规划（dp）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.</span> <span class="toc-text">背包问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.1.</span> <span class="toc-text">0-1背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.2.</span> <span class="toc-text">完全背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.3.</span> <span class="toc-text">多重背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.4.</span> <span class="toc-text">分组背包问题</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        蓝桥杯
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">klklkl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-02-22T10:50:11.000Z" class="dt-published" itemprop="datePublished">2024-02-22</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Algorithm/">Algorithm</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Algorithm/" rel="tag">Algorithm</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>放在前面的话：</p>
+<p>​	这份笔记是在大二下刚开学的时候进行书写的，主要参考的是Acwing的<a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/19/">蓝桥杯辅导课</a>，笔者在成体系的学习算法之前已经学习过基本的<a target="_blank" rel="noopener" href="https://comeupklklkl.gitee.io/jluloser.github.io/2023/10/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>，以及离散数学。（PS:	y总讲课很好，如果可以建议报一下试试）</p>
+<h1 id="基础概念" tabindex="-1">基础概念</h1>
+<p>1s内c++可以运算一亿次即1e8次，因此我们的最大次数小于1e7到1e8之间便可以</p>
+<p>int的范围约为[-2e9,+2e9]，最大值可以通过 0x7fffffff 来表示，long long的范围是 [- 1e18，+1e18]</p>
+<p>由数据范围反推算法复杂度以及算法内容：</p>
+<p><img src="image-20240412192522712.png" alt="image-20240412192522712"></p>
+<p>下取整 （int）直接除</p>
+<p>上取整：转化成下取整</p>
+<p><img src="image-20240314212814712.png" alt="image-20240314212814712"></p>
+<p><img src="image-20240314213050728.png" alt="image-20240314213050728"></p>
+<h1 id="输入技巧" tabindex="-1">输入技巧</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="built_in">getline</span>(cin,str);</span><br><span class="line"><span class="keyword">while</span>(cnt--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">getline</span>(cin,str);</span><br><span class="line">        <span class="function">stringstream <span class="title">ssin</span><span class="params">(str)</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(ssin&gt;&gt;a[n]) n++;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="递归与递推" tabindex="-1">递归与递推</h1>
+<p>递归：把问题分成若干个相同子问题</p>
+<p>递推：由子问题推出最终问题</p>
+<h1 id="二分" tabindex="-1">二分</h1>
+<h2 id="整数二分" tabindex="-1" id="整数二分">整数二分</h2>
+<ul>
+<li>
+<p>确定一个区间使得答案一定在一个区间里</p>
+</li>
+<li>
+<p>找一个性质，满足两点：</p>
+<p>性质具有二段性</p>
+<p>答案是二段性的分段点（有两种情况，一种是前段的终点a，一种是后段的起点b，a与b不重合）</p>
+</li>
+</ul>
+<p><img src="image-20240307215445608.png" alt="image-20240307215445608"></p>
+<p><img src="image-20240307215206733.png" alt="image-20240307215206733"></p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/3073/">y总模板</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;<span class="comment">//一定要加一</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) l = mid;<span class="comment">//</span></span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>记忆技巧：</p>
+<p>如果我们想要的点x是左部分的<strong>右端点</strong>，则区间分为 [l,mid-1] ,[<strong>mid</strong>,r]</p>
+<p>如果我们想要的点x是右部分的<strong>左端点</strong>，则区间分为 [l,<strong>mid</strong>] ,[mid+1,r]</p>
+<p>即我们想要的x是什么方向的端点，mid就在哪个部分，<strong>只要l=mid出现计算mid的时候一定要加一</strong></p>
+<h1 id="前缀和" tabindex="-1">前缀和</h1>
+<p><strong>一定要将下标加一，不然遇见s[i-1]会出问题</strong></p>
+<h2 id="一维前缀和" tabindex="-1" id="一维前缀和">一维前缀和</h2>
+<p>利用数列的思想：<br>
+$$<br>
+S_r-S_l=a_{l+1}+a_{l+2}+…+a_{r}<br>
+$$</p>
+<h2 id="二维前缀和" tabindex="-1" id="二维前缀和">二维前缀和</h2>
+<p>与一维前缀和思想类似:</p>
+<blockquote>
+<p><strong>容斥原理</strong>:</p>
+<p>在计数时，必须注意没有重复，没有遗漏。为了使重叠部分不被重复计算，人们研究出一种新的计数方法，这种方法的基本思想是：先不考虑重叠的情况，把包含于某内容中的所有对象的数目先计算出来，然后再把计数时重复计算的数目<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8E%92%E6%96%A5/10717656?fromModule=lemma_inlink">排斥</a>出去，使得计算的结果既无遗漏又无重复，这种计数的方法称为容斥原理</p>
+</blockquote>
+<p><strong>1.计算前缀和矩阵</strong><br>
+$$<br>
+S_{(x,y)} = S_{(x-1,y)}+S_{(x,y-1)}-S_{(x-1,y-1)}+a_{(x,y)}<br>
+$$<br>
+<strong>2.利用前缀和矩阵计算子矩阵的和</strong><br>
+$$<br>
+S_{(x_1,y_1),(x_2,y_2)} = S_{(x_2,y_2)}-S_{(x_2,y_1-1)}-S_{(x_1-1,y_2)}+S_{(x_1-1,y_1-1)}<br>
+$$</p>
+<h1 id="差分" tabindex="-1">差分</h1>
+<p>前缀和的逆应用</p>
+<p><strong>在指定的区间内统一加上或者减去一个数字</strong></p>
+<p><img src="image-20240412195444573.png" alt="image-20240412195444573"></p>
+<p>输入一个 n 行 m列的整数矩阵，再输入 q 个操作，每个操作包含五个整数 x1,y1,x2,y2,c1,1,2,2,，其中 (x1,y1)和 (x2,y2)表示一个子矩阵的左上角坐标和右下角坐标。</p>
+<p>每个操作都要将选中的子矩阵中的每个元素的值加上 c。</p>
+<p>请你将进行完所有操作后的矩阵输出。</p>
+<h4 id="输入格式" tabindex="-1" id="输入格式">输入格式</h4>
+<p>第一行包含整数 n,m,q,。</p>
+<p>接下来 n 行，每行包含 m 个整数，表示整数矩阵。</p>
+<p>接下来 q 行，每行包含 55个整数 x1,y1,x2,y2，c表示一个操作。</p>
+<h4 id="输出格式" tabindex="-1" id="输出格式">输出格式</h4>
+<p>共 n 行，每行 m 个整数，表示所有操作进行完毕后的最终矩阵。</p>
+<h4 id="输入样例：" tabindex="-1" id="输入样例：">输入样例：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 4 3</span><br><span class="line">1 2 2 1</span><br><span class="line">3 2 2 1</span><br><span class="line">1 1 1 1</span><br><span class="line">1 1 2 2 1</span><br><span class="line">1 3 2 3 2</span><br><span class="line">3 1 3 4 1</span><br></pre></td></tr></table></figure>
+<h4 id="输出样例：" tabindex="-1" id="输出样例：">输出样例：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 3 4 1</span><br><span class="line">4 3 4 1</span><br><span class="line">2 2 2 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> a[N][N],n,m,q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;q);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> x;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">			a[i][j]+=x;</span><br><span class="line">			a[i+<span class="number">1</span>][j]-=x;</span><br><span class="line">			a[i][j+<span class="number">1</span>]-=x;</span><br><span class="line">			a[i+<span class="number">1</span>][j+<span class="number">1</span>]+=x;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> x1,y1,x2,y2,c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d%d&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;c);</span><br><span class="line">		a[x1][y1]+=c;</span><br><span class="line">		a[x2+<span class="number">1</span>][y1]-=c;</span><br><span class="line">		a[x1][y2+<span class="number">1</span>]-=c;</span><br><span class="line">		a[x2+<span class="number">1</span>][y2+<span class="number">1</span>]+=c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">			a[i][j]+=a[i<span class="number">-1</span>][j]+a[i][j<span class="number">-1</span>]-a[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i][j]);</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一维差分" tabindex="-1" id="一维差分">一维差分</h2>
+<h2 id="二维差分" tabindex="-1" id="二维差分">二维差分</h2>
+<h1 id="数学知识" tabindex="-1">数学知识</h1>
+<p>尽力分析</p>
+<p>打表找规律</p>
+<h3 id="裴蜀定理" tabindex="-1" id="裴蜀定理">裴蜀定理</h3>
+<p><img src="image-20240412201207067.png" alt="image-20240412201207067"></p>
+<p><img src="image-20240412201220057.png" alt="image-20240412201220057"></p>
+<p><img src="image-20240314210202079.png" alt="image-20240314210202079"></p>
+<h3 id="最大公因数" tabindex="-1" id="最大公因数">最大公因数</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b, a % b) : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="朴素筛质数" tabindex="-1" id="朴素筛质数"><strong>朴素筛质数</strong></h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="type">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (st[i]) <span class="keyword">continue</span>;</span><br><span class="line">        primes[cnt ++ ] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + i; j &lt;= n; j += i)</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="枚举-模拟-排序" tabindex="-1">枚举 模拟 排序</h1>
+<p><strong>归并排序模板</strong></p>
+<p>计算逆序对</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LL <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    cnt+=<span class="built_in">merge_sort</span>(q,l,mid)+<span class="built_in">merge_sort</span>(q,mid+<span class="number">1</span>,r);</span><br><span class="line">    <span class="type">int</span> i=l,j=mid+<span class="number">1</span>,k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;=q[j]) tmp[k++]=q[i++];</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        &#123;</span><br><span class="line">            cnt+=mid-i+<span class="number">1</span>;<span class="comment">////key</span></span><br><span class="line">            tmp[k++]=q[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) tmp[k++]=q[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=r) tmp[k++]=q[j++];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=l,j=<span class="number">0</span>;i&lt;=r;i++,j++) q[i]=tmp[j];</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="树状数组与线段树" tabindex="-1">树状数组与线段树</h1>
+<p>前者精密  后者处理范围广</p>
+<p><img src="image-20240324104634741.png" alt="image-20240324104634741"></p>
+<p><img src="image-20240324105942645.png" alt="image-20240324105942645"></p>
+<p><img src="image-20240324110501255.png" alt="image-20240324110501255"></p>
+<p><img src="image-20240324194807646.png" alt="image-20240324194807646"></p>
+<p><img src="image-20240324195124747.png" alt="image-20240324195124747"></p>
+<p>线段树节点的个数最多是4n，存储方式和堆的存储方式一样，使用一维数组存储，下标为x的节点的父节点是x/2（x&gt;&gt;1） 左儿子是2x 右儿子是2x+1</p>
+<h1 id="位运算" tabindex="-1">位运算</h1>
+<p>求n的第k位数字: n &gt;&gt; k &amp; 1<br>
+返回n的最后一位1：lowbit(n) = n &amp; -n</p>
+<h1 id="快速幂" tabindex="-1">快速幂</h1>
+<p><img src="image-20241001204959516.png" alt="image-20241001204959516"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对p做二进制拆分， 对n做平方倍增 -- O(log n)</span></span><br><span class="line"> <span class="function">ll <span class="title">quick_power</span><span class="params">(ll n, ll p)</span></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(p)&#123;  <span class="comment">//如果指数不为0</span></span><br><span class="line">        <span class="keyword">if</span>(p &amp; <span class="number">1</span>) res *= n;  <span class="comment">// 如果对应二进制数的当前位为1, 则res 乘以当前位的值</span></span><br><span class="line">        n *= n;              <span class="comment">//对n进行倍增</span></span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;             <span class="comment">//指数右移1位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="高精度计算" tabindex="-1">高精度计算</h1>
+<h2 id="大数加法" tabindex="-1" id="大数加法">大数加法</h2>
+<h3 id="课程" tabindex="-1" id="课程">课程</h3>
+<p><strong>没有考虑负数的情况</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ne411v78Z/?spm_id_from=333.788&amp;vd_source=9a4fe569cfdfb26138828e9c87e1512d">b站大数加法</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">vector2string</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; x, <span class="type">int</span> s, <span class="type">bool</span> flag = <span class="number">1</span>)</span><span class="comment">//flag为1则x为正数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">string <span class="title">ans</span><span class="params">(s, <span class="string">&#x27;0&#x27;</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ans[i] = <span class="string">&#x27;0&#x27;</span> + x[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());<span class="comment">//倒置</span></span><br><span class="line"> 	<span class="keyword">if</span>(!flag)    ans.<span class="built_in">insert</span>(<span class="number">0</span>,<span class="string">&quot;-&quot;</span>);<span class="comment">//如果为负数在数字前面添加负号</span></span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">string <span class="title">add</span><span class="params">(string&amp; num1, string&amp; num2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(num1.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(num2.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num1.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[num1.<span class="built_in">size</span>() - i - <span class="number">1</span>] = num1[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num2.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		b[num2.<span class="built_in">size</span>() - i - <span class="number">1</span>] = num2[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(num1.size() + num2.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="type">int</span> len = num2.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">if</span> (num2.<span class="built_in">size</span>() &gt; num1.<span class="built_in">size</span>()) len = num1.<span class="built_in">size</span>();</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		c[i]+= a[i] + b[i];</span><br><span class="line">		c[i + <span class="number">1</span>] += c[i] / <span class="number">10</span>;</span><br><span class="line">		c[i] %= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">   	<span class="comment">//位数较长的数平移加上对应位置的c[i]</span></span><br><span class="line">	<span class="keyword">if</span> (num1.<span class="built_in">size</span>() &gt; num2.<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (; i &lt; num1.<span class="built_in">size</span>(); i++)</span><br><span class="line">			c[i] += a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (num1.<span class="built_in">size</span>() &lt; num2.<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (; i &lt; num2.<span class="built_in">size</span>(); i++)</span><br><span class="line">			c[i] += b[i];</span><br><span class="line">	&#125;</span><br><span class="line">    len = num1.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">if</span> (num2.<span class="built_in">size</span>() &gt; num1.<span class="built_in">size</span>()) len = num2.<span class="built_in">size</span>();</span><br><span class="line">	<span class="keyword">while</span> (c[len] == <span class="number">0</span>)<span class="comment">//去除前导0</span></span><br><span class="line">	&#123;</span><br><span class="line">		len--;</span><br><span class="line">	&#125;</span><br><span class="line">	string ans = <span class="built_in">vector2string</span>(c, len + <span class="number">1</span>);<span class="comment">//转换为string</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="练习" tabindex="-1" id="练习">练习</h3>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/add-strings/submissions/504061261/">力扣 字符串加法</a></p>
+<h2 id="大数减法" tabindex="-1" id="大数减法">大数减法</h2>
+<h3 id="课程-1" tabindex="-1" id="课程-2">课程</h3>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1kb4y1A7Wf/?spm_id_from=333.788&amp;vd_source=9a4fe569cfdfb26138828e9c87e1512d">b站</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">divide</span><span class="params">(string&amp; num1, string&amp; num2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> flag = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">	<span class="keyword">if</span> (num1.<span class="built_in">size</span>() &lt; num2.<span class="built_in">size</span>() || (num1.<span class="built_in">size</span>() == num2.<span class="built_in">size</span>() &amp;&amp; num1 &lt; num2))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">swap</span>(num1, num2);</span><br><span class="line">		flag = <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(num1.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(num2.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num1.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[num1.<span class="built_in">size</span>() - i - <span class="number">1</span>] = num1[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num2.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		b[num2.<span class="built_in">size</span>() - i - <span class="number">1</span>] = num2[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(num1.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="type">int</span> len = num2.<span class="built_in">size</span>();</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (a[i] &lt; b[i])</span><br><span class="line">		&#123;</span><br><span class="line">			a[i] += <span class="number">10</span>;</span><br><span class="line">			a[i + <span class="number">1</span>]--;</span><br><span class="line">		&#125;</span><br><span class="line">		c[i] += a[i] - b[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (; i &lt; num1.<span class="built_in">size</span>(); i++)</span><br><span class="line">		c[i] += a[i];</span><br><span class="line">	len=c.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (c[len] == <span class="number">0</span>)</span><br><span class="line">		len--;</span><br><span class="line"></span><br><span class="line">	string ans;</span><br><span class="line">	<span class="keyword">if</span> (flag == <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ans = <span class="built_in">vector2string</span>(c, len + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		ans = <span class="built_in">vector2string</span>(c, len + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="大数乘法" tabindex="-1" id="大数乘法">大数乘法</h2>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LA411v7mt?p=3&amp;vd_source=9a4fe569cfdfb26138828e9c87e1512d">b站 高精度算法</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">string <span class="title">mulity</span><span class="params">(string&amp; num1, string&amp; num2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(num1.size() + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">b</span><span class="params">(num2.size() + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(num1.size() + num2.size() + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= num1.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[num1.<span class="built_in">size</span>() - i] = num1[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= num2.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		b[num2.<span class="built_in">size</span>() - i] = num2[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= num2.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= num1.<span class="built_in">size</span>(); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			c[i + j - <span class="number">1</span>] += b[i] * a[j];</span><br><span class="line">			c[i + j] += c[i + j - <span class="number">1</span>] / <span class="number">10</span>;</span><br><span class="line">			c[i + j - <span class="number">1</span>] %= <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> len = c.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (c[len] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		len--;</span><br><span class="line">	&#125;</span><br><span class="line">	string ans = <span class="built_in">vector2string</span>(c, len + <span class="number">1</span>);</span><br><span class="line">	ans = ans.<span class="built_in">substr</span>(<span class="number">0</span>, ans.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="动态规划（dp）" tabindex="-1">动态规划（dp）</h1>
+<p>暴力dfs-&gt;记忆化搜索–&gt;递推（dp）</p>
+<p>记忆化搜索 = 暴力dfs+记录答案</p>
+<p>递推的公式  = dfs向下递归的公式</p>
+<p>dp的重点在于状态转移方程，即从树的最下层向上归的过程</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/10768518/">跳楼梯</a></p>
+<p><a target="_blank" rel="noopener" href="https://acm.cjlu.edu.cn/problem/3641">大盗阿福</a></p>
+<h2 id="背包问题" tabindex="-1" id="背包问题">背包问题</h2>
+<ul>
+<li>
+<p>状态表示</p>
+</li>
+<li>
+<p>状态计算</p>
+<p><img src="image-20240315092802200.png" alt="image-20240315092802200"></p>
+<p><img src="image-20240315093548155.png" alt="image-20240315093548155"></p>
+</li>
+</ul>
+<p>注意：右边的子集不一定存在只有 当 j  &gt;= v[i]的时候才存在</p>
+<p>之后转化为一维</p>
+<h3 id="0-1背包问题" tabindex="-1" id="0-1背包问题">0-1背包问题</h3>
+<blockquote>
+<p>已知一个背包容积为V，现在有N个物品，每个物品有一个价值Wi，一个体积Vi，每件物品最多用一次，求可以选择的总价值最大。</p>
+</blockquote>
+<h3 id="完全背包问题" tabindex="-1" id="完全背包问题">完全背包问题</h3>
+<p>每件物品有无限个</p>
+<h3 id="多重背包问题" tabindex="-1" id="多重背包问题">多重背包问题</h3>
+<p>每个物品有有限个</p>
+<h3 id="分组背包问题" tabindex="-1" id="分组背包问题">分组背包问题</h3>
+<p>每一组最多选择一个物品</p>
+<p>[mid+1, r]:</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/Gallery/">照片</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基础概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8A%80%E5%B7%A7"><span class="toc-number">2.</span> <span class="toc-text">输入技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8"><span class="toc-number">3.</span> <span class="toc-text">递归与递推</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text">二分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86"><span class="toc-number">4.1.</span> <span class="toc-text">整数二分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.</span> <span class="toc-text">前缀和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.1.</span> <span class="toc-text">一维前缀和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">5.2.</span> <span class="toc-text">二维前缀和</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E5%88%86"><span class="toc-number">6.</span> <span class="toc-text">差分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="toc-number">6.0.0.3.</span> <span class="toc-text">输入样例：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="toc-number">6.0.0.4.</span> <span class="toc-text">输出样例：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="toc-number">6.1.</span> <span class="toc-text">一维差分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86"><span class="toc-number">6.2.</span> <span class="toc-text">二维差分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86"><span class="toc-number">7.</span> <span class="toc-text">数学知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86"><span class="toc-number">7.0.1.</span> <span class="toc-text">裴蜀定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0"><span class="toc-number">7.0.2.</span> <span class="toc-text">最大公因数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%B4%E7%B4%A0%E7%AD%9B%E8%B4%A8%E6%95%B0"><span class="toc-number">7.0.3.</span> <span class="toc-text">朴素筛质数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE-%E6%A8%A1%E6%8B%9F-%E6%8E%92%E5%BA%8F"><span class="toc-number">8.</span> <span class="toc-text">枚举 模拟 排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%B8%8E%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">9.</span> <span class="toc-text">树状数组与线段树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">10.</span> <span class="toc-text">位运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="toc-number">11.</span> <span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">12.</span> <span class="toc-text">高精度计算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%8A%A0%E6%B3%95"><span class="toc-number">12.1.</span> <span class="toc-text">大数加法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B"><span class="toc-number">12.1.1.</span> <span class="toc-text">课程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">12.1.2.</span> <span class="toc-text">练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E5%87%8F%E6%B3%95"><span class="toc-number">12.2.</span> <span class="toc-text">大数减法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B-1"><span class="toc-number">12.2.1.</span> <span class="toc-text">课程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E4%B9%98%E6%B3%95"><span class="toc-number">12.3.</span> <span class="toc-text">大数乘法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88dp%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">动态规划（dp）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.</span> <span class="toc-text">背包问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.1.</span> <span class="toc-text">0-1背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.2.</span> <span class="toc-text">完全背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.3.</span> <span class="toc-text">多重背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">13.1.4.</span> <span class="toc-text">分组背包问题</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&text=蓝桥杯"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&is_video=false&description=蓝桥杯"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=蓝桥杯&body=Check out this article: https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&title=蓝桥杯"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&name=蓝桥杯&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2024/02/22/%E8%93%9D%E6%A1%A5%E6%9D%AF/&t=蓝桥杯"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    klklkl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- hexo injector body_end start --><script src="/js/code-fold.js?v=1786961732398"></script><!-- hexo injector body_end end --></body>
+</html>

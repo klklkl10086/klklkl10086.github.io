@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="SGEMM 从朴素实现到 shared memory tiling 的 CUDA 性能分析笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SGEMM 单精度矩阵乘法">
+<meta property="og:url" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/index.html">
+<meta property="og:site_name" content="klklkl&#39;s blogs">
+<meta property="og:description" content="SGEMM 从朴素实现到 shared memory tiling 的 CUDA 性能分析笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/image-1786687726517.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/image-1786955470796.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/image-1786959241157.png">
+<meta property="og:image" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/image-1786959893474.png">
+<meta property="article:published_time" content="2026-08-17T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-17T10:15:07.387Z">
+<meta property="article:author" content="klklkl">
+<meta property="article:tag" content="CUDA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/image-1786687726517.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>SGEMM 单精度矩阵乘法</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<!-- hexo injector head_end start --><link rel="stylesheet" href="/css/custom.css?v=1786961732398"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="klklkl's blogs" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2026/08/01/%E8%AE%AD%E7%BB%83%E8%90%A5c++%E7%9F%A5%E8%AF%86/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&text=SGEMM 单精度矩阵乘法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&is_video=false&description=SGEMM 单精度矩阵乘法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SGEMM 单精度矩阵乘法&body=Check out this article: https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&name=SGEMM 单精度矩阵乘法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&t=SGEMM 单精度矩阵乘法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">代码框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC-%E4%BA%8C%E7%BB%B4%E7%BA%BF%E7%A8%8B%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">二维网格 二维线程块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">分析思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#00-%E6%9C%B4%E7%B4%A0%E5%AE%9E%E7%8E%B0"><span class="toc-number"></span> <span class="toc-text">00-朴素实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">代码思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1-speed-of-light-throughput"><span class="toc-number">3.1.</span> <span class="toc-text">Step1-Speed Of Light Throughput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2-memory-workload-analysis"><span class="toc-number">3.2.</span> <span class="toc-text">Step2-Memory Workload Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3-kernel-code-analysis"><span class="toc-number">3.3.</span> <span class="toc-text">Step3-kernel code Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">5.</span> <span class="toc-text">优化方向</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#01-shared-memory-tiling"><span class="toc-number"></span> <span class="toc-text">01-Shared Memory Tiling</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E9%94%99%E8%AF%AF%E6%83%B3%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">我的错误想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">更优雅的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="toc-number">3.</span> <span class="toc-text">性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1-speed-of-light-throughput-1"><span class="toc-number">3.1.</span> <span class="toc-text">Step1-Speed Of Light Throughput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2-compute-workload"><span class="toc-number">3.2.</span> <span class="toc-text">Step2-Compute Workload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3-memory-workload"><span class="toc-number">3.3.</span> <span class="toc-text">Step3-Memory Workload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step4-occupancy"><span class="toc-number">3.4.</span> <span class="toc-text">Step4-Occupancy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step5-scheduler-statistics"><span class="toc-number">3.5.</span> <span class="toc-text">Step5-Scheduler Statistics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step6-warp-state-statistics-warp-stall"><span class="toc-number">3.6.</span> <span class="toc-text">Step6-Warp State Statistics  Warp Stall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%88%A4%E6%96%AD"><span class="toc-number">3.7.</span> <span class="toc-text">综合判断</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        SGEMM 单精度矩阵乘法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">klklkl</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-08-17T00:00:00.000Z" class="dt-published" itemprop="datePublished">2026-08-17</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/AI-Infra/">AI Infra</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/CUDA/" rel="tag">CUDA</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1DBqgY7Esf/?share_source=copy_web&amp;vd_source=777aaa8a415b68222e598d976e64642c">【CUDA】Sgemm单精度矩阵乘法（已完结~） </a></p>
+</blockquote>
+<h2 id="问题定义" tabindex="-1" id="问题定义">问题定义</h2>
+<blockquote>
+<p><strong>SGEMM</strong>（单精度矩阵乘法）是指在单精度浮点数上下进行的矩阵乘法运算。</p>
+</blockquote>
+<p>设矩阵均为 row-major：</p>
+<p>$$<br>
+C_{M\times N}=A_{M\times K}B_{K\times N}<br>
+$$</p>
+<p>其中：</p>
+<p>$$<br>
+C_{ij}=\sum_{k=0}^{K-1}A_{ik}B_{kj}<br>
+$$</p>
+<p>一个 SGEMM 一共大约执行：$2MNK$次 FLOP，因为每个 <code>a*b+c</code> 可以视为：</p>
+<ul>
+<li>1 次乘法</li>
+<li>1 次加法</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M=N=K=4096</span><br></pre></td></tr></table></figure>
+<p>总计算量：</p>
+<p>$$<br>
+2\times4096^3\approx137.4\text{ GFLOP}<br>
+$$</p>
+<p>假设 kernel 执行 <code>1 ms</code>：</p>
+<p>$$<br>
+Performance=\frac{137.4GFLOP}{0.001s}=137.4TFLOPS<br>
+$$</p>
+<p>因此之后测性能统一使用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gflops = <span class="number">2.0</span> * M * N * K / time_seconds / <span class="number">1e9</span>;</span><br></pre></td></tr></table></figure>
+<p>如何才能使得性能最大化，这是首要问题。</p>
+<h2 id="代码框架" tabindex="-1" id="代码框架"><strong>代码框架</strong></h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cuda_runtime.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A(i,j) a[(i)*n+(j)]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">random_matrix</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n,<span class="type">float</span>*a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> 1</span></span><br><span class="line">            <span class="built_in">A</span>(i,j) = <span class="number">2.0</span>*(<span class="type">float</span>)<span class="built_in">drand48</span>()<span class="number">-1.0</span>;<span class="comment">//drand48() 产生 [0.0, 1.0) 的随机数</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">            <span class="built_in">A</span>(i,j)=(j-i)%<span class="number">3</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">check</span><span class="params">(<span class="type">int</span> m,<span class="type">int</span> n,<span class="type">float</span> *a,<span class="type">float</span> *b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> max_diff = <span class="number">0.0</span>,diff=<span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            diff = <span class="built_in">abs</span>(a[i*n+j]-b[i*n+j]);</span><br><span class="line">            max_diff = <span class="built_in">max</span>(max_diff,diff);</span><br><span class="line">            <span class="keyword">if</span>(max_diff&gt;<span class="number">0.05f</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;\n error\n&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> max_diff;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max_diff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cpu_sgemm</span><span class="params">(<span class="type">float</span> *A_ptr,<span class="type">float</span> *B_ptr, <span class="type">float</span> *C_ptr,<span class="type">const</span> <span class="type">int</span> M, <span class="type">const</span> <span class="type">int</span> N ,<span class="type">const</span> <span class="type">int</span> K)</span> <span class="comment">// M*K  K*N  M*N</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//遍历结果矩阵的每一个元素</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;M;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;N;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> idx=<span class="number">0</span>;idx&lt;K;idx++)</span><br><span class="line">            &#123;</span><br><span class="line">                C_ptr[i*N+j]+=A_ptr[i*K+idx]*B_ptr[idx*N+j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//block size 16 * 16  </span></span><br><span class="line"><span class="function">__global__  <span class="type">void</span>  <span class="title">cuda_sgemm</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">float</span> *A,<span class="type">float</span> *B,<span class="type">float</span> *C,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">int</span> m,<span class="type">const</span> <span class="type">int</span> n,<span class="type">const</span> <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> m = <span class="number">1000</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> n = <span class="number">1300</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> k = <span class="number">700</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">size_t</span> mem_size_A  = m * k * <span class="built_in">sizeof</span>(<span class="type">float</span>);</span><br><span class="line">    <span class="type">const</span> <span class="type">size_t</span> mem_size_B  = k * n * <span class="built_in">sizeof</span>(<span class="type">float</span>);</span><br><span class="line">    <span class="type">const</span> <span class="type">size_t</span> mem_size_C  = m * n * <span class="built_in">sizeof</span>(<span class="type">float</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *matrix_A_host = (<span class="type">float</span>*)<span class="built_in">malloc</span>(mem_size_A); </span><br><span class="line">    <span class="type">float</span> *matrix_B_host = (<span class="type">float</span>*)<span class="built_in">malloc</span>(mem_size_B);</span><br><span class="line">    </span><br><span class="line">    <span class="type">float</span> *matrix_C_host_gpu_calc = (<span class="type">float</span>*)<span class="built_in">malloc</span>(mem_size_C); </span><br><span class="line">    <span class="type">float</span> *matrix_C_host_cpu_calc = (<span class="type">float</span>*)<span class="built_in">malloc</span>(mem_size_C); </span><br><span class="line"></span><br><span class="line">    <span class="comment">//随机初始化矩阵</span></span><br><span class="line">    <span class="built_in">random_matrix</span>(m,k,matrix_A_host);</span><br><span class="line">    <span class="built_in">random_matrix</span>(k,n,matrix_B_host);</span><br><span class="line">    <span class="built_in">memset</span>(matrix_C_host_cpu_calc,<span class="number">0</span>,mem_size_C);</span><br><span class="line">    <span class="built_in">memset</span>(matrix_C_host_gpu_calc,<span class="number">0</span>,mem_size_C);</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> *matrix_A_device,*matrix_B_device,*matrix_C_device;</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;matrix_A_device,mem_size_A);</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;matrix_B_device,mem_size_B);</span><br><span class="line">    <span class="built_in">cudaMalloc</span>((<span class="type">void</span>**)&amp;matrix_C_device,mem_size_C);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(matrix_A_device,matrix_A_host,mem_size_A,cudaMemcpyHostToDevice);</span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(matrix_B_device,matrix_B_host,mem_size_B,cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cpu_sgemm</span>(matrix_A_host,matrix_B_host,matrix_C_host_cpu_calc,m,n,k);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constexpr</span> <span class="type">int</span> BLOCK = <span class="number">16</span>;</span><br><span class="line">    <span class="function">dim3 <span class="title">block</span><span class="params">(BLOCK,BLOCK)</span></span>;</span><br><span class="line">    <span class="function">dim3 <span class="title">grid</span><span class="params">((n+BLOCK<span class="number">-1</span>)/BLOCK,(m+BLOCK<span class="number">-1</span>)/BLOCK)</span></span>;</span><br><span class="line">    cuda_sgemm&lt;&lt;&lt;grid,block&gt;&gt;&gt;(matrix_A_device,matrix_B_device,matrix_C_device,m,n,k);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaMemcpy</span>(matrix_C_host_gpu_calc,matrix_C_device,mem_size_C,cudaMemcpyDeviceToHost);</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> diff = <span class="built_in">check</span>(m,n,matrix_C_host_cpu_calc,matrix_C_host_gpu_calc);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(matrix_A_host);</span><br><span class="line">    <span class="built_in">free</span>(matrix_B_host);</span><br><span class="line">    <span class="built_in">free</span>(matrix_C_host_cpu_calc);</span><br><span class="line">    <span class="built_in">free</span>(matrix_C_host_gpu_calc);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaFree</span>(matrix_A_device);</span><br><span class="line">    <span class="built_in">cudaFree</span>(matrix_B_device);</span><br><span class="line">    <span class="built_in">cudaFree</span>(matrix_C_device);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二维网格-二维线程块" tabindex="-1" id="二维网格-二维线程块">二维网格 二维线程块</h2>
+<p><img src="image-1786687726517.png" alt="image-1786687726517.png"></p>
+<h1 id="分析思路" tabindex="-1">分析思路</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">                  Duration / TFLOPS</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                Speed Of Light</span><br><span class="line">                        │</span><br><span class="line">          ┌─────────────┴─────────────┐</span><br><span class="line">          ▼                           ▼</span><br><span class="line">       Compute                      Memory</span><br><span class="line">          │                           │</span><br><span class="line">   Issue Slots Busy           DRAM Throughput</span><br><span class="line">      SM Busy                  L2 Throughput</span><br><span class="line">      IPC                      L1/TEX Throughput</span><br><span class="line">          │                    Mem Busy</span><br><span class="line">          │                    Max Bandwidth</span><br><span class="line">          │                    Mem Pipes Busy</span><br><span class="line">          │                           │</span><br><span class="line">          └─────────────┬─────────────┘</span><br><span class="line">                        ▼</span><br><span class="line">                    Occupancy</span><br><span class="line">                        │</span><br><span class="line">                 Active Warps够吗</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                    Scheduler</span><br><span class="line">                        │</span><br><span class="line">            Active → Eligible → Issued</span><br><span class="line">                        │</span><br><span class="line">                 Eligible太少？</span><br><span class="line">                        │</span><br><span class="line">                        ▼</span><br><span class="line">                    Warp Stall</span><br><span class="line">                        │</span><br><span class="line">         ┌──────────────┼───────────────┐</span><br><span class="line">         ▼              ▼               ▼</span><br><span class="line">Short Scoreboard   MIO Throttle       Barrier</span><br><span class="line">  Shared依赖       MIO压力          同步等待</span><br><span class="line"></span><br><span class="line">Long Scoreboard    Math Throttle     Not Selected</span><br><span class="line">Global/L1TEX       数学pipe压力      warp很多</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">层级</th>
+<th style="text-align:left">类别</th>
+<th style="text-align:left">指标 / 概念</th>
+<th style="text-align:left">中文解释</th>
+<th style="text-align:left">含义 / 诊断价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>第一层</strong></td>
+<td style="text-align:left"><strong>顶层入口</strong></td>
+<td style="text-align:left"><code>Duration / TFLOPS</code></td>
+<td style="text-align:left">程序运行总时间 / 理论浮点性能</td>
+<td style="text-align:left">宏观入口，通过与理论峰值对比，判断内核整体性能表现。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>顶层分支</strong></td>
+<td style="text-align:left"><code>Speed Of Light</code></td>
+<td style="text-align:left">光速（理论性能峰值）</td>
+<td style="text-align:left">当前GPU架构的理论计算或内存性能上限，用于衡量程序与峰值的差距。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>第二层</strong></td>
+<td style="text-align:left"><strong>计算路径 (Compute)</strong></td>
+<td style="text-align:left"><code>Issue Slots Busy</code></td>
+<td style="text-align:left">发射槽位忙碌率</td>
+<td style="text-align:left">每个周期Warp调度器发射指令的槽位被使用的百分比。低值说明调度器空转严重。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>SM Busy</code></td>
+<td style="text-align:left">SM（流式多处理器）忙碌率</td>
+<td style="text-align:left">SM处于活跃状态（非空闲）的时间百分比。低值说明计算资源未被充分利用。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>IPC</code></td>
+<td style="text-align:left">每周期指令数</td>
+<td style="text-align:left">每个周期平均执行的指令数，直接反映计算吞吐量。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>内存路径 (Memory)</strong></td>
+<td style="text-align:left"><code>DRAM / L2 / L1/TEX Throughput</code></td>
+<td style="text-align:left">各级内存吞吐量</td>
+<td style="text-align:left">数据通过显存、二级缓存、一级/纹理缓存的传输速率，通常以峰值百分比表示。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Mem Busy</code></td>
+<td style="text-align:left">内存总线忙碌率</td>
+<td style="text-align:left">内存总线处于忙碌状态的时间百分比。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Max Bandwidth</code></td>
+<td style="text-align:left">最大带宽利用率</td>
+<td style="text-align:left">当前内存吞吐量占理论最大带宽的百分比。若此指标高，程序为内存受限。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Mem Pipes Busy</code></td>
+<td style="text-align:left">内存管道忙碌率</td>
+<td style="text-align:left">执行内存指令的流水线被利用的程度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>第三层</strong></td>
+<td style="text-align:left"><strong>占用率与调度</strong></td>
+<td style="text-align:left"><code>Occupancy</code></td>
+<td style="text-align:left">占用率</td>
+<td style="text-align:left">每个SM上实际活跃Warp数与最大可能数量的比率，是隐藏延迟的前提。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Active Warps</code></td>
+<td style="text-align:left">活跃线程束</td>
+<td style="text-align:left">当前在SM上处于活动状态的Warp数量。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Scheduler</strong></td>
+<td style="text-align:left">调度器</td>
+<td style="text-align:left">每个周期从就绪的Warp中选择一个来发射指令的硬件单元。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Active → Eligible → Issued</code></td>
+<td style="text-align:left">活跃 → 就绪 → 发射</td>
+<td style="text-align:left">指令发射路径。Warp必须同时活跃且就绪（Eligible）才会被选中发射。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><strong>Eligible 太少？</strong></td>
+<td style="text-align:left">就绪线程束过少</td>
+<td style="text-align:left">若大量周期无就绪Warp，说明程序为<strong>延迟受限</strong>，需分析具体停顿原因。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>第四层</strong></td>
+<td style="text-align:left"><strong>Warp Stall (停顿原因)</strong></td>
+<td style="text-align:left"><code>Short Scoreboard</code></td>
+<td style="text-align:left">短记分板停顿</td>
+<td style="text-align:left">等待<strong>短延迟</strong>、<strong>不离开SM</strong>的指令结果，如<strong>共享内存</strong>访问、特殊数学指令。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Long Scoreboard</code></td>
+<td style="text-align:left">长记分板停顿</td>
+<td style="text-align:left">等待<strong>长延迟</strong>、<strong>可能离开SM</strong>的指令结果，如<strong>全局/局部内存</strong>访问。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>MIO Throttle</code></td>
+<td style="text-align:left">MIO节流停顿</td>
+<td style="text-align:left">MIO单元（含共享内存、特殊数学指令）的<strong>指令队列已满</strong>，无法继续发射。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Math Throttle</code></td>
+<td style="text-align:left">数学节流停顿</td>
+<td style="text-align:left">数学计算管道（如FMA、Tensor Core）的<strong>指令队列已满</strong>，无法继续发射。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Barrier</code></td>
+<td style="text-align:left">屏障等待</td>
+<td style="text-align:left">Warp在显式同步点（如<code>__syncthreads()</code>）上等待其他Warp。</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>Not Selected</code></td>
+<td style="text-align:left">未被选中停顿</td>
+<td style="text-align:left">Warp本身<strong>就绪</strong>，但当前周期未被调度器选中，常因活跃Warp过多导致竞争。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>自上而下定位</strong>：先从<code>Speed Of Light</code>判断是<strong>计算</strong>还是<strong>内存</strong>瓶颈。</li>
+<li><strong>深入分析</strong>：若计算/内存指标异常（如IPC低或带宽满），则进入<code>Occupancy</code>和<code>Scheduler</code>层。</li>
+<li><strong>根因诊断</strong>：若发现<code>Eligible</code> Warp过少，则在<code>Warp Stall</code>原因中查找对应的高频停顿项（如<code>Long Scoreboard</code>），并针对性优化（如合并内存访问、减少同步等）。</li>
+</ol>
+<h1 id="00-朴素实现" tabindex="-1">00-朴素实现</h1>
+<h2 id="代码思路" tabindex="-1" id="代码思路">代码思路</h2>
+<p>和cpu计算方式一样，不考虑其他问题。</p>
+<h2 id="代码" tabindex="-1" id="代码">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__  <span class="type">void</span>  <span class="title">cuda_sgemm_naive</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">float</span> *A,<span class="type">float</span> *B,<span class="type">float</span> *C,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">int</span> m,<span class="type">const</span> <span class="type">int</span> n,<span class="type">const</span> <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> col = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="type">int</span> row = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">    <span class="keyword">if</span>(row&gt;=m||col&gt;=n) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> idx=<span class="number">0</span>;idx&lt;k;idx++)</span><br><span class="line">    &#123;</span><br><span class="line">        C[row*n+col]+= A[row*k+idx]*B[idx*n+col];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="性能分析" tabindex="-1" id="性能分析">性能分析</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ncu  --section SpeedOfLight   --section MemoryWorkloadAnalysis   --section Lau</span><br><span class="line">nchStats   --section Occupancy ./sgemm </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">cuda_sgemm_naive(<span class="built_in">float</span> *, <span class="built_in">float</span> *, <span class="built_in">float</span> *, int, int, int) (128, 128, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 12.0</span><br><span class="line"> Section: GPU Speed Of Light Throughput</span><br><span class="line"> ----------------------- ----------- ------------</span><br><span class="line"> Metric Name             Metric Unit Metric Value</span><br><span class="line"> ----------------------- ----------- ------------</span><br><span class="line"> DRAM Frequency                  Ghz        13.79</span><br><span class="line"> SM Frequency                    Ghz         2.01</span><br><span class="line"> Elapsed Cycles                cycle    6,639,972</span><br><span class="line"> Memory Throughput                 %        95.35</span><br><span class="line"> DRAM Throughput                   %         0.86</span><br><span class="line"> Duration                         ms         3.30</span><br><span class="line"> L1/TEX Cache Throughput           %        96.00</span><br><span class="line"> L2 Cache Throughput               %        35.85</span><br><span class="line"> SM Active Cycles              cycle 6,585,895.82</span><br><span class="line"> Compute (SM) Throughput           %        95.35</span><br><span class="line"> ----------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line"> INF   This workload is utilizing greater than 80.0% of the available compute or memory performance of the device.   </span><br><span class="line">       To further improve performance, work will likely need to be shifted from the most utilized to another unit.   </span><br><span class="line">       Start by analyzing workloads <span class="keyword">in</span> the Compute Workload Analysis section.                                        </span><br><span class="line"></span><br><span class="line"> Section: Memory Workload Analysis</span><br><span class="line"> -------------------------------------- ----------- ------------</span><br><span class="line"> Metric Name                            Metric Unit Metric Value</span><br><span class="line"> -------------------------------------- ----------- ------------</span><br><span class="line"> Local Memory Spilling Requests                          no data</span><br><span class="line"> Local Memory Spilling Request Overhead           %      no data</span><br><span class="line"> Memory Throughput                          Gbyte/s        15.25</span><br><span class="line"> Mem Busy                                         %        71.54</span><br><span class="line"> Max Bandwidth                                    %        95.35</span><br><span class="line"> L1/TEX Hit Rate                                  %        87.27</span><br><span class="line"> L2 Persisting Size                           Mbyte        18.87</span><br><span class="line"> L2 Compression Success Rate                      %            0</span><br><span class="line"> L2 Compression Ratio                                          0</span><br><span class="line"> L2 Compression Input Sectors                sector            0</span><br><span class="line"> L2 Hit Rate                                      %        98.88</span><br><span class="line"> Mem Pipes Busy                                   %        95.35</span><br><span class="line"> -------------------------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line"> Section: Launch Statistics</span><br><span class="line"> -------------------------------- --------------- ---------------</span><br><span class="line"> Metric Name                          Metric Unit    Metric Value</span><br><span class="line"> -------------------------------- --------------- ---------------</span><br><span class="line"> Block Size                                                   256</span><br><span class="line"> Cluster Scheduling Policy                           PolicySpread</span><br><span class="line"> Cluster Size                                                   0</span><br><span class="line"> Function Cache Configuration                     CachePreferNone</span><br><span class="line"> Grid Size                                                 16,384</span><br><span class="line"> Preferred Cluster Size                                         0</span><br><span class="line"> Registers Per Thread             register/thread              40</span><br><span class="line"> Shared Memory Configuration Size           Kbyte           16.38</span><br><span class="line"> Driver Shared Memory Per Block       Kbyte/block            1.02</span><br><span class="line"> Dynamic Shared Memory Per Block       byte/block               0</span><br><span class="line"> Static Shared Memory Per Block        byte/block               0</span><br><span class="line"> <span class="comment"># SMs                                         SM             170</span></span><br><span class="line"> Stack Size                                                 1,024</span><br><span class="line"> Threads                                   thread       4,194,304</span><br><span class="line"> <span class="comment"># TPCs                                                        85</span></span><br><span class="line"> Enabled TPC IDs                                              all</span><br><span class="line"> Uses Green Context                                             0</span><br><span class="line"> Waves Per SM                                               16.06</span><br><span class="line"> -------------------------------- --------------- ---------------</span><br><span class="line"></span><br><span class="line"> Section: Occupancy</span><br><span class="line"> ------------------------------- ----------- ------------</span><br><span class="line"> Metric Name                     Metric Unit Metric Value</span><br><span class="line"> ------------------------------- ----------- ------------</span><br><span class="line"> Max Active Clusters                 cluster            0</span><br><span class="line"> Max Cluster Size                      block            8</span><br><span class="line"> Overall GPU Occupancy                     %            0</span><br><span class="line"> Cluster Occupancy                         %            0</span><br><span class="line"> Block Limit Barriers                  block           24</span><br><span class="line"> Block Limit SM                        block           24</span><br><span class="line"> Block Limit Registers                 block            6</span><br><span class="line"> Block Limit Shared Mem                block           16</span><br><span class="line"> Block Limit Warps                     block            6</span><br><span class="line"> Theoretical Active Warps per SM        warp           48</span><br><span class="line"> Theoretical Occupancy                     %          100</span><br><span class="line"> Achieved Occupancy                        %        97.46</span><br><span class="line"> Achieved Active Warps Per SM           warp        46.78</span><br><span class="line"> ------------------------------- ----------- ------------</span><br></pre></td></tr></table></figure>
+<h3 id="step1-speed-of-light-throughput" tabindex="-1" id="Step1-Speed-Of-Light-Throughput">Step1-Speed Of Light Throughput</h3>
+<blockquote>
+<p>判断瓶颈方向,内存还是计算？</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Memory Throughput                 %        95.35</span><br><span class="line">DRAM Throughput                   %         0.86</span><br><span class="line">Compute (SM) Throughput           %        95.35</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Compute Throughput：计算单元的忙碌程度</li>
+<li>Memory Throughput ：内存系统中所有部件工作负载最大值</li>
+<li>DRAM Throughput：访问显存的压力</li>
+</ul>
+<p>结论：GPU计算单元使用不充分，但是某一级内存系统已经接近满负荷。<br>
+下一步：看是哪一级内存引起的，L1?L2?DRAM？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">L1/TEX Cache Throughput           %        96.00</span><br><span class="line">L2 Cache Throughput               %        35.85</span><br><span class="line">DRAM Throughput                   %         0.86</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SM</span><br><span class="line"> ↓</span><br><span class="line">L1      96.0%</span><br><span class="line"> ↓</span><br><span class="line">L2      35.9%   ← 最忙</span><br><span class="line"> ↓</span><br><span class="line">DRAM     0.9%</span><br></pre></td></tr></table></figure>
+<h3 id="step2-memory-workload-analysis" tabindex="-1" id="Step2-Memory-Workload-Analysis">Step2-Memory Workload Analysis</h3>
+<p>命中率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L1/TEX Hit Rate                                  %        87.27</span><br><span class="line">L2 Hit Rate                                      %        98.88</span><br></pre></td></tr></table></figure>
+<p>可以发现，L2收到的请求，L2基本都可以找到，说明大量访存需求在L2这一层完成，导致L2的负载很大，而DRAM的负载很小。</p>
+<h3 id="step3-kernel-code-analysis" tabindex="-1" id="Step3-kernel-code-Analysis">Step3-kernel code Analysis</h3>
+<p>分析代码可以得到：</p>
+<ol>
+<li>一个线程负责答案矩阵C中的一个元素计算</li>
+<li>一个线程需要访问A的一行和B的一列</li>
+<li>sum存放在寄存器中，计算工程中线程不断对自己的寄存器内容累加。</li>
+<li>循环结束后，线程访问C，写入答案<br>
+数据路径：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A/B</span><br><span class="line"> ↓</span><br><span class="line">Global Memory / Cache</span><br><span class="line"> ↓</span><br><span class="line">Register</span><br><span class="line"> ↓</span><br><span class="line">FMA</span><br><span class="line"> ↓</span><br><span class="line">sum register</span><br></pre></td></tr></table></figure>
+<h2 id="问题" tabindex="-1" id="问题">问题</h2>
+<p>对于同一个block（$16 \times 16$）的线程，如线程$(0,0)$和线程$(1,0)$，它们的$row$是相同的，线程$(0,0)$和线程$(0,1)$，它们的$col$是相同的。也就是说，一个block中的线程们会重复访问A和B的数据<br>
+即：</p>
+<ul>
+<li>矩阵$A$的一行数据被同一行的多个线程重复使用</li>
+<li>矩阵$B$的一列数据被同一列的多个线程重复使用<br>
+但我们当前的代码没有利用这个性质，只是粗鲁地进行一次又一次的访问然后在L2命中，使得L2负载很高。<br>
+因此，瓶颈在于：<em><strong>L2/request traffic bound</strong></em>，warp一直在等待数据</li>
+</ul>
+<h2 id="优化方向" tabindex="-1" id="优化方向">优化方向</h2>
+<blockquote>
+<p>一个从 Global Memory 加载进来的 A/B 元素，要让多个线程重复使用。</p>
+</blockquote>
+<h1 id="01-shared-memory-tiling" tabindex="-1">01-Shared Memory Tiling</h1>
+<blockquote>
+<p>沿着维度$K$分块，计算$C_{tile} = A_{tile} B_{tile}$</p>
+</blockquote>
+<p>保存一个block中重复使用的数据，即A矩阵的tile行，B矩阵的tile列</p>
+<h2 id="我的错误想法" tabindex="-1" id="我的错误想法">我的错误想法</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="type">int</span> TILE&gt;</span></span><br><span class="line"><span class="function">__global__  <span class="type">void</span>  <span class="title">sgemm_shared</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">float</span> *A,<span class="type">float</span> *B,<span class="type">float</span> *C,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">int</span> m,<span class="type">const</span> <span class="type">int</span> n,<span class="type">const</span> <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __shared__ <span class="type">float</span> As[TILE*k];</span><br><span class="line">    __shared__ <span class="type">float</span> Bs[TILE*k];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> col = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="type">int</span> row = blockIdx.y * blockDim.y + threadIdx.y;</span><br><span class="line">    <span class="keyword">if</span>(row&gt;=m||col&gt;=n) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(threadIdx.y==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k*TILE;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            As[i] = A[row*k+i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(threadIdx.x==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;k*TILE;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Bs[i] = B[i*k+row];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">float</span> sum=<span class="number">0.f</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> idx=<span class="number">0</span>;idx&lt;k;idx++)</span><br><span class="line">    &#123;</span><br><span class="line">         sum+=As[threadIdx.y*k+idx]*Bs[idx*k+threadIdx.x];</span><br><span class="line">    &#125;</span><br><span class="line">    C[row*n+col]+=sum;</span><br><span class="line">    <span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li><code>k</code> 是运行时参数，不能这样编写代码</li>
+<li>使用 dynamic shared memory 实现，<code>TILE*K</code> 也太大，共享内存放不下</li>
+<li>存在重复搬运的问题<br>
+优化：<br>
+继续拆分，将$tile\times k$沿着维度k继续分块，即：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C tile</span><br><span class="line">=</span><br><span class="line">A tile 0 × B tile 0</span><br><span class="line">+</span><br><span class="line">A tile 1 × B tile 1</span><br><span class="line">+</span><br><span class="line">A tile 2 × B tile 2</span><br><span class="line">+</span><br><span class="line">A tile 3 × B tile 3</span><br></pre></td></tr></table></figure>
+<p>这样处理，既可以减少共享内存的使用，也可以让一个线程每次循环负责搬运一个位置，计算一个位置。<img src="image-1786955470796.png" alt="image-1786955470796.png"></p>
+<h2 id="代码-1" tabindex="-1" id="代码-2">代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="type">int</span> TILE&gt;</span></span><br><span class="line"><span class="function">__global__  <span class="type">void</span>  <span class="title">sgemm_shared</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">float</span> *A,<span class="type">float</span> *B,<span class="type">float</span> *C,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">int</span> m,<span class="type">const</span> <span class="type">int</span> n,<span class="type">const</span> <span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __shared__ <span class="type">float</span> As[TILE][TILE];</span><br><span class="line">    __shared__ <span class="type">float</span> Bs[TILE][TILE];</span><br><span class="line">    <span class="type">float</span> sum = <span class="number">0.f</span>;</span><br><span class="line">    <span class="type">int</span> tx = threadIdx.x,ty = threadIdx.y;</span><br><span class="line">    <span class="type">int</span> row = ty + blockIdx.y*blockDim.y;</span><br><span class="line">    <span class="type">int</span> col = tx + blockIdx.x*blockDim.x;</span><br><span class="line">    <span class="comment">//每次只考虑一个TILE块</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> blk=<span class="number">0</span>;blk &lt; (k+TILE<span class="number">-1</span>)/TILE;blk++)<span class="comment">//遍历每一块</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="comment">//考虑TILE块</span></span><br><span class="line">        <span class="type">int</span> A_row = row;</span><br><span class="line">        <span class="type">int</span> A_col = blk*TILE + tx;</span><br><span class="line">        <span class="type">int</span> B_row = blk*TILE + ty;</span><br><span class="line">        <span class="type">int</span> B_col = col;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//每个线程负责一个元素的搬运</span></span><br><span class="line">        <span class="keyword">if</span>(A_row &lt; m &amp;&amp; A_col &lt; k)As[ty][tx] = A[A_row*k+A_col];</span><br><span class="line">        <span class="keyword">else</span> As[ty][tx] = <span class="number">0.f</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(B_row &lt; k &amp;&amp; B_col &lt; n)Bs[ty][tx] = B[B_row*n+B_col];</span><br><span class="line">        <span class="keyword">else</span> Bs[ty][tx] =<span class="number">0.f</span>;</span><br><span class="line">        __syncthreads();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//计算</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;TILE;i++)</span><br><span class="line">        &#123;</span><br><span class="line">           sum += As[ty][i]*Bs[i][tx];</span><br><span class="line">        &#125;</span><br><span class="line">        __syncthreads();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//存储</span></span><br><span class="line">    <span class="keyword">if</span>(row&lt;m&amp;&amp;col&lt;n) C[row*n+col]=sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="更优雅的实现" tabindex="-1" id="更优雅的实现">更优雅的实现</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="type">int</span> TILE&gt;</span></span><br><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">sgemm_shared</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">float</span>* __restrict__ A,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">const</span> <span class="type">float</span>* __restrict__ B,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">float</span>* __restrict__ C,</span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="type">int</span> M, <span class="type">int</span> N, <span class="type">int</span> K)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __shared__ <span class="type">float</span> As[TILE][TILE];</span><br><span class="line">    __shared__ <span class="type">float</span> Bs[TILE][TILE];</span><br><span class="line"></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> tx = threadIdx.x;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> ty = threadIdx.y;</span><br><span class="line"></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> row = blockIdx.y * TILE + ty;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> col = blockIdx.x * TILE + tx;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> sum = <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 沿 K 维，每次向前移动 TILE</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k0 = <span class="number">0</span>; k0 &lt; K; k0 += TILE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Global Memory -&gt; Shared Memory</span></span><br><span class="line">        As[ty][tx] =</span><br><span class="line">            (row &lt; M &amp;&amp; k0 + tx &lt; K)</span><br><span class="line">            ? A[row * K + k0 + tx]</span><br><span class="line">            : <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line">        Bs[ty][tx] =</span><br><span class="line">            (k0 + ty &lt; K &amp;&amp; col &lt; N)</span><br><span class="line">            ? B[(k0 + ty) * N + col]</span><br><span class="line">            : <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line">        __syncthreads();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前 tile 对 C[row][col] 的贡献</span></span><br><span class="line">        <span class="meta">#<span class="keyword">pragma</span> unroll</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; TILE; ++k)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += As[ty][k] * Bs[k][tx];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        __syncthreads();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (row &lt; M &amp;&amp; col &lt; N)</span><br><span class="line">    &#123;</span><br><span class="line">        C[row * N + col] = sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优雅之处：</p>
+<ol>
+<li><code>__restrict__</code> 告诉编译器这些指针不存在别名关系，有利于编译器优化</li>
+</ol>
+<h2 id="性能分析-1" tabindex="-1" id="性能分析-2">性能分析</h2>
+<p>本次实现由三个阶段组成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 1. Global -&gt; Shared</span><br><span class="line">As[ty][tx] = ...;</span><br><span class="line">Bs[ty][tx] = ...;</span><br><span class="line"></span><br><span class="line">__syncthreads();</span><br><span class="line"></span><br><span class="line">// 2. Shared -&gt; Register -&gt; FMA</span><br><span class="line"><span class="keyword">for</span> (int k = 0; k &lt; TILE; ++k)</span><br><span class="line">    <span class="built_in">sum</span> += As[ty][k] * Bs[k][tx];</span><br><span class="line"></span><br><span class="line">__syncthreads();</span><br><span class="line"></span><br><span class="line">// 3. Register -&gt; Global</span><br><span class="line">C[row * N + col] = <span class="built_in">sum</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>NCU结果：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">[3565954] sgemm@127.0.0.1</span><br><span class="line">  void sgemm_shared&lt;16&gt;(<span class="built_in">float</span> *, <span class="built_in">float</span> *, <span class="built_in">float</span> *, int, int, int) (128, 128, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 12.0</span><br><span class="line">    Section: GPU Speed Of Light Throughput</span><br><span class="line">    ----------------------- ----------- ------------</span><br><span class="line">    Metric Name             Metric Unit Metric Value</span><br><span class="line">    ----------------------- ----------- ------------</span><br><span class="line">    DRAM Frequency                  Ghz        13.79</span><br><span class="line">    SM Frequency                    Ghz         2.01</span><br><span class="line">    Elapsed Cycles                cycle    4,955,731</span><br><span class="line">    Memory Throughput                 %        96.04</span><br><span class="line">    DRAM Throughput                   %         0.77</span><br><span class="line">    Duration                         ms         2.46</span><br><span class="line">    L1/TEX Cache Throughput           %        96.65</span><br><span class="line">    L2 Cache Throughput               %        31.48</span><br><span class="line">    SM Active Cycles              cycle 4,905,850.17</span><br><span class="line">    Compute (SM) Throughput           %        96.04</span><br><span class="line">    ----------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line">    INF   This workload is utilizing greater than 80.0% of the available compute or memory performance of the device.   </span><br><span class="line">          To further improve performance, work will likely need to be shifted from the most utilized to another unit.   </span><br><span class="line">          Start by analyzing workloads <span class="keyword">in</span> the Compute Workload Analysis section.                                        </span><br><span class="line"></span><br><span class="line">    Section: Compute Workload Analysis</span><br><span class="line">    -------------------- ----------- ------------</span><br><span class="line">    Metric Name          Metric Unit Metric Value</span><br><span class="line">    -------------------- ----------- ------------</span><br><span class="line">    Executed Ipc Active   inst/cycle         1.15</span><br><span class="line">    Executed Ipc Elapsed  inst/cycle         1.15</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Issued Ipc Active     inst/cycle         1.15</span><br><span class="line">    SM Busy                        %        36.32</span><br><span class="line">    -------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line">    OPT   Est. Local Speedup: 90.39%                                                                                    </span><br><span class="line">          All compute pipelines are under-utilized. Either this workload is very small or it doesnt issue enough warps </span><br><span class="line">          per scheduler. Check the Launch Statistics and Scheduler Statistics sections <span class="keyword">for</span> further details.             </span><br><span class="line"></span><br><span class="line">    Section: Memory Workload Analysis</span><br><span class="line">    -------------------------------------- ----------- ------------</span><br><span class="line">    Metric Name                            Metric Unit Metric Value</span><br><span class="line">    -------------------------------------- ----------- ------------</span><br><span class="line">    Local Memory Spilling Requests                          no data</span><br><span class="line">    Local Memory Spilling Request Overhead           %      no data</span><br><span class="line">    Memory Throughput                          Gbyte/s        13.64</span><br><span class="line">    Mem Busy                                         %        61.03</span><br><span class="line">    Max Bandwidth                                    %        96.04</span><br><span class="line">    L1/TEX Hit Rate                                  %         0.03</span><br><span class="line">    L2 Persisting Size                           Mbyte        18.87</span><br><span class="line">    L2 Compression Success Rate                      %            0</span><br><span class="line">    L2 Compression Ratio                                          0</span><br><span class="line">    L2 Compression Input Sectors                sector            0</span><br><span class="line">    L2 Hit Rate                                      %        99.01</span><br><span class="line">    Mem Pipes Busy                                   %        96.04</span><br><span class="line">    -------------------------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line">    Section: Launch Statistics</span><br><span class="line">    -------------------------------- --------------- ---------------</span><br><span class="line">    Metric Name                          Metric Unit    Metric Value</span><br><span class="line">    -------------------------------- --------------- ---------------</span><br><span class="line">    Block Size                                                   256</span><br><span class="line">    Cluster Scheduling Policy                           PolicySpread</span><br><span class="line">    Cluster Size                                                   0</span><br><span class="line">    Function Cache Configuration                     CachePreferNone</span><br><span class="line">    Grid Size                                                 16,384</span><br><span class="line">    Preferred Cluster Size                                         0</span><br><span class="line">    Registers Per Thread             register/thread              37</span><br><span class="line">    Shared Memory Configuration Size           Kbyte           65.54</span><br><span class="line">    Driver Shared Memory Per Block       Kbyte/block            1.02</span><br><span class="line">    Dynamic Shared Memory Per Block       byte/block               0</span><br><span class="line">    Static Shared Memory Per Block       Kbyte/block            2.05</span><br><span class="line">    <span class="comment"># SMs                                         SM             170</span></span><br><span class="line">    Stack Size                                                 1,024</span><br><span class="line">    Threads                                   thread       4,194,304</span><br><span class="line">    <span class="comment"># TPCs                                                        85</span></span><br><span class="line">    Enabled TPC IDs                                              all</span><br><span class="line">    Uses Green Context                                             0</span><br><span class="line">    Waves Per SM                                               16.06</span><br><span class="line">    -------------------------------- --------------- ---------------</span><br><span class="line"></span><br><span class="line">    Section: Occupancy</span><br><span class="line">    ------------------------------- ----------- ------------</span><br><span class="line">    Metric Name                     Metric Unit Metric Value</span><br><span class="line">    ------------------------------- ----------- ------------</span><br><span class="line">    Max Active Clusters                 cluster            0</span><br><span class="line">    Max Cluster Size                      block            8</span><br><span class="line">    Overall GPU Occupancy                     %            0</span><br><span class="line">    Cluster Occupancy                         %            0</span><br><span class="line">    Block Limit Barriers                  block           24</span><br><span class="line">    Block Limit SM                        block           24</span><br><span class="line">    Block Limit Registers                 block            6</span><br><span class="line">    Block Limit Shared Mem                block           21</span><br><span class="line">    Block Limit Warps                     block            6</span><br><span class="line">    Theoretical Active Warps per SM        warp           48</span><br><span class="line">    Theoretical Occupancy                     %          100</span><br><span class="line">    Achieved Occupancy                        %        97.70</span><br><span class="line">    Achieved Active Warps Per SM           warp        46.90</span><br><span class="line">    ------------------------------- ----------- ------------</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Section: Scheduler Statistics</span><br><span class="line">    ---------------------------- ----------- ------------</span><br><span class="line">    Metric Name                  Metric Unit Metric Value</span><br><span class="line">    ---------------------------- ----------- ------------</span><br><span class="line">    One or More Eligible                   %        28.85</span><br><span class="line">    Issued Warp Per Scheduler                        0.29</span><br><span class="line">    No Eligible                            %        71.15</span><br><span class="line">    Active Warps Per Scheduler          warp        11.72</span><br><span class="line">    Eligible Warps Per Scheduler        warp         1.30</span><br><span class="line">    ---------------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line">    OPT   Est. Local Speedup: 4.011%                                                                                    </span><br><span class="line">          Every scheduler is capable of issuing one instruction per cycle, but <span class="keyword">for</span> this workload each scheduler only    </span><br><span class="line">          issues an instruction every 3.5 cycles. This might leave hardware resources underutilized and may lead to     </span><br><span class="line">          less optimal performance. Out of the maximum of 12 warps per scheduler, this workload allocates an average    </span><br><span class="line">          of 11.72 active warps per scheduler, but only an average of 1.30 warps were eligible per cycle. Eligible      </span><br><span class="line">          warps are the subset of active warps that are ready to issue their next instruction. Every cycle with no      </span><br><span class="line">          eligible warp results <span class="keyword">in</span> no instruction being issued and the issue slot remains unused. To increase the       </span><br><span class="line">          number of eligible warps, avoid possible load imbalances due to highly different execution durations per      </span><br><span class="line">          warp. Reducing stalls indicated on the Warp State Statistics and Source Counters sections can <span class="built_in">help</span>, too.      </span><br><span class="line"></span><br><span class="line">    Section: Warp State Statistics</span><br><span class="line">    ---------------------------------------- ----------- ------------</span><br><span class="line">    Metric Name                              Metric Unit Metric Value</span><br><span class="line">    ---------------------------------------- ----------- ------------</span><br><span class="line">    Warp Cycles Per Issued Instruction             cycle        40.63</span><br><span class="line">    Warp Cycles Per Executed Instruction           cycle        40.63</span><br><span class="line">    Avg. Active Threads Per Warp                                   32</span><br><span class="line">    Avg. Not Predicated Off Threads Per Warp                    32.00</span><br><span class="line">    ---------------------------------------- ----------- ------------</span><br><span class="line"></span><br><span class="line">    OPT   Est. Speedup: 4.011%                                                                                          </span><br><span class="line">          On average, each warp of this workload spends 19.5 cycles being stalled waiting <span class="keyword">for</span> the MIO (memory           </span><br><span class="line">          input/output) instruction queue to be not full. This stall reason is high <span class="keyword">in</span> cases of extreme utilization of  </span><br><span class="line">          the MIO pipelines, <span class="built_in">which</span> include special math instructions, dynamic branches, as well as shared memory        </span><br><span class="line">          instructions. When caused by shared memory accesses, trying to use fewer but wider loads can reduce pipeline  </span><br><span class="line">          pressure. This stall <span class="built_in">type</span> represents about 48.0% of the total average of 40.6 cycles between issuing two      </span><br><span class="line">          instructions.                                                                                                 </span><br><span class="line">    ----- --------------------------------------------------------------------------------------------------------------</span><br><span class="line">    INF   Check the Warp Stall Sampling (All Samples) table <span class="keyword">for</span> the top stall locations <span class="keyword">in</span> your <span class="built_in">source</span> based on         </span><br><span class="line">          sampling data. The Profiling Guide                                                                            </span><br><span class="line">          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html<span class="comment">#metrics-reference) provides more details    </span></span><br><span class="line">          on each stall reason.   </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Section: Source Counters</span><br><span class="line">    ------------------------- ----------- ------------</span><br><span class="line">    Metric Name               Metric Unit Metric Value</span><br><span class="line">    ------------------------- ----------- ------------</span><br><span class="line">    Branch Instructions Ratio           %         0.02</span><br><span class="line">    Branch Instructions              inst   17,170,432</span><br><span class="line">    Branch Efficiency                   %          100</span><br><span class="line">    Avg. Divergent Branches      branches            0</span><br><span class="line">    ------------------------- ----------- ------------</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="step1-speed-of-light-throughput-1" tabindex="-1" id="Step1-Speed-Of-Light-Throughput-2">Step1-Speed Of Light Throughput</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Memory Throughput       96.04%</span><br><span class="line">Compute (SM) Throughput 96.04%</span><br><span class="line"></span><br><span class="line">DRAM Throughput          0.77%</span><br><span class="line">L1/TEX Cache Throughput 96.65%</span><br><span class="line">L2 Cache Throughput     31.48%</span><br></pre></td></tr></table></figure>
+<p>某个 SM 内部资源已经接近极限</p>
+<h3 id="step2-compute-workload" tabindex="-1" id="Step2-Compute-Workload">Step2-Compute Workload</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Issue Slots Busy = 28.85% //有多少可用的 instruction issuing 能力真正被利用</span><br><span class="line">SM Busy          = 36.32%</span><br></pre></td></tr></table></figure>
+<p>并且NCU提示:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">All compute pipelines are under-utilized</span><br></pre></td></tr></table></figure>
+<p>说明FP32 等计算 pipeline 没有充分利用</p>
+<h3 id="step3-memory-workload" tabindex="-1" id="Step3-Memory-Workload">Step3-Memory Workload</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DRAM Throughput    = 0.77%</span><br><span class="line">L2 Hit Rate        = 99.01%</span><br><span class="line"></span><br><span class="line">Mem Busy           = 61.03%</span><br><span class="line">Mem Pipes Busy     = 96.04%</span><br><span class="line">Max Bandwidth      = 96.04%</span><br></pre></td></tr></table></figure>
+<ol>
+<li>DRAM Throughput    = 0.77% 说明显存带宽十分空闲</li>
+<li>Mem Pipes Busy（发射 memory instruction 的相关 pipeline 有多忙） = 96.04% 说明SM 内部用于处理 memory instruction 的 pipeline 压力非常大</li>
+</ol>
+<h3 id="step4-occupancy" tabindex="-1" id="Step4-Occupancy">Step4-Occupancy</h3>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Theoretical Occupancy = 100%</span><br><span class="line">Achieved Occupancy    = 97.70%</span><br><span class="line"></span><br><span class="line">Active Warps / SM</span><br><span class="line">理论：48</span><br><span class="line">实际：46.90</span><br></pre></td></tr></table></figure>
+<p>可以排除wrap太少导致的pipeline空闲</p>
+<hr>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Occupancy 97.7%</span><br><span class="line">        ↓</span><br><span class="line">SM 里有很多 warp</span><br><span class="line"></span><br><span class="line">但 Issue Slots Busy 只有 28.85%</span><br><span class="line">        ↓</span><br><span class="line">很多 warp 虽然 resident，</span><br><span class="line">却没有处于可以立即执行的状态</span><br></pre></td></tr></table></figure>
+<h3 id="step5-scheduler-statistics" tabindex="-1" id="Step5-Scheduler-Statistics">Step5-Scheduler Statistics</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Issued Warp Per Scheduler                        0.29</span><br><span class="line">No Eligible                            %        71.15</span><br><span class="line">Active Warps Per Scheduler          warp        11.72</span><br><span class="line">Eligible Warps Per Scheduler        warp         1.30//下一条指令已经具备执行条件，可以立即被 scheduler 选择的 warp。</span><br></pre></td></tr></table></figure>
+<p>SM中存在很多warp但是真正可以执行的warp很少,这也是Issue Slots Busy = 28.85%的原因，接下来要判断到底是什么原因导致可执行的warp少。</p>
+<h3 id="step6-warp-state-statistics-warp-stall" tabindex="-1" id="Step6-Warp-State-Statistics-Warp-Stall">Step6-Warp State Statistics  Warp Stall</h3>
+<p><img src="image-1786959241157.png" alt="image-1786959241157.png"></p>
+<p><img src="image-1786959893474.png" alt="image-1786959893474.png"></p>
+<p>stall主要在MIO(memeory input output)</p>
+<h3 id="综合判断" tabindex="-1" id="综合判断">综合判断</h3>
+<p>结合上述和代码可得：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">大量 shared-memory instruction</span><br><span class="line">        ↓</span><br><span class="line">MIO queue / memory pipe 很忙</span><br><span class="line">        ↓</span><br><span class="line">warp 无法继续发 shared load</span><br><span class="line">        ↓</span><br><span class="line">Eligible warp 减少</span><br></pre></td></tr></table></figure>
+<p>问题在于共享内存和寄存器之间的频繁load，导致warp中的线程处于等待状态</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/Gallery/">照片</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text">代码框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC-%E4%BA%8C%E7%BB%B4%E7%BA%BF%E7%A8%8B%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">二维网格 二维线程块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%80%9D%E8%B7%AF"><span class="toc-number"></span> <span class="toc-text">分析思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#00-%E6%9C%B4%E7%B4%A0%E5%AE%9E%E7%8E%B0"><span class="toc-number"></span> <span class="toc-text">00-朴素实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">代码思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1-speed-of-light-throughput"><span class="toc-number">3.1.</span> <span class="toc-text">Step1-Speed Of Light Throughput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2-memory-workload-analysis"><span class="toc-number">3.2.</span> <span class="toc-text">Step2-Memory Workload Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3-kernel-code-analysis"><span class="toc-number">3.3.</span> <span class="toc-text">Step3-kernel code Analysis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">5.</span> <span class="toc-text">优化方向</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#01-shared-memory-tiling"><span class="toc-number"></span> <span class="toc-text">01-Shared Memory Tiling</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E9%94%99%E8%AF%AF%E6%83%B3%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">我的错误想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">更优雅的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-1"><span class="toc-number">3.</span> <span class="toc-text">性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1-speed-of-light-throughput-1"><span class="toc-number">3.1.</span> <span class="toc-text">Step1-Speed Of Light Throughput</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2-compute-workload"><span class="toc-number">3.2.</span> <span class="toc-text">Step2-Compute Workload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3-memory-workload"><span class="toc-number">3.3.</span> <span class="toc-text">Step3-Memory Workload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step4-occupancy"><span class="toc-number">3.4.</span> <span class="toc-text">Step4-Occupancy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step5-scheduler-statistics"><span class="toc-number">3.5.</span> <span class="toc-text">Step5-Scheduler Statistics</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step6-warp-state-statistics-warp-stall"><span class="toc-number">3.6.</span> <span class="toc-text">Step6-Warp State Statistics  Warp Stall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%88%A4%E6%96%AD"><span class="toc-number">3.7.</span> <span class="toc-text">综合判断</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&text=SGEMM 单精度矩阵乘法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&is_video=false&description=SGEMM 单精度矩阵乘法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SGEMM 单精度矩阵乘法&body=Check out this article: https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&title=SGEMM 单精度矩阵乘法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&name=SGEMM 单精度矩阵乘法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://klklkl10086.github.io/2026/08/17/Sgemm%E5%8D%95%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/&t=SGEMM 单精度矩阵乘法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2026
+    klklkl
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/Gallery/">照片</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+<!-- hexo injector body_end start --><script src="/js/code-fold.js?v=1786961732398"></script><!-- hexo injector body_end end --></body>
+</html>
